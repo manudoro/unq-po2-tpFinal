@@ -6,5 +6,13 @@ public class Preference {
 	private int amount;
 	
 	
+	public Preference(Difficulty difficulty, int rewards, int amount) {
+		super();
+		this.difficulty = difficulty;
+		this.rewards = rewards;
+		this.amount = amount;
+	}
+	
+	
 
 }

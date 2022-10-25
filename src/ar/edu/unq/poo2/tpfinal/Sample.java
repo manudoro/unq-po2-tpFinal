@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 public class Sample {
 
-	private Punto cordinate;
+	private Point cordinate;
 	private LocalDate date;
 	
-	public Sample(Punto cordinate, LocalDate date) {
+	public Sample(Point cordinate, LocalDate date) {
 
 		this.cordinate = cordinate;
 		this.date = date;
