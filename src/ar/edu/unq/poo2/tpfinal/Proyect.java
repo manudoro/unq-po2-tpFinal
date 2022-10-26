@@ -9,6 +9,7 @@ public class Proyect {
 	private List<User> users;
 	private List<Category> categorys;
 	private List<Sample> samples;
+	private List<Challange> challanges;
 	
 
 
@@ -20,7 +21,8 @@ public class Proyect {
 		this.users = new ArrayList<User>();
 		this.categorys = new ArrayList<Category>();
 		this.samples = new ArrayList<Sample>();
-	
+		this.challanges = new ArrayList<Challange>();
+		
 	}
 
 
@@ -32,9 +34,11 @@ public class Proyect {
 		return categorys;
 	}
 	
-
 	public List<Sample> getSamples() {
 		return samples;
+	}
+	public List<Challange> getChallanges() {
+		return challanges;
 	}
 
 

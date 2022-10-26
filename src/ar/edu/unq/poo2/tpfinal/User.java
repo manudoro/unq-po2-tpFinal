@@ -1,5 +1,6 @@
 package ar.edu.unq.poo2.tpfinal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -8,11 +9,11 @@ public class User {
 	private List<Sample> samples;
 	private List<Challange> challanges;
 	
-	public User(String name, String id, List<Sample> samples, List<Challange> challanges) {
+	public User(String name, String id) {
 		this.name = name;
 		this.id = id;
-		this.samples = samples;
-		this.challanges = challanges;
+		this.samples = new ArrayList<Sample>();
+		this.challanges = new ArrayList<Challange>();
 	}
 
 	public List<Sample> getSamples() {

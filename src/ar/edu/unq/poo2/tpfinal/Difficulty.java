@@ -9,8 +9,18 @@ public enum Difficulty {
 	HARD(4),
 	VERY_HARD(5);
 
+	private int value;
+	
 	Difficulty(int i) {
+	
+		this.value = i;
 		
 	}
+
+	public int getValue() {
+		return value;
+	}
+
+	
 	
 }

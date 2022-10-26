@@ -8,6 +8,18 @@ public class Area {
 		this.center = center;
 		this.radius = radius;
 	}
+	public Point getCenter() {
+		return center;
+	}
+	public void setCenter(Point center) {
+		this.center = center;
+	}
+	public Integer getRadius() {
+		return radius;
+	}
+	public void setRadius(Integer radius) {
+		this.radius = radius;
+	}
 
 	
 }

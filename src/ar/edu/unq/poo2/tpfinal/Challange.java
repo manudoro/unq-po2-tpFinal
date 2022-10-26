@@ -1,23 +1,23 @@
 package ar.edu.unq.poo2.tpfinal;
 
-
+import java.sql.Date;
 
 public class Challange {
 	private Area area;
 	private Integer challangeTarget;
 	private String difficulty;
 	private String rewards;
-	private Integer fecha;
+	private Date date;
 	
-	public Challange(Area area, Integer challangeTarget, String difficulty, String rewards, Integer fecha) {
-		super();
+	public Challange(Area area, Integer challangeTarget, String difficulty, String rewards, Date date) {
 		this.area = area;
 		this.challangeTarget = challangeTarget;
 		this.difficulty = difficulty;
 		this.rewards = rewards;
-		this.fecha = fecha;
+		this.date = date;
 	}
 
+	
 	
 
 
