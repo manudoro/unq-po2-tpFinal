@@ -55,6 +55,16 @@ public class Proyect {
 		this.getUsuarios().remove(user);
 	}
 	
+	public void addChallange(Challange challange) {
+		this.getChallanges().add(challange);
+	}
+	
+	public void addSamples(Sample sample) {
+		this.getSamples().add(sample);
+	}
+	
+	
+	
 	
 	
 	
