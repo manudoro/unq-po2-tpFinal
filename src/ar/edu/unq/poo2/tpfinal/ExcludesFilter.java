@@ -14,9 +14,18 @@ public class ExcludesFilter extends Filter {
 
 	public List<Proyect> search() {
 		List<Proyect> filteredProyects = proyects.stream().
-				filter(p -> !p.getCategories().containsAll(categories)).toList();
+				filter(p -> this.excludesAll(p.getCategories())).toList();
 		return filteredProyects;
 		
+	}
+
+	private boolean excludesAll(List<Category> myCategories) {
+		for(Category c : myCategories) {
+			if (categories.contains(c)){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public void addCategory(Category category) {
@@ -26,6 +35,11 @@ public class ExcludesFilter extends Filter {
 
 	public List<Category> getCategories() {
 		return categories;
+	}
+
+	public void addProyect(Proyect proyect) {
+		this.proyects.add(proyect);
+		
 	}
 	
 	
