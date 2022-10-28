@@ -41,7 +41,7 @@ class ProyectTest {
 	
 	void testTheProyectAddCategory() {
 		proyect.addCategory(category);
-		assertEquals(proyect.getCategorys().size() , 1);	
+		assertEquals(proyect.getCategories().size() , 1);	
 		
 	}
 	

@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class NameFilterTest {
+class NameFilterTest2 {
 	public NameFilter flor;
 	public Proyect floresNativas;
 	public Proyect floraAutoctona;

@@ -7,7 +7,7 @@ public class Proyect {
 	private String name;
 	private String description;
 	private List<User> users;
-	private List<Category> categorys;
+	private List<Category> categories;
 	private List<Sample> samples;
 	private List<Challange> challanges;
 	
@@ -19,7 +19,7 @@ public class Proyect {
 		this.name = name;
 		this.description = description;
 		this.users = new ArrayList<User>();
-		this.categorys = new ArrayList<Category>();
+		this.categories = new ArrayList<Category>();
 		this.samples = new ArrayList<Sample>();
 		this.challanges = new ArrayList<Challange>();
 		
@@ -30,8 +30,8 @@ public class Proyect {
 		return users;
 	}
 
-	public List<Category> getCategorys() {
-		return categorys;
+	public List<Category> getCategories() {
+		return categories;
 	}
 	
 	public List<Sample> getSamples() {
@@ -44,7 +44,7 @@ public class Proyect {
 
 
 	public void addCategory(Category category) {
-		this.getCategorys().add(category);
+		this.getCategories().add(category);
 	}
 	
 	public void addUser(User user) {
