@@ -62,6 +62,11 @@ public class Proyect {
 	public void addSamples(Sample sample) {
 		this.getSamples().add(sample);
 	}
+
+
+	public String getName() {
+		return name;
+	}
 	
 	
 	

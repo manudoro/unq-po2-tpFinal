@@ -1,6 +1,6 @@
 package ar.edu.unq.poo2.tpfinal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,7 @@ class UserTest {
 	Sample sample;
 	Challange chanalnge;
 	
-	@BeforeEach
+	@BeforeEach	
 	void setUp() throws Exception {
 	user1 = new User("2124", "Jisus");
 	user2=  new User("2122", "Kamus");
