@@ -4,15 +4,15 @@ import java.util.List;
 
 public class NameFilter extends Filter {
 	private String searchText;
-	private List<Proyect> proyects;
+	private List<Project> projects;
 	
-	public NameFilter(String text, List<Proyect> proyects) {
+	public NameFilter(String text, List<Project> projects) {
 		this.searchText = text;
-		this.proyects = proyects;
+		this.projects = projects;
 	}
 
-	public List<Proyect> search() {
-		List<Proyect> filteredList = this.proyects.stream().
+	public List<Project> search() {
+		List<Project> filteredList = this.projects.stream().
 				filter(p -> p.getName().toUpperCase().contains(searchText.toUpperCase())).toList();
 		return filteredList;
 	}

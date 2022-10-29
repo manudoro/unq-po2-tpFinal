@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class UserTest {
 
-	Proyect proyect;
+	Project proyect;
 	User user1, user2;
 	Sample sample;
 	Challange chanalnge;
@@ -17,7 +17,7 @@ class UserTest {
 	void setUp() throws Exception {
 	user1 = new User("2124", "Jisus");
 	user2=  new User("2122", "Kamus");
-	proyect = new Proyect("Programmin", "Cs.Tecnologhy");
+	proyect = new Project("Programmin", "Cs.Tecnologhy");
 	sample = mock(Sample.class);
 	}
 

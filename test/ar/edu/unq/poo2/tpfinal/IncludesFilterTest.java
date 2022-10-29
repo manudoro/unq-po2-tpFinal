@@ -11,21 +11,21 @@ import org.junit.jupiter.api.Test;
 
 class IncludesFilterTest {
 	public IncludesFilter fauna;
-	public Proyect animalesPeligrosos;
-	public Proyect floraAutoctona;
-	public Proyect faunaMarina;
+	public Project animalesPeligrosos;
+	public Project floraAutoctona;
+	public Project faunaMarina;
 	public Category zoologia;
 	public Category botanica;
 	public List<Category> categories;
-	public List<Proyect> proyects; 
+	public List<Project> proyects; 
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		proyects = new ArrayList<Proyect>();
+		proyects = new ArrayList<Project>();
 		
-		animalesPeligrosos = new Proyect("Flores nativas", "Proyecto sobre flores nativas");
-		faunaMarina = new Proyect("Hojas secas", "Proyecto sobre hojas secas");
-		floraAutoctona = new Proyect("Flora autoctona", "Proyecto sobre flores nativas");
+		animalesPeligrosos = new Project("Flores nativas", "Proyecto sobre flores nativas");
+		faunaMarina = new Project("Hojas secas", "Proyecto sobre hojas secas");
+		floraAutoctona = new Project("Flora autoctona", "Proyecto sobre flores nativas");
 		
 		zoologia = new Category("Zoología");
 		botanica = new Category("Botánica");
@@ -46,7 +46,7 @@ class IncludesFilterTest {
 
 	@Test
 	void testIncludesFilterIncludesProyects() {
-		List<Proyect> filterProyects = fauna.search();
+		List<Project> filterProyects = fauna.search();
 		assertTrue(filterProyects.size() == 2);
 		assertTrue(filterProyects.contains(animalesPeligrosos));
 		assertTrue(filterProyects.contains(faunaMarina));
@@ -54,7 +54,7 @@ class IncludesFilterTest {
 	
 	@Test
 	void testIncludesFilterExcludesProyects() {
-		List<Proyect> filterProyects = fauna.search();
+		List<Project> filterProyects = fauna.search();
 		assertFalse(filterProyects.contains(floraAutoctona));
 	}
 	
@@ -67,7 +67,7 @@ class IncludesFilterTest {
 	@Test 
 	void testIncludesFilterMustIncludesAll() {
 		fauna.addCategory(botanica);
-		List<Proyect> filterProyects = fauna.search();
+		List<Project> filterProyects = fauna.search();
 		assertTrue(filterProyects.size() == 0);		
 	}
 }

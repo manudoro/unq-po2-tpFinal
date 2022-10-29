@@ -5,16 +5,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DisjunctionMethod {
+public class DisjunctionMethod implements ISearchMethod{
 	
 	
-	public List<Proyect> collect(List<List<Proyect>> allResult ){
-		Set<Proyect> result = new HashSet<Proyect>();
-		for(List<Proyect> ps : allResult ) {
+	public List<Project> collect(List<List<Project>> allResult ){
+		Set<Project> result = new HashSet<Project>();
+		for(List<Project> ps : allResult ) {
 			result.addAll(ps);
 		}
 	
-		return new ArrayList<Proyect>(result);
+		return new ArrayList<Project>(result);
 	}
 	
 }

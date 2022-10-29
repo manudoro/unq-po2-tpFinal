@@ -26,11 +26,11 @@ public class User {
 	}
 
 
-	public void subscribeProyect(Proyect proyect) {
+	public void subscribeProyect(Project proyect) {
 		proyect.addUser(this);
 	}
 	
-	public void unsubscribe(Proyect proyect) {
+	public void unsubscribe(Project proyect) {
 		proyect.removeUser(this);
 	}
 	

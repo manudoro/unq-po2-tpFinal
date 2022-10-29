@@ -5,17 +5,17 @@ import java.util.List;
 
 public class ExcludesFilter extends Filter {
 	private List<Category> categories;
-	private List<Proyect> proyects;
+	private List<Project> projects;
 
-	public ExcludesFilter(List<Category> categories, List<Proyect> proyects) {
+	public ExcludesFilter(List<Category> categories, List<Project> projects) {
 		this.categories = categories;
-		this.proyects = proyects;
+		this.projects = projects;
 	}
 
-	public List<Proyect> search() {
-		List<Proyect> filteredProyects = proyects.stream().
+	public List<Project> search() {
+		List<Project> filteredProjects = projects.stream().
 				filter(p -> this.excludesAll(p.getCategories())).toList();
-		return filteredProyects;
+		return filteredProjects;
 		
 	}
 
@@ -37,8 +37,8 @@ public class ExcludesFilter extends Filter {
 		return categories;
 	}
 
-	public void addProyect(Proyect proyect) {
-		this.proyects.add(proyect);
+	public void addProject(Project project) {
+		this.projects.add(project);
 		
 	}
 	

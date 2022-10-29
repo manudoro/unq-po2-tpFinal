@@ -4,13 +4,13 @@ import java.util.List;
 
 public abstract class Filter {
 	
-	private List<Proyect> proyects;
+	private List<Project> proyects;
 
 	public Filter() {
 		this.proyects = proyects;
 	}
 	
-	protected abstract List<Proyect> 
+	protected abstract List<Project> 
 	search();
 	
 	

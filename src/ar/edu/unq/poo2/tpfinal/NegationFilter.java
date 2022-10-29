@@ -5,7 +5,7 @@ import java.util.List;
 public class NegationFilter extends Filter {
 
 	@Override
-	protected List<Proyect> search() {
+	protected List<Project> search() {
 		// TODO Auto-generated method stub
 		return null;
 	}

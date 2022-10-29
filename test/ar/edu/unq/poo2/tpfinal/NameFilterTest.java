@@ -11,42 +11,42 @@ import org.junit.jupiter.api.Test;
 
 class NameFilterTest {
 	public NameFilter flor;
-	public Proyect floresNativas;
-	public Proyect floraAutoctona;
-	public Proyect hojasSecas;
-	public List<Proyect> proyects; 
+	public Project floresNativas;
+	public Project floraAutoctona;
+	public Project hojasSecas;
+	public List<Project> projects; 
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		proyects = new ArrayList<Proyect>();
-		floresNativas = new Proyect("Flores nativas", "Proyecto sobre flores nativas");
-		hojasSecas = new Proyect("Hojas secas", "Proyecto sobre hojas secas");
-		floraAutoctona = new Proyect("Flora autoctona", "Proyecto sobre flores nativas");
-		proyects.add(floresNativas);
-		proyects.add(hojasSecas);
-		proyects.add(floraAutoctona);
-		flor = new NameFilter("Flor", proyects);
+		projects = new ArrayList<Project>();
+		floresNativas = new Project("Flores nativas", "Proyecto sobre flores nativas");
+		hojasSecas = new Project("Hojas secas", "Proyecto sobre hojas secas");
+		floraAutoctona = new Project("Flora autoctona", "Proyecto sobre flores nativas");
+		projects.add(floresNativas);
+		projects.add(hojasSecas);
+		projects.add(floraAutoctona);
+		flor = new NameFilter("Flor", projects);
 		
 	}
 
 	@Test
-	void testNameFilterIncludesProyects() {
-		List<Proyect> filterProyects = flor.search();
+	void testNameFilterIncludesProjects() {
+		List<Project> filterProyects = flor.search();
 		assertTrue(filterProyects.size() == 2);
 		assertTrue(filterProyects.contains(floresNativas));
 		assertTrue(filterProyects.contains(floraAutoctona));
 	}
 	
 	@Test
-	void testNameFilterExcludesProyects() {
-		List<Proyect> filterProyects = flor.search();
+	void testNameFilterExcludesProjects() {
+		List<Project> filterProyects = flor.search();
 		assertFalse(filterProyects.contains(hojasSecas));
 	}
 	
 	@Test 
 	void testNameFilterCaseInsensitive() {
 		flor.setText("FLOR");
-		List<Proyect> filterProyects = flor.search();
+		List<Project> filterProyects = flor.search();
 		assertTrue(filterProyects.size() == 2);		
 	}
 

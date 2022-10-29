@@ -3,7 +3,7 @@ package ar.edu.unq.poo2.tpfinal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Proyect {
+public class Project {
 	private String name;
 	private String description;
 	private List<User> users;
@@ -14,7 +14,7 @@ public class Proyect {
 
 
 
-	public Proyect(String name, String description) {
+	public Project(String name, String description) {
 		
 		this.name = name;
 		this.description = description;

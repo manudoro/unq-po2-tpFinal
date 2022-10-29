@@ -5,19 +5,19 @@ import java.util.List;
 
 public class IncludesFilter extends Filter {
 	private List<Category> categories;
-	private List<Proyect> proyects;	
+	private List<Project> projects;	
 
 
-	public IncludesFilter(List<Category> categories, List<Proyect> proyects) {
+	public IncludesFilter(List<Category> categories, List<Project> projects) {
 		this.categories = categories;
-		this.proyects = proyects;
+		this.projects = projects;
 	}
 
 
-	public List<Proyect> search() {
-		List<Proyect> filteredProyects = proyects.
+	public List<Project> search() {
+		List<Project> filteredProjects = projects.
 				stream().filter(p -> p.getCategories().containsAll(categories)).toList();
-		return filteredProyects;
+		return filteredProjects;
 	}
 
 

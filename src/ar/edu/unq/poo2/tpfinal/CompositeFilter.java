@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompositeFilter extends Filter{
-	private List<Proyect> proyects;
 	private ISearchMethod method;
 	private List<Filter> filters;
 	
-	public CompositeFilter(List<Proyect> proyects , ISearchMethod method ) {
+	public CompositeFilter(ISearchMethod method ) {
 		super();
-		this.proyects = proyects;
 		this.method = method;
 		this.filters = new ArrayList<Filter>();
 	}
@@ -25,10 +23,10 @@ public class CompositeFilter extends Filter{
 	
 
 	@Override
-	protected List<Proyect> search() {	
-		List<List<Proyect>> allResult = new ArrayList<List<Proyect>>();
+	protected List<Project> search() {	
+		List<List<Project>> allResult = new ArrayList<List<Project>>();
 		for(Filter f : filters) {
-			List<Proyect> result = f.search();
+			List<Project> result = f.search();
 			allResult.add(result);
 		}
 		return method.collect(allResult);

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class ProyectTest {
 
-	Proyect proyect;
+	Project proyect;
 	User user , user1;
 	Sample sample;
 	Challange challange;
@@ -19,7 +19,7 @@ class ProyectTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		
-		proyect = new Proyect("AquatiWord", "Cs.Natural");
+		proyect = new Project("AquatiWord", "Cs.Natural");
 		user = mock(User.class);
 		category = mock(Category.class);
 	}
