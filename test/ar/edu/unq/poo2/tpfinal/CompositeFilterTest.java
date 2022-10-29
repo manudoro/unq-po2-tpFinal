@@ -11,22 +11,24 @@ import org.junit.jupiter.api.Test;
 
 class CompositeFilterTest {
 	
-	public CompositeFilter disjunction;
+	public CompositeFilter disjunction, conjunction;
 	public Filter estrella, includesBot, exludesBot, includesAstBot, excludesZoo, nameBosque;
 	public Project faunaMarina , stars ,animalesPeligrosos,floraAutoctona;
 	public Category zoologia,botanica, astronomia;
 	public List<Category> bot, astBot, zoo;
 	public List<Project> projects;
-	public DisjunctionMethod disjunctionSearch;
+	public ISearchMethod disjunctionSearch, conjunctionSearch;
+	
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		projects = new ArrayList<Project>();
 		disjunctionSearch = new DisjunctionMethod();
+		conjunctionSearch = new ConjunctionMethod();
 		
 		animalesPeligrosos = new Project("Peligros del bosque", "Proyecto sobre animales");
 		faunaMarina = new Project("Ballena franca", "Proyecto sobre ballena franca");
-		floraAutoctona = new Project("Flora autoctona", "Proyecto sobre flores nativas");
+		floraAutoctona = new Project("Bosque autoctono", "Proyecto sobre flores nativas");
 		stars = new Project("Estrellas", "Proyecto sobre estrellas grandes");
 		
 		zoologia = new Category("Zoología");
@@ -61,6 +63,7 @@ class CompositeFilterTest {
 		nameBosque = new NameFilter("Bosque", projects);
 
 		disjunction = new CompositeFilter(disjunctionSearch);
+		conjunction = new CompositeFilter(conjunctionSearch);
 	}
 
 	@Test
@@ -105,5 +108,13 @@ class CompositeFilterTest {
 		assertTrue(results.contains(animalesPeligrosos));
 	}
 	
+	@Test
+	void testConjunctionOfNameAndIncludesCategories() {
+		conjunction.addFilter(nameBosque);
+		conjunction.addFilter(includesBot);
+		List<Project> results = conjunction.search();
+		assertEquals(1, results.size());
+		assertTrue(results.contains(floraAutoctona));
+	}
 
 }
