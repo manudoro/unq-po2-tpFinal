@@ -41,4 +41,6 @@ class UsuarioTest {
 		usuario1.unsubscribe(proyecto);
 		assertEquals(proyecto.getUsuarios().size(),0); // Idem anterior
 	}
+	
 }
+
