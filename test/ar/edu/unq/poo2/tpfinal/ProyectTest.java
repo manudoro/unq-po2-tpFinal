@@ -14,14 +14,12 @@ class ProyectTest {
 	User user , user1;
 	Sample sample;
 	Challange challange;
-	Category category;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		
 		proyect = new Project("AquatiWord", "Cs.Natural");
 		user = mock(User.class);
-		category = mock(Category.class);
 	}
 
 	@Test
@@ -40,7 +38,7 @@ class ProyectTest {
 	@Test
 	
 	void testTheProyectAddCategory() {
-		proyect.addCategory(category);
+		proyect.addCategory("Biologia");
 		assertEquals(proyect.getCategories().size() , 1);	
 		
 	}

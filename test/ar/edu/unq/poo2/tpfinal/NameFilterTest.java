@@ -11,9 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class NameFilterTest {
 	public NameFilter flor;
-	public Project floresNativas;
-	public Project floraAutoctona;
-	public Project hojasSecas;
+	public Project floresNativas, floraAutoctona, hojasSecas;
 	public List<Project> projects; 
 	
 	@BeforeEach

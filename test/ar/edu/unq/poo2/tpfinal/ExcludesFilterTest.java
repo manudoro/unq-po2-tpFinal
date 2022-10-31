@@ -14,8 +14,8 @@ class ExcludesFilterTest {
 	public ExcludesFilter fauna;
 	
 	public Project faunaMarina , stars ,animalesPeligrosos,floraAutoctona;
-	public Category zoologia,botanica, astronomia;
-	public List<Category> categories;
+	public String zoologia,botanica, astronomia;
+	public List<String> categories;
 	public List<Project> projects; 
 	
 	@BeforeEach
@@ -27,10 +27,10 @@ class ExcludesFilterTest {
 		floraAutoctona = new Project("Flora autoctona", "Proyecto sobre flores nativas");
 		stars = new Project("Estrellas", "Proyecto sobre estrellas grandes");
 		
-		zoologia = new Category("Zoología");
-		botanica = new Category("Botánica");
-		astronomia = new Category("Astronomia");
-		categories = new ArrayList<Category>();
+		zoologia = "Zoología";
+		botanica = "Botánica";
+		astronomia = "Astronomia";
+		categories = new ArrayList<String>();
 		categories.add(zoologia);
 		projects.add(animalesPeligrosos);
 		projects.add(faunaMarina);

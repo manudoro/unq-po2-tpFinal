@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExcludesFilter extends Filter {
-	private List<Category> categories;
+	private List<String> categories;
 	private List<Project> projects;
 
-	public ExcludesFilter(List<Category> categories, List<Project> projects) {
+	public ExcludesFilter(List<String> categories, List<Project> projects) {
 		this.categories = categories;
 		this.projects = projects;
 	}
@@ -19,8 +19,8 @@ public class ExcludesFilter extends Filter {
 		
 	}
 
-	private boolean excludesAll(List<Category> myCategories) {
-		for(Category c : myCategories) {
+	private boolean excludesAll(List<String> myCategories) {
+		for(String c : myCategories) {
 			if (categories.contains(c)){
 				return false;
 			}
@@ -28,12 +28,12 @@ public class ExcludesFilter extends Filter {
 		return true;
 	}
 
-	public void addCategory(Category category) {
+	public void addCategory(String category) {
 		categories.add(category);
 		
 	}
 
-	public List<Category> getCategories() {
+	public List<String> getCategories() {
 		return categories;
 	}
 

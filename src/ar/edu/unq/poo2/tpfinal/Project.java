@@ -1,13 +1,15 @@
 package ar.edu.unq.poo2.tpfinal;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Project {
 	private String name;
 	private String description;
 	private List<User> users;
-	private List<Category> categories;
+	private Set<String>categories;
 	private List<Sample> samples;
 	private List<Challange> challanges;
 	
@@ -19,7 +21,7 @@ public class Project {
 		this.name = name;
 		this.description = description;
 		this.users = new ArrayList<User>();
-		this.categories = new ArrayList<Category>();
+		this.categories = new HashSet<String>();
 		this.samples = new ArrayList<Sample>();
 		this.challanges = new ArrayList<Challange>();
 		
@@ -30,8 +32,8 @@ public class Project {
 		return users;
 	}
 
-	public List<Category> getCategories() {
-		return categories;
+	public List<String> getCategories() {
+		return new ArrayList(categories);
 	}
 	
 	public List<Sample> getSamples() {
@@ -43,8 +45,8 @@ public class Project {
 
 
 
-	public void addCategory(Category category) {
-		this.getCategories().add(category);
+	public void addCategory(String categoria) {
+		this.categories.add(categoria);
 	}
 	
 	public void addUser(User user) {

@@ -11,12 +11,9 @@ import org.junit.jupiter.api.Test;
 
 class IncludesFilterTest {
 	public IncludesFilter fauna;
-	public Project animalesPeligrosos;
-	public Project floraAutoctona;
-	public Project faunaMarina;
-	public Category zoologia;
-	public Category botanica;
-	public List<Category> categories;
+	public Project animalesPeligrosos, floraAutoctona, faunaMarina;
+	public String zoologia, botanica;
+	public List<String> categories;
 	public List<Project> proyects; 
 	
 	@BeforeEach
@@ -27,9 +24,9 @@ class IncludesFilterTest {
 		faunaMarina = new Project("Hojas secas", "Proyecto sobre hojas secas");
 		floraAutoctona = new Project("Flora autoctona", "Proyecto sobre flores nativas");
 		
-		zoologia = new Category("Zoología");
-		botanica = new Category("Botánica");
-		categories = new ArrayList<Category>();
+		zoologia = "Zoología";
+		botanica = "Botánica";
+		categories = new ArrayList<String>();
 		categories.add(zoologia);
 		
 		proyects.add(animalesPeligrosos);

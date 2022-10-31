@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IncludesFilter extends Filter {
-	private List<Category> categories;
+	private List<String> categories;
 	private List<Project> projects;	
 
 
-	public IncludesFilter(List<Category> categories, List<Project> projects) {
+	public IncludesFilter(List<String> categories, List<Project> projects) {
 		this.categories = categories;
 		this.projects = projects;
 	}
@@ -21,13 +21,13 @@ public class IncludesFilter extends Filter {
 	}
 
 
-	public void addCategory(Category category) {
+	public void addCategory(String category) {
 		this.categories.add(category);
 		
 	}
 
 
-	public List<Category> getCategories() {
+	public List<String> getCategories() {
 		return categories;
 	}
 }
