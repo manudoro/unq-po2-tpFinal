@@ -15,10 +15,12 @@ public class Usuario {
 	
 	private List<Muestra> muestrasRecolectadas;
 	private List<Desafio> desafios;
+	private List<Proyecto> proyectos;
 	
 	public Usuario() {
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
 		this.desafios = new ArrayList<Desafio>();
+		this.proyectos = new ArrayList<Proyecto>();
 	}
 
 	public List<Muestra> getMuestrasRecolectadas() {
@@ -38,9 +40,13 @@ public class Usuario {
 		proyecto.suscribirUsuario(this);
 	}
 	
-	public void unsubscribe(Proyecto proyecto) {
+	public void dejarDeParticiparEnProyecto(Proyecto proyecto) {
 		// Este metodo permite, a un usuario, dejar de participar en un proyecto
 		proyecto.desuscribirUsuario(this);
+	}
+
+	public List<Proyecto> getProyectos() {
+		return this.proyectos;
 	}
 	
 }
