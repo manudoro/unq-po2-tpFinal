@@ -54,5 +54,4 @@ class DesafioTest {
 	void seVerificaQueUnDesafioConoceSuRestriccionTemporal() {
 		assertEquals(this.restriccionTemporal, this.desafio.getRestriccionTemporal());
 	}
-
 }
