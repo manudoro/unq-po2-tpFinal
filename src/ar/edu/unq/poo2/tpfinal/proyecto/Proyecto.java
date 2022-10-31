@@ -1,7 +1,9 @@
 package ar.edu.unq.poo2.tpfinal.proyecto;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
@@ -14,7 +16,7 @@ public class Proyecto {
 	private String nombre;
 	private String descripcion;
 	private List<Usuario> usuariosSuscritos;
-	private List<String> categorias;
+	private Set<String> categorias;
 	private List<Muestra> muestras;
 	private List<Desafio> desafios;
 	
@@ -26,7 +28,7 @@ public class Proyecto {
 		this.nombre = name;
 		this.descripcion = description;
 		this.usuariosSuscritos = new ArrayList<Usuario>();
-		this.categorias = new ArrayList<String>();
+		this.categorias = new HashSet<String>();
 		this.muestras = new ArrayList<Muestra>();
 		this.desafios = new ArrayList<Desafio>();
 		
@@ -37,8 +39,8 @@ public class Proyecto {
 		return usuariosSuscritos;
 	}
 
-	public List<String> getCategorys() {
-		return categorias;
+	public List<String> getCategorias() {
+		return new ArrayList(categorias);
 	}
 	
 	public List<Muestra> getSamples() {
@@ -48,12 +50,16 @@ public class Proyecto {
 		return desafios;
 	}
 
-
+	public String getNombre() {
+		return this.nombre;
+	}
 
 	public void vincularACategoria(String category) {
 		// este metodo permite, a un proyecto, vincularlo con una categoria nueva
-		this.getCategorys().add(category);
+		this.categorias.add(category);
 	}
+	
+	
 	
 	public void suscribirUsuario(Usuario user) {
 		// este metodo permite, a un proyecto, suscribir a un ussuario

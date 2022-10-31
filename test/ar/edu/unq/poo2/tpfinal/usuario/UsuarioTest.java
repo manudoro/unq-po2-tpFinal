@@ -27,20 +27,24 @@ class UsuarioTest {
 	}
 
 	@Test
+	void cuandoSeCreaUnUsuario_EsteNoParticipaEnNingunProyecto() {
+	
+		assertTrue(usuario1.getProyectos().isEmpty());  //Hay que ver en cuantos proyectos esta el usuario. No cuantos  usuarios tiene el proyecto
+	}
+	
+	@Test
 	void testSeVerificaQueUnUsuarioPuedeParticiparEnUnProyecto() {
 	
 		usuario1.participarEnProyecto(proyecto);
-		usuario2.participarEnProyecto(proyecto);
-		assertEquals(proyecto.getUsuarios().size() , 2);  //Hay que ver en cuantos proyectos esta el usuario. No cuantos  usuarios tiene el proyecto
+		assertFalse(usuario1.getProyectos().isEmpty());  //Hay que ver en cuantos proyectos esta el usuario. No cuantos  usuarios tiene el proyecto
 	}
 
 	@Test
-	
 	void testSeVerificaQueUnUsuarioPuedeDejarDeParticiparEnUnProyecto() {
+		
 		usuario1.participarEnProyecto(proyecto);
-		usuario1.unsubscribe(proyecto);
-		assertEquals(proyecto.getUsuarios().size(),0); // Idem anterior
+		usuario1.dejarDeParticiparEnProyecto(proyecto);
+		assertTrue(usuario1.getProyectos().isEmpty()); // Idem anterior
 	}
 	
 }
-

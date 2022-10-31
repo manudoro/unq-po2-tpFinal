@@ -3,6 +3,7 @@ package ar.edu.unq.poo2.tpfinal.desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 
 public class Area {
+	
 	private Coordenada center;
 	private Integer radius;
 	public Area(Coordenada center, Integer radius) {
