@@ -1,9 +1,12 @@
-package ar.edu.unq.poo2.tpfinal;
+package ar.edu.unq.poo2.tpfinal.proyecto;
 
-public class Category {
+public class Categoria {
+	
+	/* ELIMINAR */
+	
 	private String name;
 
-	public Category(String name) {
+	public Categoria(String name) {
 		this.name = name;
 	}
 
