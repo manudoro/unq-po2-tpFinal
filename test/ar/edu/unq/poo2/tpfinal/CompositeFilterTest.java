@@ -9,6 +9,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.poo2.tpfinal.filtro.IMetodoDeBusqueda;
+import ar.edu.unq.poo2.tpfinal.filtro.MetodoDeConjuncion;
+import ar.edu.unq.poo2.tpfinal.filtro.MetodoDeDisyuncion;
+
 class CompositeFilterTest {
 	
 	public CompositeFilter disjunction, conjunction;
@@ -17,14 +21,14 @@ class CompositeFilterTest {
 	public Category zoologia,botanica, astronomia;
 	public List<Category> bot, astBot, zoo;
 	public List<Project> projects;
-	public ISearchMethod disjunctionSearch, conjunctionSearch;
+	public IMetodoDeBusqueda disjunctionSearch, conjunctionSearch;
 	
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		projects = new ArrayList<Project>();
-		disjunctionSearch = new DisjunctionMethod();
-		conjunctionSearch = new ConjunctionMethod();
+		disjunctionSearch = new MetodoDeDisyuncion();
+		conjunctionSearch = new MetodoDeConjuncion();
 		
 		animalesPeligrosos = new Project("Peligros del bosque", "Proyecto sobre animales");
 		faunaMarina = new Project("Ballena franca", "Proyecto sobre ballena franca");
