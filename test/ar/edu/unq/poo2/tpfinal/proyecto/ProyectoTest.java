@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.proyecto;
 
 import static org.mockito.Mockito.mock;
+
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
-import ar.edu.unq.poo2.tpfinal.proyecto.Categoria;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
@@ -47,9 +47,8 @@ class ProyectoTest {
 	
 	void testSeVerificaQueSePuedeVincularUnaCategoriaAUnProyecto() {
 		proyecto.vincularACategoria(categoria);
-		assertEquals(proyecto.getCategorys().size() , 1);	
+		assertEquals(proyecto.getCategorias().size() , 1);	
 		
 	}
-	
-	
+
 }
