@@ -7,9 +7,9 @@ import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class MetodoDeDisyuncion implements IMetodoDeBusqueda{
+public class FiltoDeDisyuncion extends FiltroCompuesto{
 	
-	
+
 	public List<Proyecto> recolectar(List<List<Proyecto>> allResult ){
 		Set<Proyecto> result = new HashSet<Proyecto>();
 		for(List<Proyecto> ps : allResult ) {

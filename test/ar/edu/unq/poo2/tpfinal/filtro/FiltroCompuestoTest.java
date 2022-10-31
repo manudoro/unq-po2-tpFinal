@@ -19,12 +19,12 @@ class FiltroCompuestoTest {
 	public String zoologia,botanica, astronomia;
 	public List<String> bot, astBot, zoo;
 	public List<Proyecto> projects;
-	public MetodoDeDisyuncion disjunctionSearch;
+	public FiltoDeDisyuncion disjunctionSearch;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		projects = new ArrayList<Proyecto>();
-		disjunctionSearch = new MetodoDeDisyuncion();
+		disjunctionSearch = new FiltoDeDisyuncion();
 		
 		animalesPeligrosos = new Proyecto("Peligros del bosque", "Proyecto sobre animales");
 		faunaMarina = new Proyecto("Ballena franca", "Proyecto sobre ballena franca");
