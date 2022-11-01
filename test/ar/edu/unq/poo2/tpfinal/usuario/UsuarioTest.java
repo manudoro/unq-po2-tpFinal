@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
+import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
@@ -16,6 +17,7 @@ class UsuarioTest {
 	Proyecto proyecto;
 	Usuario usuario1, usuario2;
 	Muestra muestra;
+	DesafioDeUsuario desafioUsuario;
 	Desafio desafio;
 	
 	@BeforeEach
@@ -24,6 +26,9 @@ class UsuarioTest {
 	usuario2=  new Usuario();
 	proyecto = new Proyecto("Programmin", "Cs.Tecnologhy");
 	muestra = mock(Muestra.class);
+	desafioUsuario = mock(DesafioDeUsuario.class);
+	desafio = mock(Desafio.class);
+	
 	}
 
 	@Test
@@ -46,5 +51,38 @@ class UsuarioTest {
 		usuario1.dejarDeParticiparEnProyecto(proyecto);
 		assertTrue(usuario1.getProyectos().isEmpty()); // Idem anterior
 	}
+
+	
+	@Test
+	void unUsuarioNoPoseDesafrios() {
+		assertTrue(this.usuario1.getDesafios().isEmpty());
+	}
+	
+	@Test
+	
+	void unUsuarioRecibeUnDesafio() {
+		usuario1.agregarDesafio(desafio);
+		assertFalse(this.usuario1.getDesafios().isEmpty());
+	}
+	
+
+	
+	 void cuandoUnUsarioSaleDeUnDesafio() {
+		usuario1.agregarDesafio(desafio);
+		usuario1.salirDelDesafio(desafioUsuario);
+		assertTrue(this.usuario1.getDesafios().isEmpty());
+	}
+	
+	@Test
+	
+	void seVerificaQueUnUsuarioPuedeRecibirUnDesafioDeUsuario() {
+		usuario1.agregarDesafioDeUsuario(desafioUsuario);
+		assertFalse(this.usuario1.getDesafios().isEmpty());
+		
+		
+	}
+	
+	
+	
 	
 }

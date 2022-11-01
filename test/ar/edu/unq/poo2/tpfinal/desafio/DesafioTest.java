@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
+import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class DesafioTest {
 
@@ -16,6 +17,8 @@ class DesafioTest {
 	private Coordenada punto;
 	private Area area;
 	private RestriccionTemporal restriccionTemporal;
+	private Usuario usuario1;
+	
 	
 	@BeforeEach
 	void setUp() {
@@ -27,6 +30,7 @@ class DesafioTest {
 		this.area = new Area(punto, 5);
 		this.restriccionTemporal = new RestriccionTemporal(fecha, tiempoDesde, tiempoHasta);
 		
+		this.usuario1 = new Usuario();
 		this.desafio = new Desafio(area, 2, facil, 5, restriccionTemporal);
 	}
 	
@@ -54,4 +58,23 @@ class DesafioTest {
 	void seVerificaQueUnDesafioConoceSuRestriccionTemporal() {
 		assertEquals(this.restriccionTemporal, this.desafio.getRestriccionTemporal());
 	}
+	
+	@Test
+	
+	void seVerificaQueUnDesafioGeneraUnDesafioParaUnUsuario() {
+		this.desafio.asignarDesafioDeUsuario(usuario1);
+		assertFalse(usuario1.getDesafios().isEmpty());
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

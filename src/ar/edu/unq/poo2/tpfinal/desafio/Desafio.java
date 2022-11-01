@@ -3,6 +3,9 @@ package ar.edu.unq.poo2.tpfinal.desafio;
 import java.sql.Date;
 import java.time.LocalDateTime;
 
+import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
+import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
+
 public class Desafio {
 	private Area area;
 	private int cantidadDeMuestrasARecolectar;
@@ -36,7 +39,17 @@ public class Desafio {
 
 	public RestriccionTemporal getRestriccionTemporal() {
 		return restriccionTemporal;
+
 	}
+
+	public void asignarDesafioDeUsuario(Usuario usuario1) {
+		DesafioDeUsuario desafio = new DesafioDeUsuario(this);
+		usuario1.agregarDesafioDeUsuario(desafio);
+		//double dispach
+		
+	}
+
+
 	
 	
 	
