@@ -3,7 +3,7 @@ package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.usuario.Gusto;
 
-public class DesafioDeUsuario implements IEstadoDeDesafio{
+public class DesafioDeUsuario{
 
 	/* Esta clase modela el progreso de un desafio para un usuario concreto */
 	
@@ -23,25 +23,12 @@ public class DesafioDeUsuario implements IEstadoDeDesafio{
 		return cantidadDeMuestrasPorRecolectar;
 	}
 
-
-
 	public void reducirMuestrasPorRecolectar() {
 		this.cantidadDeMuestrasPorRecolectar = estadoDeDesafio.reducirMuestrasPorRecolectar();
 	}
-
 
 	public void setEstadoDeDesafio(IEstadoDeDesafio estadoDeDesafio) {
 		this.estadoDeDesafio = estadoDeDesafio;
 		this.estadoDeDesafio.setDesafioDeUsuario(this);
 	}
-
-
-	@Override
-	public void setDesafioDeUsuario(DesafioDeUsuario desafioDeUsuario) {
-		 this.estadoDeDesafio = desafioDeUsuario ;
-		
-	}
-	
-	
-	
 }
