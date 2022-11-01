@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
+import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Gusto;
 
 public class DesafioDeUsuario{
@@ -31,4 +32,45 @@ public class DesafioDeUsuario{
 		this.estadoDeDesafio = estadoDeDesafio;
 		this.estadoDeDesafio.setDesafioDeUsuario(this);
 	}
-}
+
+
+	public void recibirMuestra(Muestra muestra) {
+		if (this.estaEnElArea(muestra)) {
+			this.reducirMuestrasPorRecolectar();
+		}
+	}
+
+
+	private boolean estaEnElArea(Muestra muestra) {
+		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
+		
+		int resultadoLatitud = Math.abs(resultadoLatitudDeDesafioConMuestra(muestra));
+		int resultadoLongitud = Math.abs(resultadoDeLongitudDeDesafioConMuestra(muestra));
+		
+		return estanLasDistanciasDentroDelArea(resultadoLatitud, resultadoLongitud);
+	}
+
+
+	// SE PUEDEN MEJORAR
+	
+	private boolean estanLasDistanciasDentroDelArea(int resultadoLatitud, int resultadoLongitud) {
+		return estaLaDistanciaDentroDelArea(resultadoLongitud) && estaLaDistanciaDentroDelArea(resultadoLatitud);
+	}
+
+
+	private boolean estaLaDistanciaDentroDelArea(int resultadoDistancia) {
+		return resultadoDistancia <= desafio.getArea().getRadius();
+	}
+
+
+	private int resultadoDeLongitudDeDesafioConMuestra(Muestra muestra) {
+		return this.desafio.getArea().getCenter().getY() - muestra.getCoordenada().getY();
+	}
+
+
+	private int resultadoLatitudDeDesafioConMuestra(Muestra muestra) {
+		return this.desafio.getArea().getCenter().getX() - muestra.getCoordenada().getX();
+	}
+		
+		
+};

@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,6 +18,8 @@ class DesafioDeUsuarioTest {
 
 	private DesafioDeUsuario desafioDeUsuario;
 	private Desafio desafio;
+	private Muestra muestra;
+	private Muestra muestra2; 
 	
 	@BeforeEach
 	void setUp() {
@@ -24,12 +27,16 @@ class DesafioDeUsuarioTest {
 		/* Se crea la instancia de desafio para inicializarlo en la 
 		   clase DesafioDeUsuario */
 		
+		
 		Dificultad facil = Dificultad.FACIL;
 		LocalDate fecha = LocalDate.of(2020, 5, 19);
 		LocalTime tiempoDesde = LocalTime.of(7, 30);
 		LocalTime tiempoHasta = LocalTime.of(19, 30);
 		Coordenada punto = new Coordenada(5, 4);
+		Coordenada punto2 = new Coordenada(15, 15);
 		Area area = new Area(punto, 5);
+		muestra = new Muestra(punto2,fecha);
+		muestra2 = new Muestra(punto,fecha);
 		RestriccionTemporal restriccionTemporal = new RestriccionTemporal(fecha, tiempoDesde, tiempoHasta);
 		this.desafio = new Desafio(area, 2, facil, 5, restriccionTemporal); // <-- Instancia
 		
@@ -63,11 +70,19 @@ class DesafioDeUsuarioTest {
 	}
 	
 	@Test 
-	void cuandoUnUsuarioCambiaElEstadoDeSuDesafio() {
-		
+	void cuandoUnDesafioDeUsuarioRecibeUnaMuestraYNoestaDentroDeSuArea_NoSeRestaAlasMuestrasPorRecolectar() {
+		int cantidadDeMuestras = this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar();
+		this.desafioDeUsuario.recibirMuestra(muestra);
+	
+		assertEquals(cantidadDeMuestras, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar() );
 	}
 	
+	@Test 
+	void cuandoUnDesafioDeUsuarioRecibeUnaMuestraYEstaDentroDeSuArea_SeRestaAlasMuestrasPorRecolectar() {
+		int cantidadDeMuestras = this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar();
+		this.desafioDeUsuario.recibirMuestra(muestra2);
 	
-	
+		assertEquals(1, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar() );
+	}
 
 }
