@@ -14,5 +14,13 @@ public class Muestra {
 		this.coordenada = cordinate;
 		this.fechaDeRecoleccion = date;
 	}
+
+	public Coordenada getCoordenada() {
+		return coordenada;
+	}
+
+	public LocalDate getFechaDeRecoleccion() {
+		return fechaDeRecoleccion;
+	}
 	
 }
