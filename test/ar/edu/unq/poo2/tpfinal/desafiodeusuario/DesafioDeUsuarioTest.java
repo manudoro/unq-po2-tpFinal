@@ -61,5 +61,13 @@ class DesafioDeUsuarioTest {
 		
 		assertEquals(0, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
 	}
+	
+	@Test 
+	void cuandoUnUsuarioCambiaElEstadoDeSuDesafio() {
+		
+	}
+	
+	
+	
 
 }

@@ -75,8 +75,8 @@ class UsuarioTest {
 	
 	@Test
 	void testSeVerificaQueUnUsuarioRecibeUnDesafio() {
-		usuario1.agregarDesafio(desafio);
-		
+	//	usuario1.agregarDesafio(desafio);
+		usuario1.agregarDesafioDeUsuario(desafioUsuario);
 		assertFalse(this.usuario1.getDesafiosDeUsuario().isEmpty());
 	}
 	

@@ -1,6 +1,9 @@
 package ar.edu.unq.poo2.tpfinal.desafio;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,11 +16,11 @@ import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class DesafioTest {
 
-	private Desafio desafio;
+	private Desafio desafio, desafio2;
 	private Coordenada punto;
 	private Area area;
 	private RestriccionTemporal restriccionTemporal;
-	private Usuario usuario1;
+	private Usuario usuario1 , usuario2;
 	
 	
 	@BeforeEach
@@ -30,7 +33,9 @@ class DesafioTest {
 		this.area = new Area(punto, 5);
 		this.restriccionTemporal = new RestriccionTemporal(fecha, tiempoDesde, tiempoHasta);
 		
+		this.usuario2 = mock(Usuario.class);
 		this.usuario1 = new Usuario();
+		this.desafio2 = mock(Desafio.class);
 		this.desafio = new Desafio(area, 2, facil, 5, restriccionTemporal);
 	}
 	
@@ -65,11 +70,8 @@ class DesafioTest {
 		assertFalse(usuario1.getDesafiosDeUsuario().isEmpty());
 		
 	}
-	
-	
-	
-	
-	
+
+
 	
 	
 	
