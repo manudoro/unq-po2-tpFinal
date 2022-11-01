@@ -42,9 +42,9 @@ public class Desafio {
 
 	}
 
-	public void asignarDesafioDeUsuario(Usuario usuario1) {
+	public void asignarDesafioDeUsuario(Usuario usuario) {
 		DesafioDeUsuario desafio = new DesafioDeUsuario(this);
-		usuario1.agregarDesafioDeUsuario(desafio);
+		usuario.agregarDesafioDeUsuario(desafio);
 		//double dispach
 		
 	}

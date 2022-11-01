@@ -60,10 +60,9 @@ class DesafioTest {
 	}
 	
 	@Test
-	
 	void seVerificaQueUnDesafioGeneraUnDesafioParaUnUsuario() {
 		this.desafio.asignarDesafioDeUsuario(usuario1);
-		assertFalse(usuario1.getDesafios().isEmpty());
+		assertFalse(usuario1.getDesafiosDeUsuario().isEmpty());
 		
 	}
 	

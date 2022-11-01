@@ -30,7 +30,7 @@ public class Usuario {
 	}
 
 
-	public List<DesafioDeUsuario> getDesafios() {
+	public List<DesafioDeUsuario> getDesafiosDeUsuario() {
 		// Desafios en los que participa un usuario.
 		return desafios;
 	}
@@ -57,10 +57,6 @@ public class Usuario {
 	public void agregarDesafio(Desafio desafio) {
 		desafio.asignarDesafioDeUsuario(this);
 		
-	}
-	
-	public void salirDelDesafio(DesafioDeUsuario desafio) {
-		this.desafios.remove(desafio);
 	}
 
 	public void agregarDesafioDeUsuario(DesafioDeUsuario desafioUsuario) {
