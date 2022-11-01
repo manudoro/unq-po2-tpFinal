@@ -81,8 +81,18 @@ public class Proyecto {
 		this.getSamples().add(sample);
 	}
 	
+	public boolean contieneCategorias(List<String> categories) {
+		return this.getCategorias().containsAll(categories);
+	}
 	
-	
+	public boolean excluyeCategorias(List<String> categories) {
+		for(String c : this.getCategorias()) {
+			if (categories.contains(c)){
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	
 	

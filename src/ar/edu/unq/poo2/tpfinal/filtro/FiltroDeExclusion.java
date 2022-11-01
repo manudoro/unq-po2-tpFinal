@@ -15,18 +15,9 @@ public class FiltroDeExclusion extends Filtro {
 
 	public List<Proyecto> buscar() {
 		List<Proyecto> filteredProjects = projects.stream().
-				filter(p -> this.excluyeTodas(p.getCategorias())).toList();
+				filter(p -> p.excluyeCategorias(categories)).toList();
 		return filteredProjects;
 		
-	}
-
-	private boolean excluyeTodas(List<String> myCategories) {
-		for(String c : myCategories) {
-			if (categories.contains(c)){
-				return false;
-			}
-		}
-		return true;
 	}
 
 	public void agregarCategoria(String category) {
