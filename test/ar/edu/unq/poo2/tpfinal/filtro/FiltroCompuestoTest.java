@@ -91,7 +91,6 @@ class FiltroCompuestoTest {
 	}
 	
 	@Test 
-	@Test 
 	// Cuando se pide una disyuncion con un filtro de inclusion y uno de exclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testDisjunctionOfIncludesAndExcludesCategories() {
@@ -103,7 +102,6 @@ class FiltroCompuestoTest {
 	}
 	@Test
 	void testDisjunctionOfIncludesExcludesCategoriesAndName() {
-		@Test 
 		// Cuando se pide una disyuncion con un filtro de nombre, uno de exclusion y uno de inclusion
 		// de categorias se obtienen todos los que cumplen con los 3 criterios 
 		disjunction.agregarFiltro(excludesZoo);
