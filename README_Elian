@@ -3,31 +3,3 @@ Modificaciones:
 Se cambio todo a castellano.
 Se separo en subcarpetas para mas legibilidad.
 Se agrego alguna correcccion en los tests.
-
-
-	protected boolean estaEnElAreaDelDesafio(Muestra muestra) {
-		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
-		// SE PUEDE MEJORAR
-		
-		return this.desafio.estaEnElArea(muestra);
-	}
-	
-	
-	public boolean estaEnElArea(muestra) {
-		return this.area.estaDentro(muestra);
-	}
-	
-	
-	
-	public boolean estaDentro(Muestra muestra) {
-		//este metodo permite obtener la diferencia entre el ancho del area y la ubicacion 
-		// de la muestra en el eje X
-						coordenada = muestra.getCoordenada()
-		
-		return this.centro().estaDentroConRespectoAlRadio(coordenada, radio);
-	}
-	
-	public boolean estaDentroConRespectoAlRadio(Coordenada c, int r) {
-		
-		return (this.x.esParteDelArea(coordenada.getX, r)) && (this.y.esParteDelArea(coordenada.getY, r));
-	}
