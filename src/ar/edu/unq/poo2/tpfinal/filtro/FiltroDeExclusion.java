@@ -12,8 +12,9 @@ public class FiltroDeExclusion extends Filtro {
 		this.categories = categories;
 		this.projects = projects;
 	}
-
+	
 	public List<Proyecto> buscar() {
+		// este metodo permite obtener los proyectos de la lista que incluyen las categorias del filtro
 		List<Proyecto> filteredProjects = projects.stream().
 				filter(p -> p.excluyeCategorias(categories)).toList();
 		return filteredProjects;

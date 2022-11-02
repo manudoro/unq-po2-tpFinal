@@ -15,11 +15,10 @@ public class FiltroDeInclusion extends Filtro {
 		this.projects = projects;
 	}
 
-	public boolean contieneCategorias(Proyecto proyecto) {
-		return proyecto.getCategorias().containsAll(categories);
-	}
 
 	public List<Proyecto> buscar() {
+		// este metodo permite obtener los proyectos de la lista que excluyen las categorias del filtro
+
 		List<Proyecto> filteredProjects = projects.
 				stream().filter(p -> p.contieneCategorias(categories)).toList();
 		return filteredProjects;
