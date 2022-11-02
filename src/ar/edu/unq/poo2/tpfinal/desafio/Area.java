@@ -5,45 +5,29 @@ import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 
 public class Area {
 	
-	private Coordenada center;
-	private Integer radius;
+	private Coordenada centro;
+	private Integer radio;
 	public Area(Coordenada center, Integer radius) {
 	
-		this.center = center;
-		this.radius = radius;
+		this.centro = center;
+		this.radio = radius;
 	}
-	public Coordenada getCenter() {
-		return center;
+	public Coordenada getCentro() {
+		return centro;
 	}
 	public void setCenter(Coordenada center) {
-		this.center = center;
+		this.centro = center;
 	}
-	public Integer getRadius() {
-		return radius;
+	public Integer getRadio() {
+		return radio;
 	}
 	public void setRadius(Integer radius) {
-		this.radius = radius;
+		this.radio = radius;
 	}
 	
-	// diferenciaDeLongitudConMuestra y diferenciaDeLatitudConMuestra se pueden RECONTRA MEJORAR.
-	
-	public int diferenciaDeLongitudConMuestra(Muestra muestra) {
-		//este metodo permite obtener la diferencia entre la altura del area y la ubicacion 
-		// de la muestra en el eje Y
-		return this.getCenter().getY() - muestra.getCoordenada().getY();
-	}
-	
-	public int diferenciaDeLatitudConMuestra(Muestra muestra) {
-		//este metodo permite obtener la diferencia entre el ancho del area y la ubicacion 
-		// de la muestra en el eje X
-		return this.getCenter().getX() - muestra.getCoordenada().getX();
-	}
-	
-	public boolean estanLasDistanciasDentroDelRadio(int resultadoLatitud, int resultadoLongitud) {
-		return distanciaEstaComprendida(resultadoLongitud) && distanciaEstaComprendida(resultadoLatitud);
-	}
-	
-	private boolean distanciaEstaComprendida(int resultadoDistancia) {
-		return resultadoDistancia <= this.getRadius();
-	}
+	public boolean estaDentro(Muestra muestra) {
+		Coordenada coordenada = muestra.getCoordenada();
+		
+		return this.centro.estaDentroConRespectoAlRadio(coordenada, radio);
+	} // ????
 }

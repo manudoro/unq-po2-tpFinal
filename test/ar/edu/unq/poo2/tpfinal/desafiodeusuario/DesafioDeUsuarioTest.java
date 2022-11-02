@@ -71,12 +71,12 @@ class DesafioDeUsuarioTest {
 	
 	@Test
 	void seVerificaQueUnaMuestraNoSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
-		assertFalse(this.desafioDeUsuario.estaEnElArea(muestra));
+		assertFalse(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra));
 	}
 	
 	@Test
 	void seVerificaQueUnaMuestraSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
-		assertTrue(this.desafioDeUsuario.estaEnElArea(muestra2));
+		assertTrue(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra2));
 	}
 	
 	@Test

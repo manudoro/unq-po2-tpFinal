@@ -37,33 +37,18 @@ public class DesafioDeUsuario{
 
 
 	public void recibirMuestra(Muestra muestra) {
-		if (this.estaEnElArea(muestra)) {
+		if (this.estaEnElAreaDelDesafio(muestra)) {
 			this.reducirMuestrasPorRecolectar();
 		}
 	}
 
 
-	protected boolean estaEnElArea(Muestra muestra) {
+	protected boolean estaEnElAreaDelDesafio(Muestra muestra) {
 		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
 		// SE PUEDE MEJORAR
 		
-		int resultadoLatitud = Math.abs(resultadoLatitudDeDesafioConMuestra(muestra));
-		int resultadoLongitud = Math.abs(resultadoDeLongitudDeDesafioConMuestra(muestra));
-		
-		return this.desafio.estanLasDistanciasDentroDelArea(resultadoLatitud, resultadoLongitud);
+		return this.desafio.estaEnElArea(muestra);
 	}
-
-
-	
-	private int resultadoDeLongitudDeDesafioConMuestra(Muestra muestra) {
-		return this.desafio.diferenciaDeLongitudDeDesafioYMuestra(muestra);
-	}
-
-
-	private int resultadoLatitudDeDesafioConMuestra(Muestra muestra) {
-		return this.desafio.diferenciaDeLatitudDeDesafioYMuestra(muestra);
-	}
-
 
 	public boolean estaDentroDeLaFechaPermitida(Muestra muestra) {
 		return true;

@@ -46,17 +46,10 @@ public class Desafio {
 		//double dispach
 		
 	}
-	
-	public int diferenciaDeLongitudDeDesafioYMuestra(Muestra muestra) {
-		return this.getArea().diferenciaDeLongitudConMuestra(muestra);
-	}
 
-	public int diferenciaDeLatitudDeDesafioYMuestra(Muestra muestra) {
-		return this.getArea().diferenciaDeLatitudConMuestra(muestra);
-	} 
 	
-	public boolean estanLasDistanciasDentroDelArea(int resultadoLatitud, int resultadoLongitud) {
-		return this.getArea().estanLasDistanciasDentroDelRadio(resultadoLatitud, resultadoLongitud);
+	public boolean estaEnElArea(Muestra muestra) {
+		return this.area.estaDentro(muestra);
 	}
 	
 }
