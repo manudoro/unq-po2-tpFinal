@@ -38,8 +38,11 @@ public class Area {
 		return this.getCenter().getX() - muestra.getCoordenada().getX();
 	}
 	
-	public boolean distanciaEstaComprendida(int resultadoDistancia) {
-		return resultadoDistancia <= this.getRadius();
+	public boolean estanLasDistanciasDentroDelRadio(int resultadoLatitud, int resultadoLongitud) {
+		return distanciaEstaComprendida(resultadoLongitud) && distanciaEstaComprendida(resultadoLatitud);
 	}
 	
+	private boolean distanciaEstaComprendida(int resultadoDistancia) {
+		return resultadoDistancia <= this.getRadius();
+	}
 }

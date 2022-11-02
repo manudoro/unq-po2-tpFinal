@@ -58,8 +58,8 @@ public class Desafio {
 		return this.getArea().diferenciaDeLatitudConMuestra(muestra);
 	} 
 	
-	public boolean distanciaDentroDelArea(int resultadoDistancia) {
-		return this.getArea().distanciaEstaComprendida(resultadoDistancia);
+	public boolean estanLasDistanciasDentroDelArea(int resultadoLatitud, int resultadoLongitud) {
+		return this.getArea().estanLasDistanciasDentroDelRadio(resultadoLatitud, resultadoLongitud);
 	}
 	
 }

@@ -49,19 +49,7 @@ public class DesafioDeUsuario{
 		int resultadoLatitud = Math.abs(resultadoLatitudDeDesafioConMuestra(muestra));
 		int resultadoLongitud = Math.abs(resultadoDeLongitudDeDesafioConMuestra(muestra));
 		
-		return estanLasDistanciasDentroDelArea(resultadoLatitud, resultadoLongitud);
-	}
-
-
-	// SE PUEDEN MEJORAR (Refactor para manu >:V)
-	
-	private boolean estanLasDistanciasDentroDelArea(int resultadoLatitud, int resultadoLongitud) {
-		return estaLaDistanciaDentroDelArea(resultadoLongitud) && estaLaDistanciaDentroDelArea(resultadoLatitud);
-	}
-
-
-	private boolean estaLaDistanciaDentroDelArea(int resultadoDistancia) {
-		return this.desafio.distanciaDentroDelArea(resultadoDistancia);
+		return this.desafio.estanLasDistanciasDentroDelArea(resultadoLatitud, resultadoLongitud);
 	}
 
 
