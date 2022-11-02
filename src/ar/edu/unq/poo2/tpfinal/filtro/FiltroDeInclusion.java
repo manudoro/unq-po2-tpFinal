@@ -34,5 +34,12 @@ public class FiltroDeInclusion implements Filtrable {
 	public List<String> getCategorias() {
 		return categories;
 	}
+
+
+	public Filtrable negar() {
+		
+		return new FiltroDeExclusion(categories, projects);
+	}
+	
 }
 

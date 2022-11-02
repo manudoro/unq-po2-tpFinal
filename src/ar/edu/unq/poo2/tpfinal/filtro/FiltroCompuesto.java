@@ -5,13 +5,11 @@ import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class FiltroCompuesto implements Filtrable{
-	private IMetodoDeBusqueda method;
-	private List<Filtrable> filters;
+public abstract class FiltroCompuesto implements Filtrable{
+	List<Filtrable> filters;
 	
-	public FiltroCompuesto(IMetodoDeBusqueda method ) {
-		super();
-		this.method = method;
+	public FiltroCompuesto() {
+
 		this.filters = new ArrayList<Filtrable>();
 	}
 
@@ -19,6 +17,8 @@ public class FiltroCompuesto implements Filtrable{
 	public void agregarFiltro(Filtrable filter) {
 		this.filters.add(filter);
 	}
+	
+	
 	public void removerFiltro(Filtrable filter) {
 		this.filters.remove(filter);
 	}
@@ -31,7 +31,15 @@ public class FiltroCompuesto implements Filtrable{
 			List<Proyecto> result = f.buscar();
 			allResult.add(result);
 		}
-		return method.recolectar(allResult);
+		return this.recolectar(allResult);
+	}
+
+
+	protected abstract List<Proyecto> recolectar(List<List<Proyecto>> allResult);
+	
+	protected void traspasarFiltrosNegados(FiltroCompuesto nuevoFiltro) {
+		filters.stream().map(f -> f.negar()).forEach(f -> nuevoFiltro.agregarFiltro(f));
+		}
 	}
 	
 }

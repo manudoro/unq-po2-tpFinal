@@ -35,6 +35,10 @@ public class FiltroDeExclusion implements Filtrable {
 		
 	}
 	
+	public Filtrable negar() {
+		
+		return new FiltroDeInclusion(categories, projects);
+	}
 	
 	
 }

@@ -7,10 +7,10 @@ import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class BusquedaDeDisyuncion implements IMetodoDeBusqueda{
+public class BusquedaDeDisyuncion extends FiltroCompuesto{
 	
 	
-	public List<Proyecto> recolectar(List<List<Proyecto>> allResult ){
+	protected List<Proyecto> recolectar(List<List<Proyecto>> allResult ){
 		Set<Proyecto> result = new HashSet<Proyecto>();
 		for(List<Proyecto> ps : allResult ) {
 			result.addAll(ps);
@@ -19,4 +19,9 @@ public class BusquedaDeDisyuncion implements IMetodoDeBusqueda{
 		return new ArrayList<Proyecto>(result);
 	}
 	
+	public Filtrable negar() {
+		BusquedaDeConjuncion filtroConjunto = new BusquedaDeConjuncion();
+		this.traspasarFiltrosNegados(filtroConjunto);
+		return filtroConjunto;
+	}
 }

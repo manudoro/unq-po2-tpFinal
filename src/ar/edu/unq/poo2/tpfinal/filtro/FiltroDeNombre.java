@@ -23,4 +23,12 @@ public class FiltroDeNombre implements Filtrable {
 		this.searchText = newText;
 		
 	}
+	
+	public Filtrable negar() {
+		List<Proyecto> proyectos = projects;
+		proyectos.removeAll(this.buscar());
+		return new FiltroDeNombre("", proyectos);
+		
+		
+	}
 }
