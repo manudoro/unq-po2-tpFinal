@@ -1,8 +1,5 @@
 package ar.edu.unq.poo2.tpfinal.desafio;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
