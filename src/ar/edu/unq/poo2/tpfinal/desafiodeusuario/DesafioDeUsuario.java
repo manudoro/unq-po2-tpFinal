@@ -45,6 +45,7 @@ public class DesafioDeUsuario{
 
 	protected boolean estaEnElArea(Muestra muestra) {
 		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
+		// SE PUEDE MEJORAR
 		
 		int resultadoLatitud = Math.abs(resultadoLatitudDeDesafioConMuestra(muestra));
 		int resultadoLongitud = Math.abs(resultadoDeLongitudDeDesafioConMuestra(muestra));
@@ -55,12 +56,12 @@ public class DesafioDeUsuario{
 
 	
 	private int resultadoDeLongitudDeDesafioConMuestra(Muestra muestra) {
-		return this.desafio.relacionDeLongitudDeDesafioYMuestra(muestra);
+		return this.desafio.diferenciaDeLongitudDeDesafioYMuestra(muestra);
 	}
 
 
 	private int resultadoLatitudDeDesafioConMuestra(Muestra muestra) {
-		return this.desafio.relacionDeLatitudDeDesafioYMuestra(muestra);
+		return this.desafio.diferenciaDeLatitudDeDesafioYMuestra(muestra);
 	}
 
 

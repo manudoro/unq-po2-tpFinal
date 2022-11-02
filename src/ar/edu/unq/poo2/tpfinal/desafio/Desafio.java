@@ -50,11 +50,11 @@ public class Desafio {
 		
 	}
 	
-	public int relacionDeLongitudDeDesafioYMuestra(Muestra muestra) {
+	public int diferenciaDeLongitudDeDesafioYMuestra(Muestra muestra) {
 		return this.getArea().diferenciaDeLongitudConMuestra(muestra);
 	}
 
-	public int relacionDeLatitudDeDesafioYMuestra(Muestra muestra) {
+	public int diferenciaDeLatitudDeDesafioYMuestra(Muestra muestra) {
 		return this.getArea().diferenciaDeLatitudConMuestra(muestra);
 	} 
 	

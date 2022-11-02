@@ -25,6 +25,7 @@ public class Area {
 		this.radius = radius;
 	}
 	
+	// diferenciaDeLongitudConMuestra y diferenciaDeLatitudConMuestra se pueden RECONTRA MEJORAR.
 	
 	public int diferenciaDeLongitudConMuestra(Muestra muestra) {
 		//este metodo permite obtener la diferencia entre la altura del area y la ubicacion 
