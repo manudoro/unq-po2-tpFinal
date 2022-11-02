@@ -5,7 +5,7 @@ import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class MetodoDeConjuncion implements IMetodoDeBusqueda {
+public class BusquedaDeConjuncion implements IMetodoDeBusqueda {
 
 	@Override
 	public List<Proyecto> recolectar(List<List<Proyecto>> allResults) {

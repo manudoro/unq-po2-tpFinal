@@ -7,7 +7,7 @@ import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class MetodoDeDisyuncion implements IMetodoDeBusqueda{
+public class BusquedaDeDisyuncion implements IMetodoDeBusqueda{
 	
 	
 	public List<Proyecto> recolectar(List<List<Proyecto>> allResult ){

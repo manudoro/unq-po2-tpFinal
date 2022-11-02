@@ -48,25 +48,29 @@ class FiltroDeExclusionTest {
 	}
 
 	@Test
+	// Cuando se excluye una categoria, se obtienen los proyectos que no la tienen
 	void testExcludesFilterIncludesProjects() {
 		List<Proyecto> filterProjects = fauna.buscar();
 		assertEquals(1, filterProjects.size());
 		assertFalse(filterProjects.contains(animalesPeligrosos));
 		assertFalse(filterProjects.contains(faunaMarina));
 	}
-	
+	// Cuando se excluye una categoria, no se obtienen los proyectos que la tienen
+
 	@Test
 	void testExcludesFilterExcludesProjects() {
 		List<Proyecto> filterProjects = fauna.buscar();
 		assertTrue(filterProjects.contains(floraAutoctona));
 	}
 	
+	// Se pueden agregar nuevas categorias a excluir
 	@Test 
 	void testExcludesCanAddCategories() {
 		fauna.agregarCategoria(botanica);
 		assertTrue(fauna.getCategorias().contains(botanica));
 	}
 	
+	// Cuando se excluye mas de una categoria, no se obtienen los proyectos que tienen alguna de ellas
 	@Test 
 	void testExcludesFilterMustExcludesAll() {
 		fauna.agregarCategoria(botanica);
@@ -75,7 +79,7 @@ class FiltroDeExclusionTest {
 	}
 	
 	@Test
-	
+	// Cuando se excluye mas de una categoria, se obtienen los proyectos que no tienen ninguna de ellas
 	void testExludesFilterIncludesWithMoreCategories() {
 		fauna.agregarCategoria(botanica);
 		fauna.agregarProyecto(stars);

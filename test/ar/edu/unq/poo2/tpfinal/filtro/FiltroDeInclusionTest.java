@@ -44,6 +44,7 @@ class FiltroDeInclusionTest {
 	}
 
 	@Test
+	// Cuando se incluye una categoria, se obtienen los proyectos que la tienen
 	void testIncludesFilterIncludesProyects() {
 		List<Proyecto> filterProyects = fauna.buscar();
 		assertTrue(filterProyects.size() == 2);
@@ -52,18 +53,21 @@ class FiltroDeInclusionTest {
 	}
 	
 	@Test
+	// Cuando se incluye una categoria, no se obtienen los proyectos que no la tienen
 	void testIncludesFilterExcludesProyects() {
 		List<Proyecto> filterProyects = fauna.buscar();
 		assertFalse(filterProyects.contains(floraAutoctona));
 	}
 	
 	@Test 
+	// Se pueden agregar nuevas categorias a incluir
 	void testIncludesCanAddCategories() {
 		fauna.agregarCategoria(botanica);
 		assertTrue(fauna.getCategorias().contains(botanica));
 	}
 	
 	@Test 
+	// Cuando se incluye mas de una categoria, se obtienen los proyectos que tienen todas ellas
 	void testIncludesFilterMustIncludesAll() {
 		fauna.agregarCategoria(botanica);
 		List<Proyecto> filterProyects = fauna.buscar();

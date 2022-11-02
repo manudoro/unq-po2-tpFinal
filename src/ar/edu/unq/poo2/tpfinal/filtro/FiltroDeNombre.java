@@ -4,7 +4,7 @@ import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class FiltroDeNombre extends Filtro {
+public class FiltroDeNombre implements Filtrable {
 	private String searchText;
 	private List<Proyecto> projects;
 	

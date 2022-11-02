@@ -14,17 +14,17 @@ import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 class FiltroCompuestoTest {
 	
 	public FiltroCompuesto disjunction;
-	public Filtro estrella, includesBot, exludesBot, includesAstBot, excludesZoo, nameBosque;
+	public Filtrable estrella, includesBot, exludesBot, includesAstBot, excludesZoo, nameBosque;
 	public Proyecto faunaMarina , stars ,animalesPeligrosos,floraAutoctona;
 	public String zoologia,botanica, astronomia;
 	public List<String> bot, astBot, zoo;
 	public List<Proyecto> projects;
-	public MetodoDeDisyuncion disjunctionSearch;
+	public BusquedaDeDisyuncion disjunctionSearch;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		projects = new ArrayList<Proyecto>();
-		disjunctionSearch = new MetodoDeDisyuncion();
+		disjunctionSearch = new BusquedaDeDisyuncion();
 		
 		animalesPeligrosos = new Proyecto("Peligros del bosque", "Proyecto sobre animales");
 		faunaMarina = new Proyecto("Ballena franca", "Proyecto sobre ballena franca");
@@ -66,6 +66,8 @@ class FiltroCompuestoTest {
 	}
 
 	@Test
+	// Cuando se pide una disyuncion con un filtro de nombre y uno de inclusion de categorias, se obtienen todos
+	// los que cumplen con ambos criterios 
 	void testDisjunctionOfNameAndIncludesCategories() {
 		disjunction.agregarFiltro(estrella);
 		disjunction.agregarFiltro(includesBot);
@@ -76,6 +78,8 @@ class FiltroCompuestoTest {
 	}
 	
 	@Test 
+	// Cuando se pide una disyuncion con un filtro de nombre y uno de exclusion de categorias, se obtienen todos
+	// los que cumplen con ambos criterios 
 	void testDisjunctionOfNameAndExcludesCategories() {
 		disjunction.agregarFiltro(estrella);
 		disjunction.agregarFiltro(exludesBot);
@@ -87,6 +91,9 @@ class FiltroCompuestoTest {
 	}
 	
 	@Test 
+	@Test 
+	// Cuando se pide una disyuncion con un filtro de inclusion y uno de exclusion de categorias, se obtienen todos
+	// los que cumplen con ambos criterios 
 	void testDisjunctionOfIncludesAndExcludesCategories() {
 		disjunction.agregarFiltro(includesBot);
 		disjunction.agregarFiltro(exludesBot);
@@ -96,7 +103,9 @@ class FiltroCompuestoTest {
 	}
 	@Test
 	void testDisjunctionOfIncludesExcludesCategoriesAndName() {
-		
+		@Test 
+		// Cuando se pide una disyuncion con un filtro de nombre, uno de exclusion y uno de inclusion
+		// de categorias se obtienen todos los que cumplen con los 3 criterios 
 		disjunction.agregarFiltro(excludesZoo);
 		disjunction.agregarFiltro(includesAstBot);
 		disjunction.agregarFiltro(nameBosque);

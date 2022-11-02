@@ -4,7 +4,7 @@ import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class FiltroDeExclusion extends Filtro {
+public class FiltroDeExclusion implements Filtrable {
 	private List<String> categories;
 	private List<Proyecto> projects;
 
