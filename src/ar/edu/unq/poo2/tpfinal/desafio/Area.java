@@ -29,5 +29,5 @@ public class Area {
 		Coordenada coordenada = muestra.getCoordenada();
 		
 		return this.centro.estaDentroConRespectoAlRadio(coordenada, radio);
-	} // ????
+	}
 }

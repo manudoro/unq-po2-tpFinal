@@ -45,7 +45,6 @@ public class DesafioDeUsuario{
 
 	protected boolean estaEnElAreaDelDesafio(Muestra muestra) {
 		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
-		// SE PUEDE MEJORAR
 		
 		return this.desafio.estaEnElArea(muestra);
 	}
