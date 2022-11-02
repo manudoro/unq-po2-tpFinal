@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
+import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 public class Desafio {
@@ -48,12 +49,17 @@ public class Desafio {
 		//double dispach
 		
 	}
-
-
 	
-	
-	
-	
+	public int relacionDeLongitudDeDesafioYMuestra(Muestra muestra) {
+		return this.getArea().diferenciaDeLongitudConMuestra(muestra);
+	}
 
-
+	public int relacionDeLatitudDeDesafioYMuestra(Muestra muestra) {
+		return this.getArea().diferenciaDeLatitudConMuestra(muestra);
+	} 
+	
+	public boolean distanciaDentroDelArea(int resultadoDistancia) {
+		return this.getArea().distanciaEstaComprendida(resultadoDistancia);
+	}
+	
 }

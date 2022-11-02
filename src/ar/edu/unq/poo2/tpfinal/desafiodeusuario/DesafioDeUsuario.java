@@ -59,17 +59,18 @@ public class DesafioDeUsuario{
 
 
 	private boolean estaLaDistanciaDentroDelArea(int resultadoDistancia) {
-		return resultadoDistancia <= desafio.getArea().getRadius();
+		return this.desafio.distanciaDentroDelArea(resultadoDistancia);
 	}
 
 
+	
 	private int resultadoDeLongitudDeDesafioConMuestra(Muestra muestra) {
-		return this.desafio.getArea().getCenter().getY() - muestra.getCoordenada().getY();
+		return this.desafio.relacionDeLongitudDeDesafioYMuestra(muestra);
 	}
 
 
 	private int resultadoLatitudDeDesafioConMuestra(Muestra muestra) {
-		return this.desafio.getArea().getCenter().getX() - muestra.getCoordenada().getX();
+		return this.desafio.relacionDeLatitudDeDesafioYMuestra(muestra);
 	}
 		
 		
