@@ -1,5 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
+import java.util.function.BooleanSupplier;
+
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Gusto;
@@ -41,7 +43,7 @@ public class DesafioDeUsuario{
 	}
 
 
-	private boolean estaEnElArea(Muestra muestra) {
+	protected boolean estaEnElArea(Muestra muestra) {
 		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
 		
 		int resultadoLatitud = Math.abs(resultadoLatitudDeDesafioConMuestra(muestra));
@@ -51,7 +53,7 @@ public class DesafioDeUsuario{
 	}
 
 
-	// SE PUEDEN MEJORAR
+	// SE PUEDEN MEJORAR (Refactor para manu >:V)
 	
 	private boolean estanLasDistanciasDentroDelArea(int resultadoLatitud, int resultadoLongitud) {
 		return estaLaDistanciaDentroDelArea(resultadoLongitud) && estaLaDistanciaDentroDelArea(resultadoLatitud);
@@ -70,6 +72,11 @@ public class DesafioDeUsuario{
 
 	private int resultadoLatitudDeDesafioConMuestra(Muestra muestra) {
 		return this.desafio.getArea().getCenter().getX() - muestra.getCoordenada().getX();
+	}
+
+
+	public boolean estaDentroDeLaFechaPermitida(Muestra muestra) {
+		return true;
 	}
 		
 		

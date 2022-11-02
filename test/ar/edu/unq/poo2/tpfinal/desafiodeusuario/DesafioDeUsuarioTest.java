@@ -69,8 +69,23 @@ class DesafioDeUsuarioTest {
 		assertEquals(0, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
 	}
 	
+	@Test
+	void seVerificaQueUnaMuestraNoSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
+		assertFalse(this.desafioDeUsuario.estaEnElArea(muestra));
+	}
+	
+	@Test
+	void seVerificaQueUnaMuestraSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
+		assertTrue(this.desafioDeUsuario.estaEnElArea(muestra2));
+	}
+	
+	@Test
+	void seVerificaQueUnaMuestraNoSeEncuentraDentroDeLaFechaPermitidaPorElDesafio() {
+		assertFalse(this.desafioDeUsuario.estaDentroDeLaFechaPermitida(muestra));
+	}
+	
 	@Test 
-	void cuandoUnDesafioDeUsuarioRecibeUnaMuestraYNoestaDentroDeSuArea_NoSeRestaAlasMuestrasPorRecolectar() {
+	void ceuandoUnDesafioDeUsuarioRecibeUnaMuestraYNostaDentroDeSuArea_NoSeRestaAlasMuestrasPorRecolectar() {
 		int cantidadDeMuestras = this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar();
 		this.desafioDeUsuario.recibirMuestra(muestra);
 	
