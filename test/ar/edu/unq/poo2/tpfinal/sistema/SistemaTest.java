@@ -12,19 +12,24 @@ import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 class SistemaTest {
 
 	private Sistema sistema;
-	private Usuario usuarioSinProyectos;
+	private Usuario usuario;
 
 	@BeforeEach
 	void setUp() {
 		this.sistema = new Sistema();
-		this.usuarioSinProyectos = new Usuario();
+		this.usuario = new Usuario();
 	}
 	
 	@Test
 	void seVerificaQueUnSistemaNoRecomiendaNingunDesafioSiElUsuarioNoEstaEnNDesafiooyecto() {
-		ArrayList<Desafio> desafiosRecomendados = this.sistema.recomendarDesafios(this.usuarioSinProyectos);
+		ArrayList<Desafio> desafiosRecomendados = this.sistema.recomendarDesafios(this.usuario);
 		
 		assertTrue(desafiosRecomendados.isEmpty());
 	}
 	
+	@Test
+	void cuandoUnUsuarioParticipaEnUnProyecto_elSistemaLeRecomiendaEseDesafio() {
+		
+		assertFalse(d)
+	}
 }
