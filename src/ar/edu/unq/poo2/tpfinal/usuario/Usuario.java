@@ -55,8 +55,9 @@ public class Usuario {
 	}
 
 	public void agregarDesafio(Desafio desafio) {
-		desafio.asignarDesafioDeUsuario(this);
-		
+		if (this.proyectos.stream().anyMatch(p -> p.contieneDesafio(desafio))) {
+			desafio.asignarDesafioDeUsuario(this);
+		}
 	}
 
 	public void agregarDesafioDeUsuario(DesafioDeUsuario desafioUsuario) {
@@ -68,6 +69,16 @@ public class Usuario {
 		return this.proyectos.isEmpty();
 	}
 	
+	public void recolectarMuestra(Muestra muestra) {
+		this.desafios.stream().forEach(d -> this.agregarMuestra(d, muestra));
+		
+	}
+
+	private void agregarMuestra(DesafioDeUsuario desafio, Muestra muestra) {
+		// TODO Auto-generated method stub
+		this.proyectos.forEach(p -> p.recibirMuestraSiCorresponde(desafio, muestra));
+		desafio.recibirMuestra(muestra);
+	}
 	
 }
 

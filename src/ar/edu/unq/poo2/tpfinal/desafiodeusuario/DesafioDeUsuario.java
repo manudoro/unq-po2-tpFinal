@@ -51,6 +51,12 @@ public class DesafioDeUsuario{
 	public boolean estaDentroDeLaFechaPermitida(Muestra muestra) {
 		return true;
 	}
+
+
+	public Desafio getDesafio() {
+		// TODO Auto-generated method stub
+		return this.desafio;
+	}
 		
 		
 };

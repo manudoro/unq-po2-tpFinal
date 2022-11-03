@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
+import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
@@ -94,6 +95,19 @@ public class Proyecto {
 			}
 		}
 		return true;
+	}
+
+
+	public boolean contieneDesafio(Desafio desafio) {
+		// TODO Auto-generated method stub
+		return this.getDesafios().contains(desafio);
+	}
+
+
+	public void recibirMuestraSiCorresponde(DesafioDeUsuario desafio, Muestra muestra) {
+		if(this.getDesafios().contains(desafio.getDesafio())){
+			this.recibirMuestra(muestra);
+		}
 	}
 	
 	
