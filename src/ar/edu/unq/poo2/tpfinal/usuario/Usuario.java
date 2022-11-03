@@ -63,6 +63,10 @@ public class Usuario {
 		this.desafios.add(desafioUsuario);
 		
 	}
+
+	public boolean participaEnProyectos() {
+		return this.proyectos.isEmpty();
+	}
 	
 	
 }

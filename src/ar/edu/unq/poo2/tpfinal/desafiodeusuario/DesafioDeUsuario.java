@@ -1,6 +1,5 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
-import java.util.function.BooleanSupplier;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
