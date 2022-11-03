@@ -7,6 +7,7 @@ public class Area {
 	
 	private Coordenada centro;
 	private Integer radio;
+	
 	public Area(Coordenada center, Integer radius) {
 	
 		this.centro = center;
