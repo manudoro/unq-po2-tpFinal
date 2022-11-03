@@ -29,7 +29,8 @@ class SistemaTest {
 	
 	@Test
 	void cuandoUnUsuarioParticipaEnUnProyecto_elSistemaLeRecomiendaEseDesafio() {
+		ArrayList<Desafio> desafiosRecomendados = this.sistema.recomendarDesafios(this.usuario);
 		
-		assertFalse(d)
+		assertFalse(desafiosRecomendados.isEmpty());
 	}
 }
