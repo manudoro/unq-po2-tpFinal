@@ -67,6 +67,11 @@ public class Usuario {
 	public boolean participaEnProyectos() {
 		return this.proyectos.isEmpty();
 	}
+
+	public ArrayList<Desafio> desafiosSinHacer() { //Corregir
+		ArrayList<Desafio> desafiosSinHacer = new ArrayList<Desafio>();
+		return desafiosSinHacer;
+	}
 	
 	
 }

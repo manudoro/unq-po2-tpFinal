@@ -11,13 +11,8 @@ public class Sistema {
 	   a una forma de recomendacion */
 
 	public ArrayList<Desafio> recomendarDesafios(Usuario usuario) {
-		ArrayList<Desafio> desafiosRecomendados = new ArrayList<Desafio>();
 		
-		if (usuario.participaEnProyectos()) {
-			return desafiosRecomendados;
-		}
-		
-		return null;
+		return usuario.desafiosSinHacer();
 	}
 	
 
