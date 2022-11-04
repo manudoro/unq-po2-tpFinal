@@ -21,8 +21,9 @@ public class EntreFechas implements IRestriccionTemporal{
 
 	@Override
 	public boolean validar(LocalDate fecha) {
-		// TODO Auto-generated method stub
-		return false;
+		
+
+		return this.fechaInicio.isBefore(fecha) && this.fechaFin.isAfter(fecha);
 	}
 
 

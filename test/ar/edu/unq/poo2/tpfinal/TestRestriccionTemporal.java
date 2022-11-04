@@ -10,15 +10,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.DiasDeSemana;
+import ar.edu.unq.poo2.tpfinal.desafio.EntreFechas;
 import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.IRestriccionTemporal;
 import ar.edu.unq.poo2.tpfinal.desafio.RestriccionMixta;
 
 class TestRestriccionTemporal {
 
-	private IRestriccionTemporal restriccionFinDeSemana, restriccionDiaDeSemana ;
+	private IRestriccionTemporal restriccionFinDeSemana, restriccionDiaDeSemana , restriccionEntreSemana;
 	private RestriccionMixta restriccionMixta ;
-	private LocalDate fecha1, fecha2, fecha3, fechaAValidarFinDeSemana, fechaAValidarDiaDeSemana ;
+	private LocalDate fecha1, fecha2, fecha3, fecha4, fechaAValidarFinDeSemana, fechaAValidarDiaDeSemana ;
 	
 	@BeforeEach
 	void setUp()  {
@@ -30,8 +31,10 @@ class TestRestriccionTemporal {
 	fecha1 = LocalDate.of(2020, 7, 12);
 	fecha2 = LocalDate.of(2021,8,18);
 	fecha3 = LocalDate.of(2022,11,27);
+	fecha4 = LocalDate.of(2021,2,18);
 	fechaAValidarFinDeSemana = LocalDate.of(2022,11,5);
 	fechaAValidarDiaDeSemana = LocalDate.of(2022,11,3);
+	restriccionEntreSemana = new EntreFechas(fecha1 ,fecha2);
 	}
 
 	@Test
@@ -84,5 +87,20 @@ class TestRestriccionTemporal {
 		restriccionMixta.agregarRestriccionTemporal(restriccionFinDeSemana);
 		assertTrue(restriccionMixta.validar(fecha3));
 	}
+	
+	
+	@Test
+	
+	void testVerificarSiUnaFechaNoEstaEntreDosFechas() {
+		assertFalse(restriccionEntreSemana.validar(fecha3));
+	}
+	
+	@Test 
+	
+	void testVerificarSiUnaFechaEstaEntreDosFechas() {
+		assertTrue(restriccionEntreSemana.validar(fecha4));
+	}
+	
+	
 	
 }
