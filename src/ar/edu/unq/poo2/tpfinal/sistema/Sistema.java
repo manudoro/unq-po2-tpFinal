@@ -10,10 +10,10 @@ public class Sistema {
 	/* Se modela un sistema, su funcion es delegar la responsabilidad de los calculos de recomendacion
 	   a una forma de recomendacion */
 
-	public ArrayList<Desafio> recomendarDesafios(Usuario usuarioSinProyectos) {
+	public ArrayList<Desafio> recomendarDesafios(Usuario usuario) {
 		ArrayList<Desafio> desafiosRecomendados = new ArrayList<Desafio>();
 		
-		if (usuarioSinProyectos.participaEnProyectos()) {
+		if (usuario.participaEnProyectos()) {
 			return desafiosRecomendados;
 		}
 		
