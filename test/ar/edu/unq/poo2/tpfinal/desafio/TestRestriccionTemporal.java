@@ -82,12 +82,17 @@ class TestRestriccionTemporal {
 	
 	@Test 
 	
-	void testVerificarCuandoUnaRestriccionMixtaTieneRestriccionesQueCumplenConLaFecha() {
-		restriccionMixta.agregarRestriccionTemporal(restriccionFinDeSemana);
+	void testVerificarCuandoUnaRestriccionMixtaTieneRestriccionesQueCumplenConLaFechaYEsFinDeSemana() {
 		restriccionMixta.agregarRestriccionTemporal(restriccionFinDeSemana);
 		assertTrue(restriccionMixta.validar(fecha3));
 	}
 	
+	@Test
+	
+	void testVerificarCuandoUnaRestriccionMixtaTieneRestriccionesQueCumplenConLaFechaYEsDiaDeSemana() {
+		restriccionMixta.agregarRestriccionTemporal(restriccionDiaDeSemana);
+		assertTrue(restriccionMixta.validar(fecha4));
+	}
 	
 	@Test
 	
