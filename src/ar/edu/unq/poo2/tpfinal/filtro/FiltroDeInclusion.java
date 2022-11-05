@@ -1,13 +1,20 @@
 package ar.edu.unq.poo2.tpfinal.filtro;
 
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 public class FiltroDeInclusion implements Filtrable {
 	private List<String> categories;
 	private List<Proyecto> projects;	
+
+
+	public List<Proyecto> getProjects() {
+		return projects;
+	}
 
 
 	public FiltroDeInclusion(List<String> categories, List<Proyecto> projects) {
@@ -35,11 +42,11 @@ public class FiltroDeInclusion implements Filtrable {
 		return categories;
 	}
 
-
-	public Filtrable negar() {
+	@Override
+	public Set<Proyecto> getProyectos() {
 		
-		return new FiltroDeExclusion(categories, projects);
+		HashSet<Proyecto> proyectos = new HashSet(projects);
+		return proyectos;
 	}
-	
 }
 

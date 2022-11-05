@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-class FiltroDeNombreTest {
-	public FiltroDeNombre flor;
+class FiltroNombreContieneTest {
+	public FiltroTextoEnNombre flor;
 	public Proyecto floresNativas, floraAutoctona, hojasSecas;
 	public List<Proyecto> projects; 
 	
@@ -25,7 +25,7 @@ class FiltroDeNombreTest {
 		projects.add(floresNativas);
 		projects.add(hojasSecas);
 		projects.add(floraAutoctona);
-		flor = new FiltroDeNombre("Flor", projects);
+		flor = new FiltroTextoEnNombre("Flor", projects);
 		
 	}
 

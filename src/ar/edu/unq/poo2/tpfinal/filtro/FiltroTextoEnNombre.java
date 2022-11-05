@@ -1,14 +1,16 @@
 package ar.edu.unq.poo2.tpfinal.filtro;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class FiltroDeNombre implements Filtrable {
+public class FiltroTextoEnNombre implements Filtrable {
 	private String searchText;
 	private List<Proyecto> projects;
 	
-	public FiltroDeNombre(String text, List<Proyecto> projects) {
+	public FiltroTextoEnNombre(String text, List<Proyecto> projects) {
 		this.searchText = text;
 		this.projects = projects;
 	}
@@ -23,12 +25,10 @@ public class FiltroDeNombre implements Filtrable {
 		this.searchText = newText;
 		
 	}
-	
-	public Filtrable negar() {
-		List<Proyecto> proyectos = projects;
-		proyectos.removeAll(this.buscar());
-		return new FiltroDeNombre("", proyectos);
+	@Override
+	public Set<Proyecto> getProyectos() {
 		
-		
+		HashSet<Proyecto> proyectos = new HashSet(projects);
+		return proyectos;
 	}
 }

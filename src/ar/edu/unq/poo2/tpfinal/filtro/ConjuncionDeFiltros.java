@@ -5,7 +5,7 @@ import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class BusquedaDeConjuncion extends FiltroCompuesto {
+public class ConjuncionDeFiltros extends FiltroCompuesto {
 
 	
 	protected List<Proyecto> recolectar(List<List<Proyecto>> allResults) {
@@ -17,9 +17,4 @@ public class BusquedaDeConjuncion extends FiltroCompuesto {
 		return result;
 	}
 	
-	public Filtrable negar() {
-		BusquedaDeDisyuncion filtroDisjunto = new BusquedaDeDisyuncion();
-		this.traspasarFiltrosNegados(filtroDisjunto);
-		return filtroDisjunto;
-	}
 }

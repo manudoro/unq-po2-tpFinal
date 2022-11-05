@@ -1,6 +1,8 @@
 package ar.edu.unq.poo2.tpfinal.filtro;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
@@ -34,11 +36,13 @@ public class FiltroDeExclusion implements Filtrable {
 		this.projects.add(project);
 		
 	}
-	
-	public Filtrable negar() {
+
+	@Override
+	public Set<Proyecto> getProyectos() {
 		
-		return new FiltroDeInclusion(categories, projects);
+		HashSet<Proyecto> proyectos = new HashSet(projects);
+		return proyectos;
 	}
-	
+
 	
 }

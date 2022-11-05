@@ -11,20 +11,20 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-class FiltroCompuestoTest {
+class DisyuncionDeFiltrosTest {
 	
-	public FiltroCompuesto disjunction;
+	public DisyuncionDeFiltros disjunction;
 	public Filtrable estrella, includesBot, exludesBot, includesAstBot, excludesZoo, nameBosque;
 	public Proyecto faunaMarina , stars ,animalesPeligrosos,floraAutoctona;
 	public String zoologia,botanica, astronomia;
 	public List<String> bot, astBot, zoo;
 	public List<Proyecto> projects;
-	public BusquedaDeDisyuncion disjunctionSearch;
+	public DisyuncionDeFiltros disjunctionSearch;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		projects = new ArrayList<Proyecto>();
-		disjunctionSearch = new BusquedaDeDisyuncion();
+		disjunctionSearch = new DisyuncionDeFiltros();
 		
 		animalesPeligrosos = new Proyecto("Peligros del bosque", "Proyecto sobre animales");
 		faunaMarina = new Proyecto("Ballena franca", "Proyecto sobre ballena franca");
@@ -55,14 +55,14 @@ class FiltroCompuestoTest {
 		floraAutoctona.vincularACategoria(botanica);
 		stars.vincularACategoria(astronomia);
 		
-		estrella = new FiltroDeNombre("estrella", projects);
-		includesBot = new FiltroDeInclusion(bot, projects);
-		exludesBot = new FiltroDeExclusion(bot, projects);
+		estrella = new FiltroTextoEnNombre   ("estrella", projects);
+		includesBot = new FiltroDeInclusion   (bot, projects);
+		exludesBot = new FiltroDeExclusion    (bot, projects);
 		includesAstBot = new FiltroDeInclusion(astBot, projects);
-		excludesZoo = new FiltroDeExclusion(zoo, projects);
-		nameBosque = new FiltroDeNombre("Bosque", projects);
+		excludesZoo = new FiltroDeExclusion   (zoo, projects);
+		nameBosque = new FiltroTextoEnNombre ("Bosque", projects);
 
-		disjunction = new FiltroCompuesto(disjunctionSearch);
+		disjunction = new DisyuncionDeFiltros();
 	}
 
 	@Test
@@ -100,6 +100,7 @@ class FiltroCompuestoTest {
 		assertEquals(4, results.size());
 
 	}
+	
 	@Test
 	void testDisjunctionOfIncludesExcludesCategoriesAndName() {
 		// Cuando se pide una disyuncion con un filtro de nombre, uno de exclusion y uno de inclusion
@@ -113,6 +114,7 @@ class FiltroCompuestoTest {
 		assertTrue(results.contains(floraAutoctona));
 		assertTrue(results.contains(animalesPeligrosos));
 	}
+	
 	
 
 }

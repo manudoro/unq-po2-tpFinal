@@ -2,6 +2,8 @@ package ar.edu.unq.poo2.tpfinal.filtro;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
@@ -33,12 +35,21 @@ public abstract class FiltroCompuesto implements Filtrable{
 		}
 		return this.recolectar(allResult);
 	}
+	
 
 
 	protected abstract List<Proyecto> recolectar(List<List<Proyecto>> allResult);
 	
-	protected void traspasarFiltrosNegados(FiltroCompuesto nuevoFiltro) {
-		filters.stream().map(f -> f.negar()).forEach(f -> nuevoFiltro.agregarFiltro(f));
-		}
+	public Set<Proyecto> getProyectos(){
+		return filters.stream().flatMap(f-> f.getProyectos().stream()).collect(Collectors.toSet());
+	}
+
+
+	public void agregarFiltros(List<Filtrable> filters) {
+		this.filters.addAll(filters);
+	}
+	
+	
+	
 	}
 	
