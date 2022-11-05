@@ -53,12 +53,12 @@ class DisyuncionDeFiltrosTest {
 		floraAutoctona.vincularACategoria(botanica);
 		stars.vincularACategoria(astronomia);
 		
-		estrella = new FiltroTextoEnNombre   ("estrella", projects);
-		includesBot = new FiltroDeInclusionCategorias   (bot, projects);
-		excludesBot = new FiltroDeExclusionCategorias    (bot, projects);
-		includesAstBot = new FiltroDeInclusionCategorias(astBot, projects);
-		excludesZoo = new FiltroDeExclusionCategorias   (zoo, projects);
-		nameBosque = new FiltroTextoEnNombre ("Bosque", projects);
+		estrella = new FiltroTextoEnNombre   ("estrella");
+		includesBot = new FiltroDeInclusionCategorias   (bot);
+		excludesBot = new FiltroDeExclusionCategorias    (bot);
+		includesAstBot = new FiltroDeInclusionCategorias(astBot);
+		excludesZoo = new FiltroDeExclusionCategorias   (zoo);
+		nameBosque = new FiltroTextoEnNombre ("Bosque");
 
 		estrellaBot = new DisyuncionDeFiltros(estrella, includesBot);
 		estrellaNoBot = new DisyuncionDeFiltros(estrella, excludesBot);
@@ -72,7 +72,7 @@ class DisyuncionDeFiltrosTest {
 	// Cuando se pide una disyuncion con un filtro de nombre y uno de inclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testDisjunctionOfNameAndIncludesCategories() {
-		List<Proyecto> results = estrellaBot.buscar();
+		List<Proyecto> results = estrellaBot.buscar(projects);
 		assertEquals(2, results.size());
 		assertTrue(results.contains(stars));
 		assertTrue(results.contains(floraAutoctona));
@@ -82,7 +82,7 @@ class DisyuncionDeFiltrosTest {
 	// Cuando se pide una disyuncion con un filtro de nombre y uno de exclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testDisjunctionOfNameAndExcludesCategories() {
-		List<Proyecto> results = estrellaNoBot.buscar();
+		List<Proyecto> results = estrellaNoBot.buscar(projects);
 		assertEquals(3, results.size());
 		assertTrue(results.contains(stars));
 		assertTrue(results.contains(faunaMarina));
@@ -93,7 +93,7 @@ class DisyuncionDeFiltrosTest {
 	// Cuando se pide una disyuncion con un filtro de inclusion y uno de exclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testDisjunctionOfIncludesAndExcludesCategories() {
-		List<Proyecto> results = botNoBot.buscar();
+		List<Proyecto> results = botNoBot.buscar(projects);
 		assertEquals(4, results.size());
 
 	}
@@ -102,7 +102,7 @@ class DisyuncionDeFiltrosTest {
 	void testDisjunctionOfIncludesExcludesCategoriesAndName() {
 		// Cuando se pide una disyuncion con un filtro de nombre, uno de exclusion y uno de inclusion
 		// de categorias se obtienen todos los que cumplen con los 3 criterios 
-		List<Proyecto> results = bosqueNoZAB.buscar();
+		List<Proyecto> results = bosqueNoZAB.buscar(projects);
 		assertEquals(3, results.size());
 		assertTrue(results.contains(stars));
 		assertTrue(results.contains(floraAutoctona));

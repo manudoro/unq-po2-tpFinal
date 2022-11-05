@@ -8,9 +8,8 @@ public class FiltroDeInclusionCategorias extends FiltroSimple  implements Filtra
 	List<String> categorias;
 	
 	
-	public FiltroDeInclusionCategorias(List<String> categories, List<Proyecto> projects) {
+	public FiltroDeInclusionCategorias(List<String> categories) {
 		this.categorias = categories;
-		this.proyectos = projects;
 	}
 
 

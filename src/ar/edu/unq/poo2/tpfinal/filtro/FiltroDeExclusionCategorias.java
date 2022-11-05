@@ -6,9 +6,8 @@ import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 public class FiltroDeExclusionCategorias extends FiltroSimple implements Filtrable {
 	List<String> categorias;
 	
-	public FiltroDeExclusionCategorias(List<String> categories, List<Proyecto> projects) {
+	public FiltroDeExclusionCategorias(List<String> categories) {
 		this.categorias = categories;
-		this.proyectos = projects;
 	}
 
 	@Override
@@ -16,10 +15,5 @@ public class FiltroDeExclusionCategorias extends FiltroSimple implements Filtrab
 		return p.excluyeCategorias(this.categorias);
 	}
 	
-	
-
-
-
-
 	
 }

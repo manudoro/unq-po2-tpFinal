@@ -25,14 +25,14 @@ class FiltroTextoEnNombreTest {
 		projects.add(floresNativas);
 		projects.add(hojasSecas);
 		projects.add(floraAutoctona);
-		flor = new FiltroTextoEnNombre("Flor", projects);
+		flor = new FiltroTextoEnNombre("Flor");
 		
 	}
 
 	@Test
 	// Cuando se busca por un determinado texto, se obtienen los proyectos que lo incluyen en su titulo
 	void testNameFilterIncludesProjects() {
-		List<Proyecto> filterProyects = flor.buscar();
+		List<Proyecto> filterProyects = flor.buscar(projects);
 		assertTrue(filterProyects.size() == 2);
 		assertTrue(filterProyects.contains(floresNativas));
 		assertTrue(filterProyects.contains(floraAutoctona));
@@ -41,7 +41,7 @@ class FiltroTextoEnNombreTest {
 	@Test
 	// Cuando se busca por un determinado texto, no se obtienen los proyectos que no lo incluyen en su titulo
 	void testNameFilterExcludesProjects() {
-		List<Proyecto> filterProyects = flor.buscar();
+		List<Proyecto> filterProyects = flor.buscar(projects);
 		assertFalse(filterProyects.contains(hojasSecas));
 	}
 }

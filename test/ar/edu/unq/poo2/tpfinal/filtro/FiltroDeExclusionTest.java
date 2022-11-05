@@ -43,14 +43,14 @@ class FiltroDeExclusionTest {
 		floraAutoctona.vincularACategoria(botanica);
 		stars.vincularACategoria(astronomia);
 		
-		fauna = new FiltroDeExclusionCategorias(categories, projects);
+		fauna = new FiltroDeExclusionCategorias(categories);
 		
 	}
 
 	@Test
 	// Cuando se excluye una categoria, se obtienen los proyectos que no la tienen
 	void testExcludesFilterIncludesProjects() {
-		List<Proyecto> filterProjects = fauna.buscar();
+		List<Proyecto> filterProjects = fauna.buscar(projects);
 		assertEquals(1, filterProjects.size());
 		assertFalse(filterProjects.contains(animalesPeligrosos));
 		assertFalse(filterProjects.contains(faunaMarina));
@@ -59,7 +59,7 @@ class FiltroDeExclusionTest {
 
 	@Test
 	void testExcludesFilterExcludesProjects() {
-		List<Proyecto> filterProjects = fauna.buscar();
+		List<Proyecto> filterProjects = fauna.buscar(projects);
 		assertTrue(filterProjects.contains(floraAutoctona));
 	}
 	

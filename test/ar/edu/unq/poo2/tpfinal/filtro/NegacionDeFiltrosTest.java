@@ -54,13 +54,13 @@ class NegacionDeFiltrosTest {
 		floraAutoctona.vincularACategoria(botanica);
 		stars.vincularACategoria(astronomia);
 		
-		estrella = new FiltroTextoEnNombre   ("estrella", projects);
-		includesBot = new FiltroDeInclusionCategorias   (bot, projects);
-		excludesBot = new FiltroDeExclusionCategorias    (bot, projects);
-		includesAstBot = new FiltroDeInclusionCategorias(astBot, projects);
-		excludesZoo = new FiltroDeExclusionCategorias   (zoo, projects);
-		nameBosque = new FiltroTextoEnNombre ("Bosque", projects);
-		excludesAst = new FiltroDeExclusionCategorias(ast, projects);
+		estrella = new FiltroTextoEnNombre   ("estrella");
+		includesBot = new FiltroDeInclusionCategorias   (bot);
+		excludesBot = new FiltroDeExclusionCategorias    (bot);
+		includesAstBot = new FiltroDeInclusionCategorias(astBot);
+		excludesZoo = new FiltroDeExclusionCategorias   (zoo);
+		nameBosque = new FiltroTextoEnNombre ("Bosque");
+		excludesAst = new FiltroDeExclusionCategorias(ast);
 		
 		conjuncion = new ConjuncionDeFiltros(nameBosque, includesBot);
 
@@ -78,7 +78,7 @@ class NegacionDeFiltrosTest {
 	// Cuando se pide una disyuncion con un filtro de nombre y uno de inclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testNegacionDeFiltroDInclusion() {
-		List<Proyecto> results = negacionIncluye.buscar();
+		List<Proyecto> results = negacionIncluye.buscar(projects);
 		assertEquals(3, results.size());
 		assertTrue(results.contains(stars));
 		assertTrue(results.contains(faunaMarina));
@@ -89,7 +89,7 @@ class NegacionDeFiltrosTest {
 	// Cuando se pide una disyuncion con un filtro de nombre y uno de exclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testNegacionDeFiltroDeTexto() {
-		List<Proyecto> results = negacionEstrella.buscar();
+		List<Proyecto> results = negacionEstrella.buscar(projects);
 		assertEquals(3, results.size());
 		assertTrue(results.contains(faunaMarina));
 		assertTrue(results.contains(floraAutoctona));
@@ -102,7 +102,7 @@ class NegacionDeFiltrosTest {
 	// Cuando se pide una disyuncion con un filtro de nombre y uno de exclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testNegacionDeFiltroDeExclusion() {
-		List<Proyecto> results = negacionExcluye.buscar();
+		List<Proyecto> results = negacionExcluye.buscar(projects);
 		assertEquals(2, results.size());
 		assertTrue(results.contains(faunaMarina));
 		assertTrue(results.contains(animalesPeligrosos));
@@ -113,7 +113,7 @@ class NegacionDeFiltrosTest {
 	// Cuando se pide una disyuncion con un filtro de inclusion y uno de exclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testNegacionDeDisyuncion() {
-		List<Proyecto> results = negacionDisyuncion.buscar();
+		List<Proyecto> results = negacionDisyuncion.buscar(projects);
 		assertEquals(2, results.size());
 		assertTrue(results.contains(faunaMarina));
 		assertTrue(results.contains(animalesPeligrosos));
@@ -124,7 +124,7 @@ class NegacionDeFiltrosTest {
 	void testNegacionDeConjuncion() {
 		// Cuando se pide una disyuncion con un filtro de nombre, uno de exclusion y uno de inclusion
 		// de categorias se obtienen todos los que cumplen con los 3 criterios 
-		List<Proyecto> results = negacionConjuncion.buscar();
+		List<Proyecto> results = negacionConjuncion.buscar(projects);
 		assertEquals(3, results.size());
 		assertTrue(results.contains(stars));
 		assertTrue(results.contains(animalesPeligrosos));

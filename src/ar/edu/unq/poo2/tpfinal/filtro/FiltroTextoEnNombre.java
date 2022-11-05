@@ -7,9 +7,8 @@ import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 public class FiltroTextoEnNombre extends FiltroSimple implements Filtrable {
 	private String searchText;
 
-	public FiltroTextoEnNombre(String text, List<Proyecto> projects) {
+	public FiltroTextoEnNombre(String text) {
 		this.searchText = text;
-		this.proyectos = projects;
 	}
 
 

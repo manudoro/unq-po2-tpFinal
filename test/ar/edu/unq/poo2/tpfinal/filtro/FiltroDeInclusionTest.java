@@ -40,14 +40,14 @@ class FiltroDeInclusionTest {
 		faunaMarina.vincularACategoria(zoologia);
 		floraAutoctona.vincularACategoria(botanica);
 		
-		fauna = new FiltroDeInclusionCategorias(categories, proyects);
+		fauna = new FiltroDeInclusionCategorias(categories);
 		
 	}
 
 	@Test
 	// Cuando se incluye una categoria, se obtienen los proyectos que la tienen
 	void testIncludesFilterIncludesProyects() {
-		List<Proyecto> filterProyects = fauna.buscar();
+		List<Proyecto> filterProyects = fauna.buscar(proyects);
 		assertEquals(2, filterProyects.size());
 		assertTrue(filterProyects.contains(animalesPeligrosos));
 		assertTrue(filterProyects.contains(faunaMarina));
@@ -56,7 +56,7 @@ class FiltroDeInclusionTest {
 	@Test
 	// Cuando se incluye una categoria, no se obtienen los proyectos que no la tienen
 	void testIncludesFilterExcludesProyects() {
-		List<Proyecto> filterProyects = fauna.buscar();
+		List<Proyecto> filterProyects = fauna.buscar(proyects);
 		assertFalse(filterProyects.contains(floraAutoctona));
 	}
 	
