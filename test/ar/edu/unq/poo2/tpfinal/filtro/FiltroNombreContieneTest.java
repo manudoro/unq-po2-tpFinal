@@ -44,13 +44,4 @@ class FiltroNombreContieneTest {
 		List<Proyecto> filterProyects = flor.buscar();
 		assertFalse(filterProyects.contains(hojasSecas));
 	}
-	
-	@Test 
-	// Cuando se busca por un determinado texto, se obtienen los proyectos que lo incluyen en su titulo de manera case insensitive
-	void testNameFilterCaseInsensitive() {
-		flor.setTexto("FLOR");
-		List<Proyecto> filterProyects = flor.buscar();
-		assertTrue(filterProyects.size() == 2);		
-	}
-
 }

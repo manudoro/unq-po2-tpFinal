@@ -62,13 +62,10 @@ class NegacionDeFiltrosTest {
 		nameBosque = new FiltroTextoEnNombre ("Bosque", projects);
 		excludesAst = new FiltroDeExclusion(ast, projects);
 		
-		conjuncion = new ConjuncionDeFiltros();
-		conjuncion.agregarFiltro(nameBosque);
-		conjuncion.agregarFiltro(includesBot);
-		
-		disyuncion = new DisyuncionDeFiltros();
-		disyuncion.agregarFiltro(estrella);
-		disyuncion.agregarFiltro(includesBot);
+		conjuncion = new ConjuncionDeFiltros(nameBosque, includesBot);
+
+		disyuncion = new DisyuncionDeFiltros(estrella, includesBot);
+
 		
 		negacionEstrella = new NegacionDeFiltro(estrella);
 		negacionIncluye = new NegacionDeFiltro(includesBot);

@@ -1,50 +1,41 @@
 package ar.edu.unq.poo2.tpfinal.filtro;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 public abstract class FiltroCompuesto implements Filtrable{
-	List<Filtrable> filters;
+	Filtrable filtro1;
+	Filtrable filtro2;
 	
-	public FiltroCompuesto() {
+	public FiltroCompuesto(Filtrable filtro1, Filtrable filtro2) {
 
-		this.filters = new ArrayList<Filtrable>();
+		this.filtro1 = filtro1;
+		this.filtro2 = filtro2;
 	}
-
-	
-	public void agregarFiltro(Filtrable filter) {
-		this.filters.add(filter);
-	}
-	
-	
-	public void removerFiltro(Filtrable filter) {
-		this.filters.remove(filter);
-	}
-	
 
 	@Override
 	public final List<Proyecto> buscar() {	
-		List<List<Proyecto>> allResult = new ArrayList<List<Proyecto>>();
-		for(Filtrable f : filters) {
-			List<Proyecto> result = f.buscar();
-			allResult.add(result);
-		}
-		return this.recolectar(allResult);
+		List<Proyecto> resultados1 = filtro1.buscar();
+		List<Proyecto> resultados2 = filtro2.buscar();
+		
+		return this.recolectar(resultados1, resultados2);
 	}
 	
 
 
-	protected abstract List<Proyecto> recolectar(List<List<Proyecto>> allResult);
+	protected abstract List<Proyecto> recolectar(List<Proyecto> resultados1, List<Proyecto> resultados2);
 	
 	public List<Proyecto> getProyectos(){
 		
-		Set<Proyecto> setProyectos = filters.stream().flatMap(f-> f.getProyectos().stream()).collect(Collectors.toSet());
+		Set<Proyecto> proyectos = new HashSet();
+		proyectos.addAll(filtro1.getProyectos());
+		proyectos.addAll(filtro2.getProyectos());
 		
-		return new ArrayList<Proyecto>(setProyectos);
+		return new ArrayList<Proyecto>(proyectos);
 	}
 
 	

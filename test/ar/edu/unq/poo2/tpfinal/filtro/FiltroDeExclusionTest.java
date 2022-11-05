@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 class FiltroDeExclusionTest {
-	public FiltroDeExclusion fauna;
+	public FiltroCategorias fauna;
 	
 	public Proyecto faunaMarina , stars ,animalesPeligrosos,floraAutoctona;
 	public String zoologia,botanica, astronomia;
@@ -63,31 +63,7 @@ class FiltroDeExclusionTest {
 		assertTrue(filterProjects.contains(floraAutoctona));
 	}
 	
-	// Se pueden agregar nuevas categorias a excluir
-	@Test 
-	void testExcludesCanAddCategories() {
-		fauna.agregarCategoria(botanica);
-		assertTrue(fauna.getCategorias().contains(botanica));
-	}
-	
-	// Cuando se excluye mas de una categoria, no se obtienen los proyectos que tienen alguna de ellas
-	@Test 
-	void testExcludesFilterMustExcludesAll() {
-		fauna.agregarCategoria(botanica);
-		List<Proyecto> filterProjects = fauna.buscar();
-		assertEquals(0, filterProjects.size());
-	}
-	
-	@Test
-	// Cuando se excluye mas de una categoria, se obtienen los proyectos que no tienen ninguna de ellas
-	void testExludesFilterIncludesWithMoreCategories() {
-		fauna.agregarCategoria(botanica);
-		fauna.agregarProyecto(stars);
-		List<Proyecto> filterProjects = fauna.buscar();
-		assertEquals(1, filterProjects.size());
-		assertTrue(filterProjects.contains(stars));
 
-	}
 	
 	
 	

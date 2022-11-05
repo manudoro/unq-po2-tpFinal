@@ -1,5 +1,6 @@
 package ar.edu.unq.poo2.tpfinal.filtro;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 class FiltroDeInclusionTest {
-	public FiltroDeInclusion fauna;
+	public FiltroCategorias fauna;
 	public Proyecto animalesPeligrosos, floraAutoctona, faunaMarina;
 	public String zoologia, botanica;
 	public List<String> categories;
@@ -47,7 +48,7 @@ class FiltroDeInclusionTest {
 	// Cuando se incluye una categoria, se obtienen los proyectos que la tienen
 	void testIncludesFilterIncludesProyects() {
 		List<Proyecto> filterProyects = fauna.buscar();
-		assertTrue(filterProyects.size() == 2);
+		assertEquals(2, filterProyects.size());
 		assertTrue(filterProyects.contains(animalesPeligrosos));
 		assertTrue(filterProyects.contains(faunaMarina));
 	}
@@ -59,18 +60,4 @@ class FiltroDeInclusionTest {
 		assertFalse(filterProyects.contains(floraAutoctona));
 	}
 	
-	@Test 
-	// Se pueden agregar nuevas categorias a incluir
-	void testIncludesCanAddCategories() {
-		fauna.agregarCategoria(botanica);
-		assertTrue(fauna.getCategorias().contains(botanica));
-	}
-	
-	@Test 
-	// Cuando se incluye mas de una categoria, se obtienen los proyectos que tienen alguna de ellas
-	void testIncludesFilterMustIncludesAny() {
-		fauna.agregarCategoria(botanica);
-		List<Proyecto> filterProyects = fauna.buscar();
-		assertTrue(filterProyects.size() == 3);		
-	}
 }
