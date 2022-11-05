@@ -2,37 +2,37 @@ package ar.edu.unq.poo2.tpfinal.muestra;
 
 public class Coordenada {
 	
-		
-	
-	private int x;
-	private int y;
+
+ /*Se crearon las clases latitud y longitud para realizar polimorfismo*/
+
+	private Distancia latitud;
+	private Distancia longitud;
 		
 	public Coordenada() { // CONSTRUCTOR REPETIDO
-		this.x = 0;
-		this.y = 0;
+		this.latitud = new Distancia(0);
+		this.longitud = new Distancia(0);
 	}
 	public Coordenada(int x, int y) { // CONSTRUCTOR REPETIDO. ¿SOBRECARGA DE CONSTRUCTORES?
 		super();
-		this.x = x;
-		this.y = y;
+		this.latitud = new Distancia(x);
+		this.longitud = new Distancia(y);
 	}
 
-	public int getX() {
-		return x;
+	public Distancia getLatitud() {
+		return latitud;
 	}
 
-
-	public void setX(int x) {
-		this.x = x;
+	public Distancia getLongitud() {
+		return longitud;
 	}
-
-	public int getY() {
-		return y;
+	public boolean estaDentroConRespectoAlRadio(Coordenada coordenada, int radio) {
+		Distancia latitud = coordenada.getLatitud();
+		Distancia longitud = coordenada.getLongitud();
+		
+		return this.latitud.esParteDelArea(latitud, radio) && this.longitud.esParteDelArea(longitud, radio);
 	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
+	
+	
 		
 		
 		

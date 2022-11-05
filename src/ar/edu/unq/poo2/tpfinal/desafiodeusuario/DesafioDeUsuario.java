@@ -1,6 +1,5 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
-import java.util.function.BooleanSupplier;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
@@ -14,20 +13,29 @@ public class DesafioDeUsuario{
 	private IEstadoDeDesafio estadoDeDesafio ;
 	private Gusto gustoDeUsuario;
 	private int cantidadDeMuestrasPorRecolectar;
+	public float porcentajeDeCompletitud;
 	
 	public DesafioDeUsuario(Desafio desafio) {
 		setEstadoDeDesafio(new EstadoAceptado());
 		this.desafio = desafio ;
 		this.cantidadDeMuestrasPorRecolectar = desafio.getCantidadDeMuestrasARecolectar();
+		this.porcentajeDeCompletitud = 0;
 	}
 	
 	
 	public int getCantidadDeMuestrasPorRecolectar() {
 		return cantidadDeMuestrasPorRecolectar;
 	}
+	
+	public float getPorcentajeDeCompletitud() {
+		return porcentajeDeCompletitud;
+	}
+
 
 	public void reducirMuestrasPorRecolectar() {
 		this.cantidadDeMuestrasPorRecolectar = estadoDeDesafio.reducirMuestrasPorRecolectar();
+		
+		
 	}
 
 	public void setEstadoDeDesafio(IEstadoDeDesafio estadoDeDesafio) {
@@ -37,48 +45,35 @@ public class DesafioDeUsuario{
 
 
 	public void recibirMuestra(Muestra muestra) {
-		if (this.estaEnElArea(muestra)) {
+		if (this.estaEnElAreaDelDesafio(muestra) && this.esTaDentroDeLaFechaDelDesafio(muestra)) {
 			this.reducirMuestrasPorRecolectar();
+			this.calucularPorcentajeDeCompletitud();
 		}
+		
 	}
 
 
-	protected boolean estaEnElArea(Muestra muestra) {
+	public void calucularPorcentajeDeCompletitud() {
+		this.porcentajeDeCompletitud = 
+				(desafio.getCantidadDeMuestrasARecolectar()-this.cantidadDeMuestrasPorRecolectar) * 100 / desafio.getCantidadDeMuestrasARecolectar() ;
+				
+
+		
+	}
+
+
+	protected boolean estaEnElAreaDelDesafio(Muestra muestra) {
 		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
-		
-		int resultadoLatitud = Math.abs(resultadoLatitudDeDesafioConMuestra(muestra));
-		int resultadoLongitud = Math.abs(resultadoDeLongitudDeDesafioConMuestra(muestra));
-		
-		return estanLasDistanciasDentroDelArea(resultadoLatitud, resultadoLongitud);
+		return this.desafio.estaEnElArea(muestra);
 	}
 
 
-	// SE PUEDEN MEJORAR (Refactor para manu >:V)
+	public boolean esTaDentroDeLaFechaDelDesafio(Muestra muestra) {
+		
+		return this.desafio.getRestriccionTemporal().validar(muestra.getFechaDeRecoleccion());
+	}
 	
-	private boolean estanLasDistanciasDentroDelArea(int resultadoLatitud, int resultadoLongitud) {
-		return estaLaDistanciaDentroDelArea(resultadoLongitud) && estaLaDistanciaDentroDelArea(resultadoLatitud);
-	}
-
-
-	private boolean estaLaDistanciaDentroDelArea(int resultadoDistancia) {
-		return this.desafio.distanciaDentroDelArea(resultadoDistancia);
-	}
-
-
 	
-	private int resultadoDeLongitudDeDesafioConMuestra(Muestra muestra) {
-		return this.desafio.relacionDeLongitudDeDesafioYMuestra(muestra);
-	}
-
-
-	private int resultadoLatitudDeDesafioConMuestra(Muestra muestra) {
-		return this.desafio.relacionDeLatitudDeDesafioYMuestra(muestra);
-	}
-
-
-	public boolean estaDentroDeLaFechaPermitida(Muestra muestra) {
-		return true;
-	}
-		
-		
+	
+	
 };

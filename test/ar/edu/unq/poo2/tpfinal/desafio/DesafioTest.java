@@ -12,26 +12,28 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
+import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class DesafioTest {
 
 	private Desafio desafio, desafio2;
-	private Coordenada punto;
+	private Coordenada punto , punto2;
 	private Area area;
-	private RestriccionTemporal restriccionTemporal;
+	private IRestriccionTemporal restriccionTemporal;
 	private Usuario usuario1 , usuario2;
+	private Muestra muestra , muestra2;
 	
 	
 	@BeforeEach
 	void setUp() {
 		Dificultad facil = Dificultad.FACIL;
 		LocalDate fecha = LocalDate.of(2020, 5, 19);
-		LocalTime tiempoDesde = LocalTime.of(7, 30);
-		LocalTime tiempoHasta = LocalTime.of(19, 30);
-		this.punto = new Coordenada(5, 4);
+		this.punto = new Coordenada(3, 2);
+		this.punto2 = new Coordenada(5,9);
 		this.area = new Area(punto, 5);
-		this.restriccionTemporal = new RestriccionTemporal(fecha, tiempoDesde, tiempoHasta);
+		this.muestra = new Muestra(punto2, fecha);
+		this.muestra2 = new Muestra(punto, fecha);
 		
 		this.usuario2 = mock(Usuario.class);
 		this.usuario1 = new Usuario();
@@ -72,8 +74,18 @@ class DesafioTest {
 	}
 
 
+	@Test
+	
+	void seVerifcaSiUnaMuestra_NoEstaDentroDeLDesafio() {
+		assertFalse(this.desafio.estaEnElArea(muestra));
+	}
 	
 	
+	@Test
+	
+	void seVerificaSiUnaMuestra_EstaDentroDelAreaDelDesafio() {
+		assertTrue(this.desafio.estaEnElArea(muestra2));
+	}
 	
 	
 	

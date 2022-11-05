@@ -35,6 +35,5 @@ public class FiltroDeInclusion extends FiltroSimple  implements Filtrable {
 	public List<String> getCategorias() {
 		return categories;
 	}
-
 }
 

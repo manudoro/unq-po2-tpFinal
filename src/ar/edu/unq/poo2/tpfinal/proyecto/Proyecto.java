@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.proyecto;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -43,10 +44,10 @@ public class Proyecto {
 		return new ArrayList(categorias);
 	}
 	
-	public List<Muestra> getSamples() {
+	public List<Muestra> getMuestras() {
 		return muestras;
 	}
-	public List<Desafio> getChallanges() {
+	public List<Desafio> getDesafios() {
 		return desafios;
 	}
 
@@ -73,12 +74,12 @@ public class Proyecto {
 	
 	public void recibirDesafio(Desafio challange) {
 		//  este metodo permite que el proyecto reciba un desafio.
-		this.getChallanges().add(challange);
+		this.getDesafios().add(challange);
 	}
 	
 	public void recibirMuestra(Muestra sample) {
 		// este metodo permite que el proyeco reciba una muestra.
-		this.getSamples().add(sample);
+		this.getMuestras().add(sample);
 	}
 	
 	public boolean contieneCategorias(List<String> categories) {
@@ -92,6 +93,8 @@ public class Proyecto {
 		return !this.getCategorias().stream().anyMatch(c -> categories.contains(c));
 
 	}
+
+
 	
 	
 	

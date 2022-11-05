@@ -1,8 +1,5 @@
 package ar.edu.unq.poo2.tpfinal.desafio;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
@@ -12,9 +9,9 @@ public class Desafio {
 	private int cantidadDeMuestrasARecolectar;
 	private Dificultad dificultad;
 	private int recompensa;
-	private RestriccionTemporal restriccionTemporal;
+	private IRestriccionTemporal restriccionTemporal;
 	
-	public Desafio(Area area, int cantidadDeMuestrasARecolectar, Dificultad dificultad, int recompensa, RestriccionTemporal restriccionTemporal) {
+	public Desafio(Area area, int cantidadDeMuestrasARecolectar, Dificultad dificultad, int recompensa, IRestriccionTemporal restriccionTemporal) {
 		this.area = area;
 		this.cantidadDeMuestrasARecolectar = cantidadDeMuestrasARecolectar;
 		this.dificultad = dificultad;
@@ -38,7 +35,7 @@ public class Desafio {
 		return recompensa;
 	}
 
-	public RestriccionTemporal getRestriccionTemporal() {
+	public IRestriccionTemporal getRestriccionTemporal() {
 		return restriccionTemporal;
 
 	}
@@ -49,17 +46,10 @@ public class Desafio {
 		//double dispach
 		
 	}
-	
-	public int relacionDeLongitudDeDesafioYMuestra(Muestra muestra) {
-		return this.getArea().diferenciaDeLongitudConMuestra(muestra);
-	}
 
-	public int relacionDeLatitudDeDesafioYMuestra(Muestra muestra) {
-		return this.getArea().diferenciaDeLatitudConMuestra(muestra);
-	} 
 	
-	public boolean distanciaDentroDelArea(int resultadoDistancia) {
-		return this.getArea().distanciaEstaComprendida(resultadoDistancia);
+	public boolean estaEnElArea(Muestra muestra) {
+		return this.area.estaDentro(muestra);
 	}
 	
 }

@@ -20,6 +20,7 @@ class DesafioDeUsuarioTest {
 	private Desafio desafio;
 	private Muestra muestra;
 	private Muestra muestra2; 
+	private FinDeSemana finDeSemana;
 	
 	@BeforeEach
 	void setUp() {
@@ -29,16 +30,19 @@ class DesafioDeUsuarioTest {
 		
 		
 		Dificultad facil = Dificultad.FACIL;
-		LocalDate fecha = LocalDate.of(2020, 5, 19);
-		LocalTime tiempoDesde = LocalTime.of(7, 30);
-		LocalTime tiempoHasta = LocalTime.of(19, 30);
+		LocalDate fecha = LocalDate.of(2022, 11, 12);
+		LocalDate fecha1 = LocalDate.of(2022, 11, 19);
 		Coordenada punto = new Coordenada(5, 4);
 		Coordenada punto2 = new Coordenada(15, 15);
+		Coordenada punto3 = new Coordenada(3, 2);
 		Area area = new Area(punto, 5);
+		finDeSemana = new FinDeSemana();
 		muestra = new Muestra(punto2,fecha);
-		muestra2 = new Muestra(punto,fecha);
-		RestriccionTemporal restriccionTemporal = new RestriccionTemporal(fecha, tiempoDesde, tiempoHasta);
-		this.desafio = new Desafio(area, 2, facil, 5, restriccionTemporal); // <-- Instancia
+		muestra2 = new Muestra(punto3,fecha1);
+		desafio = new Desafio(area, 10, facil, 10, finDeSemana);
+
+		
+		// <-- Instancia
 		
 		
 		
@@ -54,7 +58,7 @@ class DesafioDeUsuarioTest {
 		/* Cuando se crea un desafioDeUsuario, comienza con 2 muestras por recolectar */
 		this.desafioDeUsuario.reducirMuestrasPorRecolectar(); 
 		
-		assertEquals(1, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
+		assertEquals(9, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
 	}
 	
 	@Test
@@ -65,24 +69,28 @@ class DesafioDeUsuarioTest {
 		this.desafioDeUsuario.reducirMuestrasPorRecolectar(); // <-- queda una muestra por recolectar
 		this.desafioDeUsuario.reducirMuestrasPorRecolectar(); // <-- ya no queda muestras por recolectar, su cantidad es cero (Cambio su estado a finalizado)
 		this.desafioDeUsuario.reducirMuestrasPorRecolectar(); // <-- la cantidad de muestras por recolectar debe seguir en cero
+		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
 		
 		assertEquals(0, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
 	}
 	
 	@Test
 	void seVerificaQueUnaMuestraNoSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
-		assertFalse(this.desafioDeUsuario.estaEnElArea(muestra));
+		assertFalse(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra));
 	}
 	
 	@Test
 	void seVerificaQueUnaMuestraSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
-		assertTrue(this.desafioDeUsuario.estaEnElArea(muestra2));
+		assertTrue(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra2));
 	}
 	
-	@Test
-	void seVerificaQueUnaMuestraNoSeEncuentraDentroDeLaFechaPermitidaPorElDesafio() {
-		assertFalse(this.desafioDeUsuario.estaDentroDeLaFechaPermitida(muestra));
-	}
 	
 	@Test 
 	void ceuandoUnDesafioDeUsuarioRecibeUnaMuestraYNostaDentroDeSuArea_NoSeRestaAlasMuestrasPorRecolectar() {
@@ -97,7 +105,22 @@ class DesafioDeUsuarioTest {
 		int cantidadDeMuestras = this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar();
 		this.desafioDeUsuario.recibirMuestra(muestra2);
 	
-		assertEquals(1, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar() );
+		assertEquals(9, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar() );
 	}
-
+	
+	@Test
+	
+	void seVerificaSiUnaMuestra_EstaDentroDeLaFechaDeLaRestriccionTemporalDelDesafio() {
+		assertTrue(this.desafioDeUsuario.esTaDentroDeLaFechaDelDesafio(muestra2));
+	}
+	
+	@Test
+	
+	void chequeoPorcentajeDeComplejitudCuandoRecojoMuestra() {
+		this.desafioDeUsuario.recibirMuestra(muestra2);
+		
+		assertEquals(10.0 ,this.desafioDeUsuario.getPorcentajeDeCompletitud());
+	}
+	
+	
 }

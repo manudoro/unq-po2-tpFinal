@@ -5,41 +5,34 @@ import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 
 public class Area {
 	
-	private Coordenada center;
-	private Integer radius;
-	public Area(Coordenada center, Integer radius) {
+	private Coordenada centro;
+	private int radio;
 	
-		this.center = center;
-		this.radius = radius;
-	}
-	public Coordenada getCenter() {
-		return center;
-	}
-	public void setCenter(Coordenada center) {
-		this.center = center;
-	}
-	public Integer getRadius() {
-		return radius;
-	}
-	public void setRadius(Integer radius) {
-		this.radius = radius;
+	public Area(Coordenada centro, int radio) {
+	
+		this.centro = centro;
+		this.radio = radio;
 	}
 	
-	
-	public int diferenciaDeLongitudConMuestra(Muestra muestra) {
-		//este metodo permite obtener la diferencia entre la altura del area y la ubicacion 
-		// de la muestra en el eje Y
-		return this.getCenter().getY() - muestra.getCoordenada().getY();
+	public Coordenada getCentro() {
+		return centro;
 	}
 	
-	public int diferenciaDeLatitudConMuestra(Muestra muestra) {
-		//este metodo permite obtener la diferencia entre el ancho del area y la ubicacion 
-		// de la muestra en el eje X
-		return this.getCenter().getX() - muestra.getCoordenada().getX();
+	public void setCenter(Coordenada centro) {
+		this.centro = centro;
 	}
 	
-	public boolean distanciaEstaComprendida(int resultadoDistancia) {
-		return resultadoDistancia <= this.getRadius();
+	public int getRadio() {
+		return radio;
 	}
 	
+	public void setRadius(int radio) {
+		this.radio = radio;
+	}
+	
+	public boolean estaDentro(Muestra muestra) {
+		Coordenada coordenada = muestra.getCoordenada();
+		
+		return this.centro.estaDentroConRespectoAlRadio(coordenada, radio);
+	}
 }
