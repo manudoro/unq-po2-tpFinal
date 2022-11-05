@@ -95,6 +95,11 @@ public class Proyecto {
 	}
 
 
+	public boolean contieneTextoEnNombre(String searchText) {
+		return this.getNombre().toUpperCase().contains(searchText.toUpperCase());
+	}
+
+
 	
 	
 	

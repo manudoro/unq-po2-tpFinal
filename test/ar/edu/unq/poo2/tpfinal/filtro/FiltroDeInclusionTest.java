@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 class FiltroDeInclusionTest {
-	public FiltroCategorias fauna;
+	public FiltroSimple fauna;
 	public Proyecto animalesPeligrosos, floraAutoctona, faunaMarina;
 	public String zoologia, botanica;
 	public List<String> categories;
@@ -40,7 +40,7 @@ class FiltroDeInclusionTest {
 		faunaMarina.vincularACategoria(zoologia);
 		floraAutoctona.vincularACategoria(botanica);
 		
-		fauna = new FiltroDeInclusion(categories, proyects);
+		fauna = new FiltroDeInclusionCategorias(categories, proyects);
 		
 	}
 

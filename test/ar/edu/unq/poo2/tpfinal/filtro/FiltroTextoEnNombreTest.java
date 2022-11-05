@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-class FiltroNombreContieneTest {
+class FiltroTextoEnNombreTest {
 	public FiltroTextoEnNombre flor;
 	public Proyecto floresNativas, floraAutoctona, hojasSecas;
 	public List<Proyecto> projects; 

@@ -54,10 +54,10 @@ class DisyuncionDeFiltrosTest {
 		stars.vincularACategoria(astronomia);
 		
 		estrella = new FiltroTextoEnNombre   ("estrella", projects);
-		includesBot = new FiltroDeInclusion   (bot, projects);
-		excludesBot = new FiltroDeExclusion    (bot, projects);
-		includesAstBot = new FiltroDeInclusion(astBot, projects);
-		excludesZoo = new FiltroDeExclusion   (zoo, projects);
+		includesBot = new FiltroDeInclusionCategorias   (bot, projects);
+		excludesBot = new FiltroDeExclusionCategorias    (bot, projects);
+		includesAstBot = new FiltroDeInclusionCategorias(astBot, projects);
+		excludesZoo = new FiltroDeExclusionCategorias   (zoo, projects);
 		nameBosque = new FiltroTextoEnNombre ("Bosque", projects);
 
 		estrellaBot = new DisyuncionDeFiltros(estrella, includesBot);
