@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
-import ar.edu.unq.poo2.tpfinal.desafio.RestriccionTemporal;
+import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
@@ -40,9 +40,10 @@ class UsuarioTest {
 	LocalTime tiempoHasta = LocalTime.of(19, 30);
 	Coordenada punto = new Coordenada(5, 4);
 	Area area = new Area(punto, 5);
-	RestriccionTemporal restriccionTemporal = new RestriccionTemporal(fecha, tiempoDesde, tiempoHasta);
+	FinDeSemana restriccionTemporal = new FinDeSemana();
 	
-	this.desafio = new Desafio(area, 2, facil, 5, restriccionTemporal);
+	
+	this.desafio = new Desafio(area, 2, facil, 5,restriccionTemporal);
 	
 	}
 

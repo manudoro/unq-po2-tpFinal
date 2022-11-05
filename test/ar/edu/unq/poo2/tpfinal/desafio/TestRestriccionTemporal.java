@@ -19,7 +19,7 @@ class TestRestriccionTemporal {
 
 	private IRestriccionTemporal restriccionFinDeSemana, restriccionDiaDeSemana , restriccionEntreSemana;
 	private RestriccionMixta restriccionMixta ;
-	private LocalDate fecha1, fecha2, fecha3, fecha4, fechaAValidarFinDeSemana, fechaAValidarDiaDeSemana ;
+	private LocalDate fecha0, fecha1, fecha2, fecha3, fecha4, fechaAValidarFinDeSemana, fechaAValidarDiaDeSemana ;
 	
 	@BeforeEach
 	void setUp()  {
@@ -27,10 +27,11 @@ class TestRestriccionTemporal {
 	restriccionFinDeSemana = new FinDeSemana();
 	restriccionDiaDeSemana = new DiasDeSemana();
 	restriccionMixta = new RestriccionMixta();
-
+	
+	fecha0 = LocalDate.of(2000, 12, 12);
 	fecha1 = LocalDate.of(2020, 7, 12);
 	fecha2 = LocalDate.of(2021,8,18);
-	fecha3 = LocalDate.of(2022,11,27);
+	fecha3 = LocalDate.of(2021,4,18);
 	fecha4 = LocalDate.of(2021,2,18);
 	fechaAValidarFinDeSemana = LocalDate.of(2022,11,5);
 	fechaAValidarDiaDeSemana = LocalDate.of(2022,11,3);
@@ -97,7 +98,7 @@ class TestRestriccionTemporal {
 	@Test
 	
 	void testVerificarSiUnaFechaNoEstaEntreDosFechas() {
-		assertFalse(restriccionEntreSemana.validar(fecha3));
+		assertFalse(restriccionEntreSemana.validar(fecha0));
 	}
 	
 	@Test 
@@ -106,6 +107,31 @@ class TestRestriccionTemporal {
 		assertTrue(restriccionEntreSemana.validar(fecha4));
 	}
 	
+	@Test
 	
+	void testVerificarCasoBordeInicioDeFechaEntreSemana() {
+		assertTrue(restriccionEntreSemana.validar(fecha2));
+	}
+	@Test
+	
+	void testVerificarCasoBordeDeFinDeFechaEntreSemana() {
+		assertTrue(restriccionEntreSemana.validar(fecha1));
+	}
+	
+	@Test 
+	void testVerificarCuandoUnaRestriccionMixtaTieneRestriccionesCombinadasConEntreSemanaYFinDeSemana() {
+		restriccionMixta.agregarRestriccionTemporal(restriccionFinDeSemana);
+		restriccionMixta.agregarRestriccionTemporal(restriccionEntreSemana);
+		assertTrue(restriccionMixta.validar(fecha3));
+	}
+		
+	@Test
+	
+	void testVerificarCuandoUnaRestriccionMixtaTieneRestriccionesCombinadasConEntreSemanaYDiaDeSemana() {
+		restriccionMixta.agregarRestriccionTemporal(restriccionDiaDeSemana);
+		restriccionMixta.agregarRestriccionTemporal(restriccionEntreSemana);
+		assertTrue(restriccionMixta.validar(fecha4));
+	}
+
 	
 }

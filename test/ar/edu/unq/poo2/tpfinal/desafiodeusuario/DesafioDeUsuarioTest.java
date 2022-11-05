@@ -20,6 +20,7 @@ class DesafioDeUsuarioTest {
 	private Desafio desafio;
 	private Muestra muestra;
 	private Muestra muestra2; 
+	private FinDeSemana finDeSemana;
 	
 	@BeforeEach
 	void setUp() {
@@ -29,16 +30,16 @@ class DesafioDeUsuarioTest {
 		
 		
 		Dificultad facil = Dificultad.FACIL;
-		LocalDate fecha = LocalDate.of(2020, 5, 19);
-		LocalTime tiempoDesde = LocalTime.of(7, 30);
-		LocalTime tiempoHasta = LocalTime.of(19, 30);
+		LocalDate fecha = LocalDate.of(2022, 11, 12);
 		Coordenada punto = new Coordenada(5, 4);
 		Coordenada punto2 = new Coordenada(15, 15);
 		Area area = new Area(punto, 5);
+		finDeSemana = new FinDeSemana();
 		muestra = new Muestra(punto2,fecha);
 		muestra2 = new Muestra(punto,fecha);
-		RestriccionTemporal restriccionTemporal = new RestriccionTemporal(fecha, tiempoDesde, tiempoHasta);
-		this.desafio = new Desafio(area, 2, facil, 5, restriccionTemporal); // <-- Instancia
+		desafio = new Desafio(area, 2, facil, 10, finDeSemana);
+		
+		// <-- Instancia
 		
 		
 		
@@ -79,10 +80,6 @@ class DesafioDeUsuarioTest {
 		assertTrue(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra2));
 	}
 	
-	@Test
-	void seVerificaQueUnaMuestraNoSeEncuentraDentroDeLaFechaPermitidaPorElDesafio() {
-		assertFalse(this.desafioDeUsuario.estaDentroDeLaFechaPermitida(muestra));
-	}
 	
 	@Test 
 	void ceuandoUnDesafioDeUsuarioRecibeUnaMuestraYNostaDentroDeSuArea_NoSeRestaAlasMuestrasPorRecolectar() {
@@ -100,4 +97,13 @@ class DesafioDeUsuarioTest {
 		assertEquals(1, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar() );
 	}
 
+	
+	@Test
+	
+	void seVerificaSiUnaMuestra_EstaDentroDeLaFechaDeLaRestriccionTemporalDelDesafio() {
+		assertTrue(this.desafioDeUsuario.esTaDentroDeLaFechaDelDesafio(muestra2));
+	}
+	
+	
+	
 }

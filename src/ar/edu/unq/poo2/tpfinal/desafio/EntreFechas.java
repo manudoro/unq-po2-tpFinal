@@ -23,7 +23,7 @@ public class EntreFechas implements IRestriccionTemporal{
 	public boolean validar(LocalDate fecha) {
 		
 
-		return this.fechaInicio.isBefore(fecha) && this.fechaFin.isAfter(fecha);
+		return this.fechaInicio.isBefore(fecha.plusDays(1)) && this.fechaFin.isAfter(fecha.minusDays(1));
 	}
 
 

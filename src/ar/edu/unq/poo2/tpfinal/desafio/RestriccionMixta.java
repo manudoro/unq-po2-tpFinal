@@ -39,7 +39,7 @@ public class RestriccionMixta implements IRestriccionTemporal {
 	@Override
 	public boolean validar(LocalDate fecha) {
 		//
-		return this.restricciones.stream().anyMatch(f -> f.validar(fecha));
+		return this.restricciones.stream().allMatch(f -> f.validar(fecha));
 	}
 
 	

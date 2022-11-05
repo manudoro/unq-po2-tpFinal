@@ -9,9 +9,9 @@ public class Desafio {
 	private int cantidadDeMuestrasARecolectar;
 	private Dificultad dificultad;
 	private int recompensa;
-	private RestriccionTemporal restriccionTemporal;
+	private IRestriccionTemporal restriccionTemporal;
 	
-	public Desafio(Area area, int cantidadDeMuestrasARecolectar, Dificultad dificultad, int recompensa, RestriccionTemporal restriccionTemporal) {
+	public Desafio(Area area, int cantidadDeMuestrasARecolectar, Dificultad dificultad, int recompensa, IRestriccionTemporal restriccionTemporal) {
 		this.area = area;
 		this.cantidadDeMuestrasARecolectar = cantidadDeMuestrasARecolectar;
 		this.dificultad = dificultad;
@@ -35,7 +35,7 @@ public class Desafio {
 		return recompensa;
 	}
 
-	public RestriccionTemporal getRestriccionTemporal() {
+	public IRestriccionTemporal getRestriccionTemporal() {
 		return restriccionTemporal;
 
 	}

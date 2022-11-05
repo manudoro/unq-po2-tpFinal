@@ -5,8 +5,14 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 	
 	private DesafioDeUsuario desafioDeUsuario;
 
+	
+	
+	
+	
 	@Override
 	public int reducirMuestrasPorRecolectar() {
+		
+		
 		int cantidadDeMuestras = this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar();
 		cantidadDeMuestras = cantidadDeMuestras - 1;
 		
