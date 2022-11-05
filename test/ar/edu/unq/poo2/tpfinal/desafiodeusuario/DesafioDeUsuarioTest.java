@@ -34,10 +34,11 @@ class DesafioDeUsuarioTest {
 		LocalDate fecha1 = LocalDate.of(2022, 11, 19);
 		Coordenada punto = new Coordenada(5, 4);
 		Coordenada punto2 = new Coordenada(15, 15);
+		Coordenada punto3 = new Coordenada(3, 2);
 		Area area = new Area(punto, 5);
 		finDeSemana = new FinDeSemana();
 		muestra = new Muestra(punto2,fecha);
-		muestra2 = new Muestra(punto,fecha1);
+		muestra2 = new Muestra(punto3,fecha1);
 		desafio = new Desafio(area, 10, facil, 10, finDeSemana);
 
 		
@@ -116,7 +117,8 @@ class DesafioDeUsuarioTest {
 	@Test
 	
 	void chequeoPorcentajeDeComplejitudCuandoRecojoMuestra() {
-		this.desafioDeUsuario.recibirMuestra(muestra2);;
+		this.desafioDeUsuario.recibirMuestra(muestra2);
+		
 		assertEquals(10.0 ,this.desafioDeUsuario.getPorcentajeDeCompletitud());
 	}
 	

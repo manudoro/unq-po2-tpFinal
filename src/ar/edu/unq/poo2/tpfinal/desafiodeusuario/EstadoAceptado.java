@@ -19,6 +19,7 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 		if (cantidadDeMuestras == 0) {
 			IEstadoDeDesafio estadoDeDesafio = new EstadoFinalizado();
 			this.desafioDeUsuario.setEstadoDeDesafio(estadoDeDesafio);
+			
 		}
 		
 		return cantidadDeMuestras;

@@ -35,6 +35,7 @@ public class DesafioDeUsuario{
 	public void reducirMuestrasPorRecolectar() {
 		this.cantidadDeMuestrasPorRecolectar = estadoDeDesafio.reducirMuestrasPorRecolectar();
 		
+		
 	}
 
 	public void setEstadoDeDesafio(IEstadoDeDesafio estadoDeDesafio) {
@@ -48,12 +49,15 @@ public class DesafioDeUsuario{
 			this.reducirMuestrasPorRecolectar();
 			this.calucularPorcentajeDeCompletitud();
 		}
+		
 	}
 
 
-	private void calucularPorcentajeDeCompletitud() {
+	public void calucularPorcentajeDeCompletitud() {
 		this.porcentajeDeCompletitud = 
-				(desafio.getCantidadDeMuestrasARecolectar()-(this.cantidadDeMuestrasPorRecolectar))/ desafio.getCantidadDeMuestrasARecolectar() * 100;
+				(desafio.getCantidadDeMuestrasARecolectar()-this.cantidadDeMuestrasPorRecolectar) * 100 / desafio.getCantidadDeMuestrasARecolectar() ;
+				
+
 		
 	}
 
