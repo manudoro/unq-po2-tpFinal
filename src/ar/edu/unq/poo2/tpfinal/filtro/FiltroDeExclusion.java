@@ -1,21 +1,17 @@
 package ar.edu.unq.poo2.tpfinal.filtro;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class FiltroDeExclusion implements Filtrable {
+public class FiltroDeExclusion extends FiltroSimple implements Filtrable {
 	private List<String> categories;
-	private List<Proyecto> projects;
-
+	
 	public FiltroDeExclusion(List<String> categories, List<Proyecto> projects) {
 		this.categories = categories;
 		this.projects = projects;
 	}
 	
-	public List<Proyecto> buscar() {
+	public List<Proyecto> recolectar() {
 		// este metodo permite obtener los proyectos de la lista que incluyen las categorias del filtro
 		List<Proyecto> filteredProjects = projects.stream().
 				filter(p -> p.excluyeCategorias(categories)).toList();
@@ -32,17 +28,8 @@ public class FiltroDeExclusion implements Filtrable {
 		return categories;
 	}
 
-	public void agregarProyecto(Proyecto project) {
-		this.projects.add(project);
-		
-	}
 
-	@Override
-	public Set<Proyecto> getProyectos() {
-		
-		HashSet<Proyecto> proyectos = new HashSet(projects);
-		return proyectos;
-	}
+
 
 	
 }

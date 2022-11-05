@@ -83,17 +83,14 @@ public class Proyecto {
 	
 	public boolean contieneCategorias(List<String> categories) {
 		// este metodo indica si todas categorias dadas se incluyen en las del proyecto.
-		return this.getCategorias().containsAll(categories);
+		return this.getCategorias().stream().anyMatch(c -> categories.contains(c));
 	}
 	
 	public boolean excluyeCategorias(List<String> categories) {
 		// este metodo indica si todas categorias dadas se excluyen de las del proyecto.
-		for(String c : this.getCategorias()) {
-			if (categories.contains(c)){
-				return false;
-			}
-		}
-		return true;
+
+		return !this.getCategorias().stream().anyMatch(c -> categories.contains(c));
+
 	}
 	
 	

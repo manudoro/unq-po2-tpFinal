@@ -1,7 +1,6 @@
 package ar.edu.unq.poo2.tpfinal.filtro;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +10,12 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-class DisyuncionDeFiltrosTest {
-	
-	public DisyuncionDeFiltros disjunction;
-	public Filtrable estrella, includesBot, exludesBot, includesAstBot, excludesZoo, nameBosque;
+class NegacionDeFiltrosTest {
+	public FiltroCompuesto disyuncion, conjuncion;
+	public Filtrable negacionConjuncion, negacionDisyuncion, negacionExcluye, negacionEstrella, negacionIncluye, estrella, includesBot, excludesBot, includesAstBot, excludesZoo, nameBosque, excludesAst;
 	public Proyecto faunaMarina , stars ,animalesPeligrosos,floraAutoctona;
 	public String zoologia,botanica, astronomia;
-	public List<String> bot, astBot, zoo;
+	public List<String> bot, astBot, zoo, ast;
 	public List<Proyecto> projects;
 	
 	@BeforeEach
@@ -26,7 +24,7 @@ class DisyuncionDeFiltrosTest {
 		
 		animalesPeligrosos = new Proyecto("Peligros del bosque", "Proyecto sobre animales");
 		faunaMarina = new Proyecto("Ballena franca", "Proyecto sobre ballena franca");
-		floraAutoctona = new Proyecto("Flora autoctona", "Proyecto sobre flores nativas");
+		floraAutoctona = new Proyecto("Flora autoctona en bosques", "Proyecto sobre flores nativas");
 		stars = new Proyecto("Estrellas", "Proyecto sobre estrellas grandes");
 		
 		zoologia ="Zoología";
@@ -43,6 +41,9 @@ class DisyuncionDeFiltrosTest {
 		zoo = new ArrayList<String>();
 		zoo.add(zoologia);
 		
+		ast = new ArrayList<String>();
+		ast.add(astronomia);
+		
 		projects.add(animalesPeligrosos);
 		projects.add(faunaMarina);
 		projects.add(floraAutoctona);
@@ -55,34 +56,32 @@ class DisyuncionDeFiltrosTest {
 		
 		estrella = new FiltroTextoEnNombre   ("estrella", projects);
 		includesBot = new FiltroDeInclusion   (bot, projects);
-		exludesBot = new FiltroDeExclusion    (bot, projects);
+		excludesBot = new FiltroDeExclusion    (bot, projects);
 		includesAstBot = new FiltroDeInclusion(astBot, projects);
 		excludesZoo = new FiltroDeExclusion   (zoo, projects);
 		nameBosque = new FiltroTextoEnNombre ("Bosque", projects);
-
-		disjunction = new DisyuncionDeFiltros();
-
+		excludesAst = new FiltroDeExclusion(ast, projects);
+		
+		conjuncion = new ConjuncionDeFiltros();
+		conjuncion.agregarFiltro(nameBosque);
+		conjuncion.agregarFiltro(includesBot);
+		
+		disyuncion = new DisyuncionDeFiltros();
+		disyuncion.agregarFiltro(estrella);
+		disyuncion.agregarFiltro(includesBot);
+		
+		negacionEstrella = new NegacionDeFiltro(estrella);
+		negacionIncluye = new NegacionDeFiltro(includesBot);
+		negacionExcluye = new NegacionDeFiltro(excludesZoo);
+		negacionConjuncion = new NegacionDeFiltro(conjuncion);
+		negacionDisyuncion = new NegacionDeFiltro(disyuncion);
 	}
 
 	@Test
 	// Cuando se pide una disyuncion con un filtro de nombre y uno de inclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
-	void testDisjunctionOfNameAndIncludesCategories() {
-		disjunction.agregarFiltro(estrella);
-		disjunction.agregarFiltro(includesBot);
-		List<Proyecto> results = disjunction.buscar();
-		assertEquals(2, results.size());
-		assertTrue(results.contains(stars));
-		assertTrue(results.contains(floraAutoctona));
-	}
-	
-	@Test 
-	// Cuando se pide una disyuncion con un filtro de nombre y uno de exclusion de categorias, se obtienen todos
-	// los que cumplen con ambos criterios 
-	void testDisjunctionOfNameAndExcludesCategories() {
-		disjunction.agregarFiltro(estrella);
-		disjunction.agregarFiltro(exludesBot);
-		List<Proyecto> results = disjunction.buscar();
+	void testNegacionDeFiltroDInclusion() {
+		List<Proyecto> results = negacionIncluye.buscar();
 		assertEquals(3, results.size());
 		assertTrue(results.contains(stars));
 		assertTrue(results.contains(faunaMarina));
@@ -90,30 +89,49 @@ class DisyuncionDeFiltrosTest {
 	}
 	
 	@Test 
+	// Cuando se pide una disyuncion con un filtro de nombre y uno de exclusion de categorias, se obtienen todos
+	// los que cumplen con ambos criterios 
+	void testNegacionDeFiltroDeTexto() {
+		List<Proyecto> results = negacionEstrella.buscar();
+		assertEquals(3, results.size());
+		assertTrue(results.contains(faunaMarina));
+		assertTrue(results.contains(floraAutoctona));
+		assertTrue(results.contains(animalesPeligrosos));
+
+	}
+	
+	
+	@Test 
+	// Cuando se pide una disyuncion con un filtro de nombre y uno de exclusion de categorias, se obtienen todos
+	// los que cumplen con ambos criterios 
+	void testNegacionDeFiltroDeExclusion() {
+		List<Proyecto> results = negacionExcluye.buscar();
+		assertEquals(2, results.size());
+		assertTrue(results.contains(faunaMarina));
+		assertTrue(results.contains(animalesPeligrosos));
+
+	}
+	
+	@Test 
 	// Cuando se pide una disyuncion con un filtro de inclusion y uno de exclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
-	void testDisjunctionOfIncludesAndExcludesCategories() {
-		disjunction.agregarFiltro(includesBot);
-		disjunction.agregarFiltro(exludesBot);
-		List<Proyecto> results = disjunction.buscar();
-		assertEquals(4, results.size());
+	void testNegacionDeDisyuncion() {
+		List<Proyecto> results = negacionDisyuncion.buscar();
+		assertEquals(2, results.size());
+		assertTrue(results.contains(faunaMarina));
+		assertTrue(results.contains(animalesPeligrosos));
 
 	}
 	
 	@Test
-	void testDisjunctionOfIncludesExcludesCategoriesAndName() {
+	void testNegacionDeConjuncion() {
 		// Cuando se pide una disyuncion con un filtro de nombre, uno de exclusion y uno de inclusion
 		// de categorias se obtienen todos los que cumplen con los 3 criterios 
-		disjunction.agregarFiltro(excludesZoo);
-		disjunction.agregarFiltro(includesAstBot);
-		disjunction.agregarFiltro(nameBosque);
-		List<Proyecto> results = disjunction.buscar();
+		List<Proyecto> results = negacionConjuncion.buscar();
 		assertEquals(3, results.size());
 		assertTrue(results.contains(stars));
-		assertTrue(results.contains(floraAutoctona));
 		assertTrue(results.contains(animalesPeligrosos));
+		assertTrue(results.contains(faunaMarina));
 	}
-	
-	
-
 }
+	

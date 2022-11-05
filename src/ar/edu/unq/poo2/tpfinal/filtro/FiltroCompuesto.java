@@ -40,16 +40,13 @@ public abstract class FiltroCompuesto implements Filtrable{
 
 	protected abstract List<Proyecto> recolectar(List<List<Proyecto>> allResult);
 	
-	public Set<Proyecto> getProyectos(){
-		return filters.stream().flatMap(f-> f.getProyectos().stream()).collect(Collectors.toSet());
+	public List<Proyecto> getProyectos(){
+		
+		Set<Proyecto> setProyectos = filters.stream().flatMap(f-> f.getProyectos().stream()).collect(Collectors.toSet());
+		
+		return new ArrayList<Proyecto>(setProyectos);
 	}
 
-
-	public void agregarFiltros(List<Filtrable> filters) {
-		this.filters.addAll(filters);
-	}
-	
-	
 	
 	}
 	

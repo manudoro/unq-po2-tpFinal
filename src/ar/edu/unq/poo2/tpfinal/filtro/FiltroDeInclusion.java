@@ -7,15 +7,9 @@ import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class FiltroDeInclusion implements Filtrable {
+public class FiltroDeInclusion extends FiltroSimple  implements Filtrable {
 	private List<String> categories;
-	private List<Proyecto> projects;	
-
-
-	public List<Proyecto> getProjects() {
-		return projects;
-	}
-
+	
 
 	public FiltroDeInclusion(List<String> categories, List<Proyecto> projects) {
 		this.categories = categories;
@@ -23,8 +17,8 @@ public class FiltroDeInclusion implements Filtrable {
 	}
 
 
-	public List<Proyecto> buscar() {
-		// este metodo permite obtener los proyectos de la lista que excluyen las categorias del filtro
+	protected List<Proyecto> recolectar() {
+		// este metodo permite obtener los proyectos de la lista que excluyen las categorias dadas
 
 		List<Proyecto> filteredProjects = projects.
 				stream().filter(p -> p.contieneCategorias(categories)).toList();
@@ -42,11 +36,5 @@ public class FiltroDeInclusion implements Filtrable {
 		return categories;
 	}
 
-	@Override
-	public Set<Proyecto> getProyectos() {
-		
-		HashSet<Proyecto> proyectos = new HashSet(projects);
-		return proyectos;
-	}
 }
 

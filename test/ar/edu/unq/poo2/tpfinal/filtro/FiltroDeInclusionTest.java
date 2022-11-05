@@ -67,10 +67,10 @@ class FiltroDeInclusionTest {
 	}
 	
 	@Test 
-	// Cuando se incluye mas de una categoria, se obtienen los proyectos que tienen todas ellas
-	void testIncludesFilterMustIncludesAll() {
+	// Cuando se incluye mas de una categoria, se obtienen los proyectos que tienen alguna de ellas
+	void testIncludesFilterMustIncludesAny() {
 		fauna.agregarCategoria(botanica);
 		List<Proyecto> filterProyects = fauna.buscar();
-		assertTrue(filterProyects.size() == 0);		
+		assertTrue(filterProyects.size() == 3);		
 	}
 }
