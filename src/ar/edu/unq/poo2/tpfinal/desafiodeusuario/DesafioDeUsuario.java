@@ -26,6 +26,11 @@ public class DesafioDeUsuario{
 	public int getCantidadDeMuestrasPorRecolectar() {
 		return cantidadDeMuestrasPorRecolectar;
 	}
+	
+	public float getPorcentajeDeCompletitud() {
+		return porcentajeDeCompletitud;
+	}
+
 
 	public void reducirMuestrasPorRecolectar() {
 		this.cantidadDeMuestrasPorRecolectar = estadoDeDesafio.reducirMuestrasPorRecolectar();
@@ -41,7 +46,15 @@ public class DesafioDeUsuario{
 	public void recibirMuestra(Muestra muestra) {
 		if (this.estaEnElAreaDelDesafio(muestra) && this.esTaDentroDeLaFechaDelDesafio(muestra)) {
 			this.reducirMuestrasPorRecolectar();
+			this.calucularPorcentajeDeCompletitud();
 		}
+	}
+
+
+	private void calucularPorcentajeDeCompletitud() {
+		this.porcentajeDeCompletitud = 
+				(desafio.getCantidadDeMuestrasARecolectar()-(this.cantidadDeMuestrasPorRecolectar))/ desafio.getCantidadDeMuestrasARecolectar() * 100;
+		
 	}
 
 
@@ -55,6 +68,7 @@ public class DesafioDeUsuario{
 		
 		return this.desafio.getRestriccionTemporal().validar(muestra.getFechaDeRecoleccion());
 	}
+	
 	
 	
 	
