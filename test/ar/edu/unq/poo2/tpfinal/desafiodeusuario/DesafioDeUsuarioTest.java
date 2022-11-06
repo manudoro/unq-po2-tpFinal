@@ -161,7 +161,6 @@ class DesafioDeUsuarioTest {
 	
 	@Test
 	void seVerificaQueUnDesafioDeUsuarioSeAgregaEnUnaListaSiNoEsAceptadoPorUnUsuario() {
-		desafio.agregarASinHacer(desafios)
 	}
 	
 	
