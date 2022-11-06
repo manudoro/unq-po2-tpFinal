@@ -80,7 +80,7 @@ class SistemaTest {
 		
 		// Para que el sistema le recomiende desafios, el usuario debe participar en el proyecto
 		usuario.participarEnProyecto(proyecto);
-		usuario.agregarDesafio(desafio1);
+		usuario.aceptarDesafio(desafio1);
 		
 		List<Desafio> desafiosRecomendados = sistema.recomendarDesafios(usuario, preferencia);
 		

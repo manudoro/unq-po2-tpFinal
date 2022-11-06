@@ -62,7 +62,7 @@ public class Desafio {
 		return desafiosDeUsuario.stream().anyMatch((DesafioDeUsuario desafioDeUsuario) -> desafioDeUsuario.contieneAlDesafio(this));
 	}
 
-<<<<<<< HEAD
+
 	public boolean correspondeA(Muestra sample) {
 		
 		return estaEnElArea(sample) && correspondeARestriccion(sample);
@@ -72,13 +72,12 @@ public class Desafio {
 		return this.getRestriccionTemporal().validar(muestra.getFechaDeRecoleccion());
 
 	}
-	
-=======
+
 	public Integer valorDeCoincidenciaConPreferencia(Preferencia preferencia) {
 		int valorDeDificultad = dificultad.getValorDeDificultad();
 		int valorDePreferencia = preferencia.calcularCoincidencia(valorDeDificultad, recompensa, cantidadDeMuestrasARecolectar);
 		
 		return valorDePreferencia;
 	}
->>>>>>> 1a67fe4ff8df1fca5f22ecfd81f44409a308d397
+
 }
