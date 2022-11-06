@@ -1,5 +1,6 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
@@ -16,11 +17,13 @@ import ar.edu.unq.poo2.tpfinal.muestra.*;
 
 class DesafioDeUsuarioTest {
 
-	private DesafioDeUsuario desafioDeUsuario;
-	private Desafio desafio;
-	private Muestra muestra;
-	private Muestra muestra2; 
+	private DesafioDeUsuario desafioDeUsuario, desafioDeUsuario2;
+	private Desafio desafio , desafio2;
+	private Muestra muestra, muestra1 , muestra2; 
 	private FinDeSemana finDeSemana;
+	private EntreFechas entreFecha;
+	private IEstadoDeDesafio estadoFinalizado,estadoAceptado;
+	
 	
 	@BeforeEach
 	void setUp() {
@@ -32,15 +35,21 @@ class DesafioDeUsuarioTest {
 		Dificultad facil = Dificultad.FACIL;
 		LocalDate fecha = LocalDate.of(2022, 11, 12);
 		LocalDate fecha1 = LocalDate.of(2022, 11, 19);
+		LocalDate fecha2 = LocalDate.of(2023, 10, 12);
 		Coordenada punto = new Coordenada(5, 4);
 		Coordenada punto2 = new Coordenada(15, 15);
 		Coordenada punto3 = new Coordenada(3, 2);
 		Area area = new Area(punto, 5);
-		finDeSemana = new FinDeSemana();
 		muestra = new Muestra(punto2,fecha);
+		muestra1 = new Muestra(punto2,fecha2);
 		muestra2 = new Muestra(punto3,fecha1);
+		finDeSemana = new FinDeSemana();
+		entreFecha = new EntreFechas(fecha, fecha1);
 		desafio = new Desafio(area, 10, facil, 10, finDeSemana);
-
+		desafio2 = new Desafio(area, 10, facil, 10, entreFecha);
+		estadoFinalizado = new EstadoFinalizado();
+		estadoAceptado = new EstadoAceptado();
+	
 		
 		// <-- Instancia
 		
@@ -51,6 +60,7 @@ class DesafioDeUsuarioTest {
 		 * con sus atributos */
 		
 		this.desafioDeUsuario = new DesafioDeUsuario(desafio);
+		 desafioDeUsuario2 = new DesafioDeUsuario(desafio2);
 	}
 	
 	@Test
@@ -83,14 +93,13 @@ class DesafioDeUsuarioTest {
 	
 	@Test
 	void seVerificaQueUnaMuestraNoSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
-		assertFalse(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra));
+		assertFalse(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra1));
 	}
 	
 	@Test
 	void seVerificaQueUnaMuestraSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
 		assertTrue(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra2));
 	}
-	
 	
 	@Test 
 	void ceuandoUnDesafioDeUsuarioRecibeUnaMuestraYNostaDentroDeSuArea_NoSeRestaAlasMuestrasPorRecolectar() {
@@ -111,8 +120,15 @@ class DesafioDeUsuarioTest {
 	@Test
 	
 	void seVerificaSiUnaMuestra_EstaDentroDeLaFechaDeLaRestriccionTemporalDelDesafio() {
-		assertTrue(this.desafioDeUsuario.esTaDentroDeLaFechaDelDesafio(muestra2));
+		assertTrue(this.desafioDeUsuario.esTaDentroDeLaFechaDelDesafio(muestra));
 	}
+	
+	@Test
+	
+	void seVerificaSiUnaMuestra_NoEstaDentroDeLaFechaDeLaRestriccionTemporalDelDesafio() {
+		assertFalse(this.desafioDeUsuario.esTaDentroDeLaFechaDelDesafio(muestra1));
+	}
+	
 	
 	@Test
 	
@@ -121,6 +137,30 @@ class DesafioDeUsuarioTest {
 		
 		assertEquals(10.0 ,this.desafioDeUsuario.getPorcentajeDeCompletitud());
 	}
+	
+	@Test
+	
+	
+	void verificarQueUnaMuestra_NoEsteDentroDeLaFechaDeLaRestriccionTemporalEntreSemana() {
+		assertFalse(this.desafioDeUsuario2.esTaDentroDeLaFechaDelDesafio(muestra1));
+	}
+	
+	@Test
+	
+	void verificarQueUnaMuestraEEsteDentroDeLaFechaDeLaRestriccionTemporalEntreSemana() {
+		assertTrue(this.desafioDeUsuario2.esTaDentroDeLaFechaDelDesafio(muestra));
+	}
+	
+
+	@Test
+	
+	void cuandoUnaMuestraNoEstaDentroDeLaFechaYElEstadoSeCambiaAFinalizado() {
+		assertFalse(this.desafioDeUsuario2.restriccionEstaAbierta(muestra1));
+		//assertEquals( estadoFinalizado.getClass() , this.desafioDeUsuario.getEstadoDeDesafio().getClass());
+	}
+	
+	
+	
 	
 	
 }

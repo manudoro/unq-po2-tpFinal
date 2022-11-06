@@ -32,6 +32,11 @@ public class DesafioDeUsuario{
 	}
 
 
+	public IEstadoDeDesafio getEstadoDeDesafio() {
+		return estadoDeDesafio;
+	}
+
+
 	public void reducirMuestrasPorRecolectar() {
 		this.cantidadDeMuestrasPorRecolectar = estadoDeDesafio.reducirMuestrasPorRecolectar();
 		
@@ -45,11 +50,13 @@ public class DesafioDeUsuario{
 
 
 	public void recibirMuestra(Muestra muestra) {
-		if (this.estaEnElAreaDelDesafio(muestra) && this.esTaDentroDeLaFechaDelDesafio(muestra)) {
-			this.reducirMuestrasPorRecolectar();
-			this.calucularPorcentajeDeCompletitud();
-		}
+		this.estadoDeDesafio.recibirMuestra(muestra);
+	}
+
+
+	 boolean restriccionEstaAbierta(Muestra muestra) {
 		
+		return this.desafio.getRestriccionTemporal().estaAbierta(muestra.getFechaDeRecoleccion()) ;
 	}
 
 
@@ -57,23 +64,18 @@ public class DesafioDeUsuario{
 		this.porcentajeDeCompletitud = 
 				(desafio.getCantidadDeMuestrasARecolectar()-this.cantidadDeMuestrasPorRecolectar) * 100 / desafio.getCantidadDeMuestrasARecolectar() ;
 				
-
 		
 	}
-
 
 	protected boolean estaEnElAreaDelDesafio(Muestra muestra) {
 		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
 		return this.desafio.estaEnElArea(muestra);
 	}
 
-
 	public boolean esTaDentroDeLaFechaDelDesafio(Muestra muestra) {
 		
 		return this.desafio.getRestriccionTemporal().validar(muestra.getFechaDeRecoleccion());
 	}
-	
-	
 	
 	
 };

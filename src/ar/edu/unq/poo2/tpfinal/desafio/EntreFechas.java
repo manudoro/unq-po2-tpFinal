@@ -18,12 +18,16 @@ public class EntreFechas implements IRestriccionTemporal{
 	}
 
 
-
 	@Override
 	public boolean validar(LocalDate fecha) {
 		
 
 		return this.fechaInicio.isBefore(fecha.plusDays(1)) && this.fechaFin.isAfter(fecha.minusDays(1));
+	}
+	@Override
+	public boolean estaAbierta(LocalDate fecha) {
+		
+		return validar(fecha);
 	}
 
 
