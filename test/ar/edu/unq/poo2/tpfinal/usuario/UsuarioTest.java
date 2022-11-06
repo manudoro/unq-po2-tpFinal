@@ -1,11 +1,11 @@
 package ar.edu.unq.poo2.tpfinal.usuario;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.mock;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,23 +13,24 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
+import ar.edu.unq.poo2.tpfinal.desafio.DiasDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
-import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class UsuarioTest {
 
 	Proyecto proyecto;
 	Usuario usuario1, usuario2;
-	Muestra muestra , muestra1;
+	Muestra muestra , muestra1, muestra2;
 	DesafioDeUsuario desafioUsuario;
-	Desafio desafio;
+	Desafio desafio, desafio2;
 	DesafioDeUsuario desafioDeUsuario;
 	FinDeSemana finDeSemana;
+	DiasDeSemana diasDeSemana;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -37,13 +38,16 @@ class UsuarioTest {
 	proyecto = new Proyecto("Programmin", "Cs.Tecnologhy");
 	LocalDate fecha = LocalDate.of(2022, 11, 12);
 	LocalDate fecha1 = LocalDate.of(2022, 11, 19);
+	LocalDate fecha2 = LocalDate.of(2022, 11, 8);
 	Coordenada punto2 = new Coordenada(15, 15);
 	muestra = new Muestra(punto2,fecha);
 	muestra1 = new Muestra(punto2,fecha1);
 	Dificultad facil = Dificultad.FACIL;
 	Area area = new Area(punto2, 5);
 	finDeSemana = new FinDeSemana();
+	diasDeSemana = new DiasDeSemana();
 	this.desafio = new Desafio(area, 1, facil, 5,finDeSemana);
+	this.desafio2 = new Desafio(area, 1, facil, 5,diasDeSemana);
 	this.desafioDeUsuario = new DesafioDeUsuario(desafio , usuario1);
 	}
 
@@ -120,6 +124,18 @@ class UsuarioTest {
 		this.usuario1.participarEnProyecto(proyecto);
 		this.proyecto.recibirDesafio(desafio);
 		assertTrue(usuario1.desafiosSinHacer().contains(desafio));
+		
+	}
+	
+	@Test
+	void seObtieneElPromedioGeneralDePorcentajeDeDesafios() {
+		this.usuario1.participarEnProyecto(proyecto);
+		this.proyecto.recibirDesafio(desafio);
+		this.proyecto.recibirDesafio(desafio2);
+		this.usuario1.agregarDesafio(desafio);
+		this.usuario1.agregarDesafio(desafio2);
+		this.usuario1.obtenerMuestra(muestra1);
+		assertEquals(10.0, usuario1.getPorcentajeGeneralDeCompletitud());
 		
 	}
 }
