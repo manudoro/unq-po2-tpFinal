@@ -23,8 +23,12 @@ class DesafioDeUsuarioTest {
 	private Muestra muestra, muestra1 , muestra2; 
 	private FinDeSemana finDeSemana;
 	private EntreFechas entreFecha;
-	private IEstadoDeDesafio estadoFinalizado,estadoAceptado;
+
 	private Usuario usuario;
+
+	private IEstadoDeDesafio estadoFinalizado,estadoAceptado,estadoSinAceptar;
+	
+
 	
 	@BeforeEach
 	void setUp() {
@@ -153,5 +157,8 @@ class DesafioDeUsuarioTest {
 		//assertEquals( estadoFinalizado.getClass() , this.desafioDeUsuario.getEstadoDeDesafio().getClass());
 	}
 	
+	@Test
+	void seVerificaQueUnDesafioDeUsuarioSeAgregaEnUnaListaSiNoEsAceptadoPorUnUsuario() {
+	}
 	
 }

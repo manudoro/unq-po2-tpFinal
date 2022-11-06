@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -93,6 +94,18 @@ class UsuarioTest {
 		this.desafioDeUsuario.recibirMuestra(muestra);
 		assertEquals(1 , this.usuario1.getDesafiosCompletos().size());
 	
+	}
+	
+	@Test
+	void testSeVerificaQueAUnUsuarioSeLePuedePreguntarLosDesafiosQueNoParticipaHacer() {
+		Desafio desafio = mock(Desafio.class);
+		
+		proyecto.recibirDesafio(desafio);
+		usuario1.participarEnProyecto(proyecto);
+		ArrayList<Desafio> desafiosSinHacer = usuario1.desafiosSinHacer();
+		
+		assertTrue(desafiosSinHacer.contains(desafio));
+		
 	}
 	
 }

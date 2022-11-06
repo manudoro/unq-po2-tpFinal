@@ -88,5 +88,11 @@ public class DesafioDeUsuario{
 	}
 
 
+
+	public boolean contieneAlDesafio(Desafio desafio) {
+		
+		return this.desafio == desafio;
+	}
+
 	
 };

@@ -15,7 +15,7 @@ public class Usuario {
 	/* Se  modela un usuario */
 	
 	private List<Muestra> muestrasRecolectadas;
-	private List<DesafioDeUsuario> desafios;
+	private ArrayList<DesafioDeUsuario> desafios;
 	private List<Proyecto> proyectos;
 	private List<DesafioDeUsuario> desafiosCompletos;
 	
@@ -73,14 +73,15 @@ public class Usuario {
 
 	public ArrayList<Desafio> desafiosSinHacer() { //Corregir
 		ArrayList<Desafio> desafiosSinHacer = new ArrayList<Desafio>();
+		proyectos.stream().forEach(proyecto -> desafiosSinHacer.addAll(proyecto.desafiosSinParticipacion(desafios)));
+		
 		return desafiosSinHacer;
 	}
 	
+
 	public void agregarDesafiosCompletos(DesafioDeUsuario desafioDeUsuario){
 		this.desafiosCompletos.add(desafioDeUsuario);
 	}
-
-	
 	
 }
 

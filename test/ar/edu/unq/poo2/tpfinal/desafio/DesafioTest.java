@@ -7,10 +7,12 @@ import static org.mockito.Mockito.verify;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
@@ -85,6 +87,15 @@ class DesafioTest {
 	
 	void seVerificaSiUnaMuestra_EstaDentroDelAreaDelDesafio() {
 		assertTrue(this.desafio.estaEnElArea(muestra2));
+	}
+	
+	@Test
+	void seVerificaQueUnDesafioNoEstaEnLosDesafiosDeUnUsuario() {
+		Desafio desafio = mock(Desafio.class);
+		ArrayList<DesafioDeUsuario> desafiosDeUsuario = new ArrayList<DesafioDeUsuario>();
+		desafiosDeUsuario.add(new DesafioDeUsuario(desafio , usuario1));
+		
+		assertFalse(this.desafio.estaEnLosDesafiosDeUsuario(desafiosDeUsuario));
 	}
 	
 	
