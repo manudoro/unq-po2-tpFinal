@@ -1,12 +1,14 @@
 package ar.edu.unq.poo2.tpfinal.proyecto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
+import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
@@ -97,6 +99,27 @@ public class Proyecto {
 
 	public boolean contieneTextoEnNombre(String searchText) {
 		return this.getNombre().toUpperCase().contains(searchText.toUpperCase());
+	}
+
+
+	public ArrayList<Desafio> desafiosSinParticipacion(ArrayList<DesafioDeUsuario> desafiosDeUsuario) {
+		
+		ArrayList<Desafio> desafiosSinParticipacion = new ArrayList<Desafio>();
+		for(Desafio desafio : desafios) {
+			agregarSiNoEsta(desafiosDeUsuario, desafiosSinParticipacion, desafio); //
+		}
+		
+		return desafiosSinParticipacion;
+	}
+
+
+	private void agregarSiNoEsta(ArrayList<DesafioDeUsuario> desafiosDeUsuario,
+								ArrayList<Desafio> desafiosSinParticipacion, Desafio desafio) {
+		// Si el desafio dado no se encuentra en los desafiosDeUsuario, entonces
+		// se acumula en la lista dada.
+		if(!desafio.estaEnLosDesafiosDeUsuario(desafiosDeUsuario)) {
+			desafiosSinParticipacion.add(desafio);
+		}
 	}
 
 

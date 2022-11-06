@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.usuario;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
@@ -15,7 +16,7 @@ public class Usuario {
 	/* Se  modela un usuario */
 	
 	private List<Muestra> muestrasRecolectadas;
-	private List<DesafioDeUsuario> desafios;
+	private ArrayList<DesafioDeUsuario> desafios;
 	private List<Proyecto> proyectos;
 	private List<DesafioDeUsuario> desafiosCompletos;
 	
@@ -72,9 +73,11 @@ public class Usuario {
 
 	public ArrayList<Desafio> desafiosSinHacer() { //Corregir
 		ArrayList<Desafio> desafiosSinHacer = new ArrayList<Desafio>();
+		proyectos.stream().forEach(proyecto -> desafiosSinHacer.addAll(proyecto.desafiosSinParticipacion(desafios)));
+		
 		return desafiosSinHacer;
 	}
-
+	
 	
 	
 }

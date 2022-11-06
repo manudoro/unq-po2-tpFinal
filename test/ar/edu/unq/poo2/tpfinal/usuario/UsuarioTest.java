@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mock;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -89,6 +90,18 @@ class UsuarioTest {
 	
 	@Test
 	void testCuandoUnUsuarioRecolectaUnaMuestraYTieneDesafiosQueNecesitanEsaMuestra_SeActualizanEsosDesafios() {
+		
+	}
+	
+	@Test
+	void testSeVerificaQueAUnUsuarioSeLePuedePreguntarLosDesafiosQueNoParticipaHacer() {
+		Desafio desafio = mock(Desafio.class);
+		
+		proyecto.recibirDesafio(desafio);
+		usuario1.participarEnProyecto(proyecto);
+		ArrayList<Desafio> desafiosSinHacer = usuario1.desafiosSinHacer();
+		
+		assertTrue(desafiosSinHacer.contains(desafio));
 		
 	}
 	

@@ -1,5 +1,9 @@
 package ar.edu.unq.poo2.tpfinal.desafio;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
+
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
@@ -50,6 +54,10 @@ public class Desafio {
 	
 	public boolean estaEnElArea(Muestra muestra) {
 		return this.area.estaDentro(muestra);
+	}
+
+	public boolean estaEnLosDesafiosDeUsuario(ArrayList<DesafioDeUsuario> desafiosDeUsuario) {
+		return desafiosDeUsuario.stream().anyMatch((DesafioDeUsuario desafioDeUsuario) -> desafioDeUsuario.contieneAlDesafio(this));
 	}
 	
 }
