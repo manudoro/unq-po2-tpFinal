@@ -1,8 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.desafio;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+
 
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
@@ -73,11 +72,11 @@ public class Desafio {
 
 	}
 
+
 	public Integer valorDeCoincidenciaConPreferencia(Preferencia preferencia) {
 		int valorDeDificultad = dificultad.getValorDeDificultad();
 		int valorDePreferencia = preferencia.calcularCoincidencia(valorDeDificultad, recompensa, cantidadDeMuestrasARecolectar);
 		
 		return valorDePreferencia;
 	}
-
 }

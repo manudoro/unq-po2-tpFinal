@@ -137,12 +137,21 @@ class UsuarioTest {
 		assertEquals(100, usuario1.getPorcentajeDeCompletitud(desafio));
 
 	}
-	
-	
-		
+
+
+	@Test
+	void seObtieneElPromedioGeneralDePorcentajeDeDesafios() {
+		this.usuario1.participarEnProyecto(proyecto);
+		this.proyecto.recibirDesafio(desafio);
+		this.proyecto.recibirDesafio(desafio2);
+		this.usuario1.aceptarDesafio(desafio);
+		this.usuario1.aceptarDesafio(desafio2);
+		this.usuario1.obtenerMuestra(muestra1);
+		assertEquals(50.0, usuario1.getPorcentajeGeneralDeCompletitud());
+	}
 		
 	@Test
-		
+
 	void seVerificaQueUnUsuarioPuedeModificarSuPreferencia() {
 		usuario1.configurarPreferencia(Dificultad.FACIL, 30, 20);
 		
