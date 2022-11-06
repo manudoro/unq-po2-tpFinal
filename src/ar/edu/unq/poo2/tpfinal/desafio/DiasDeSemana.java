@@ -14,4 +14,10 @@ public class DiasDeSemana implements IRestriccionTemporal {
 		DayOfWeek dia = fecha.getDayOfWeek();
 		return dia != DayOfWeek.SATURDAY && dia != DayOfWeek.SUNDAY;
 	}
+
+	@Override
+	public boolean estaAbierta(LocalDate fecha) {
+		//chequeamos si la restriccion puede volver a ser valida
+		return true;
+	}
 }

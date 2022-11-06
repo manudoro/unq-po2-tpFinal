@@ -42,6 +42,13 @@ public class RestriccionMixta implements IRestriccionTemporal {
 		return this.restricciones.stream().allMatch(f -> f.validar(fecha));
 	}
 
+
+	@Override
+	public boolean estaAbierta(LocalDate fecha) {
+		
+		return this.restricciones.stream().filter(r -> !r.validar(fecha)).toList().stream().allMatch(r -> r.estaAbierta(fecha));
+	}
+
 	
 	
 	

@@ -5,4 +5,5 @@ import java.time.LocalDate;
 public interface IRestriccionTemporal {
 	
 	boolean validar(LocalDate fecha);
+	boolean estaAbierta(LocalDate fecha);
 }
