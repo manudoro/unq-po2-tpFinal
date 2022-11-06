@@ -7,8 +7,11 @@ import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
-public interface IFormaDeRecomendacion {
-	/* Una interfaz cuyo protocolo obliga, a quienes lo implementan, recomendar desafios */
-	
-	public List<Desafio> ordenar(List<Desafio> desafiosARecomendar, Preferencia preferencia);
+public class FormaDeRecomendacionFavorito implements IFormaDeRecomendacion {
+
+	@Override
+	public List<Desafio> ordenar(List<Desafio> desafiosARecomendar, Preferencia preferencia) {
+		
+		return null;
+	}
 }

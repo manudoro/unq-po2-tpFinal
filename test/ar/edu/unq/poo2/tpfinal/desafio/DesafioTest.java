@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
+import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class DesafioTest {
@@ -98,6 +99,14 @@ class DesafioTest {
 		assertFalse(this.desafio.estaEnLosDesafiosDeUsuario(desafiosDeUsuario));
 	}
 	
+	@Test
+	void seVerificaQueUnDesafioPuedeGenerarUnValorDeCoinciedenciaConUnaPreferencia() {
+		Preferencia preferencia = new Preferencia(Dificultad.MEDIO, 10, 20);
+		
+		int valorDeCoincidencia = this.desafio.valorDeCoincidenciaConPreferencia(preferencia);
+		
+		assertEquals(24, valorDeCoincidencia);
+	}
 	
 	
 	

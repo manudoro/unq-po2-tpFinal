@@ -6,9 +6,11 @@ import java.util.function.BooleanSupplier;
 
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
+import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 public class Desafio {
+	
 	private Area area;
 	private int cantidadDeMuestrasARecolectar;
 	private Dificultad dificultad;
@@ -59,5 +61,11 @@ public class Desafio {
 	public boolean estaEnLosDesafiosDeUsuario(ArrayList<DesafioDeUsuario> desafiosDeUsuario) {
 		return desafiosDeUsuario.stream().anyMatch((DesafioDeUsuario desafioDeUsuario) -> desafioDeUsuario.contieneAlDesafio(this));
 	}
-	
+
+	public Integer valorDeCoincidenciaConPreferencia(Preferencia preferencia) {
+		int valorDeDificultad = dificultad.getValorDeDificultad();
+		int valorDePreferencia = preferencia.calcularCoincidencia(valorDeDificultad, recompensa, cantidadDeMuestrasARecolectar);
+		
+		return valorDePreferencia;
+	}
 }

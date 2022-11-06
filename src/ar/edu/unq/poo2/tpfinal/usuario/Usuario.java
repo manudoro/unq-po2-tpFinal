@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
+import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
@@ -18,12 +19,20 @@ public class Usuario {
 	private ArrayList<DesafioDeUsuario> desafios;
 	private List<Proyecto> proyectos;
 	private List<DesafioDeUsuario> desafiosCompletos;
+	private Preferencia preferencia;
 	
 	public Usuario() {
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
 		this.desafios = new ArrayList<DesafioDeUsuario>();
 		this.proyectos = new ArrayList<Proyecto>();
 		this.desafiosCompletos = new ArrayList<DesafioDeUsuario>();
+		this.preferencia = new Preferencia(Dificultad.FACIL, 0, 0);
+	}
+	
+	
+
+	public Preferencia getPreferencia() {
+		return preferencia;
 	}
 
 	public List<Muestra> getMuestrasRecolectadas() {
@@ -81,6 +90,10 @@ public class Usuario {
 
 	public void agregarDesafiosCompletos(DesafioDeUsuario desafioDeUsuario){
 		this.desafiosCompletos.add(desafioDeUsuario);
+	}
+
+	public void configurarPreferencia(Dificultad dificultad, int recompenza, int cantidadDeMuestras) {
+		this.preferencia.configurar(dificultad, recompenza, cantidadDeMuestras);
 	}
 	
 }

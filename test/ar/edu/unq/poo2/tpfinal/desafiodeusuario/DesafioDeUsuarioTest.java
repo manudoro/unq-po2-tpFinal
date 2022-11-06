@@ -157,8 +157,4 @@ class DesafioDeUsuarioTest {
 		//assertEquals( estadoFinalizado.getClass() , this.desafioDeUsuario.getEstadoDeDesafio().getClass());
 	}
 	
-	@Test
-	void seVerificaQueUnDesafioDeUsuarioSeAgregaEnUnaListaSiNoEsAceptadoPorUnUsuario() {
-	}
-	
 }

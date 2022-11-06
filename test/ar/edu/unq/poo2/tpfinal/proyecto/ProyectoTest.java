@@ -2,10 +2,7 @@ package ar.edu.unq.poo2.tpfinal.proyecto;
 
 import static org.mockito.Mockito.mock;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,15 +17,12 @@ import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
-import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
-import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class ProyectoTest {
 
 	private Proyecto proyecto;
-	private Usuario usuario1 , usuario2;
-	private Muestra muestra;
+	private Usuario usuario1;
 	private Desafio desafio2;
 	private String categoria;
 	private Desafio desafio1;
