@@ -78,5 +78,11 @@ public class DesafioDeUsuario{
 		
 	}
 
+
+	public Desafio getDesafio() {
+		// TODO Auto-generated method stub
+		return this.desafio;
+	}
+
 	
 };

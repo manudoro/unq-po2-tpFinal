@@ -2,6 +2,7 @@ package ar.edu.unq.poo2.tpfinal.desafio;
 
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
+import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 public class Desafio {
@@ -50,6 +51,20 @@ public class Desafio {
 	
 	public boolean estaEnElArea(Muestra muestra) {
 		return this.area.estaDentro(muestra);
+	}
+
+
+
+	public Integer getCoincidencia(Preferencia preferencia) {
+		int diferenciaDificultad = Math.abs(preferencia.getDificultad() - this.getDificultad().getValorDeDificultad());
+		int diferenciaRecompensa = Math.abs(preferencia.getRecompensaPreferida() - this.getRecompensa());
+		int diferenciaMuestras = Math.abs(preferencia.getCantidadMuestras() - this.getCantidadMuestras());
+		return diferenciaDificultad + diferenciaRecompensa + diferenciaMuestras;
+	}
+
+	private int getCantidadMuestras() {
+		// TODO Auto-generated method stub
+		return this.cantidadDeMuestrasARecolectar;
 	}
 	
 }

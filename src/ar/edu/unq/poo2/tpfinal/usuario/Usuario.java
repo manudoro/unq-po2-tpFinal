@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.usuario;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
@@ -18,6 +19,7 @@ public class Usuario {
 	private List<DesafioDeUsuario> desafios;
 	private List<Proyecto> proyectos;
 	private List<DesafioDeUsuario> desafiosCompletos;
+	private Preferencia preferencia;
 	
 	public Usuario() {
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
@@ -73,6 +75,16 @@ public class Usuario {
 	public ArrayList<Desafio> desafiosSinHacer() { //Corregir
 		ArrayList<Desafio> desafiosSinHacer = new ArrayList<Desafio>();
 		return desafiosSinHacer;
+	}
+
+	public List<Desafio> desafiosComenzados() {
+		
+		return desafios.stream().map(d -> d.getDesafio()).toList();
+	}
+
+	public Preferencia getPreferencia() {
+		// TODO Auto-generated method stub
+		return this.preferencia;
 	}
 
 	
