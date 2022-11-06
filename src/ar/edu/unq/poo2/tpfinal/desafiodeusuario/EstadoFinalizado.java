@@ -7,8 +7,7 @@ public class EstadoFinalizado implements IEstadoDeDesafio {
 	private DesafioDeUsuario desafioDeUsuario;
 
 	@Override
-	public int reducirMuestrasPorRecolectar() {
-		return 0;
+	public void reducirMuestrasPorRecolectar() {
 	}
 
 	@Override

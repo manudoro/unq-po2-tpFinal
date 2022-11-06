@@ -18,7 +18,7 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 
 
 	@Override
-	public int reducirMuestrasPorRecolectar() {
+	public void reducirMuestrasPorRecolectar() {
 		
 		int cantidadDeMuestras = this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar();
 		cantidadDeMuestras = cantidadDeMuestras - 1;
@@ -26,7 +26,7 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 		if (cantidadDeMuestras == 0) {
 			this.desafioDeUsuario.setEstadoDeDesafio(estadoFinalizado);
 		}
-		return cantidadDeMuestras;
+		this.desafioDeUsuario.setMuestrasPorRecolectar(cantidadDeMuestras);
 	
 	}
 	
@@ -42,7 +42,7 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 	@Override
 	public void recibirMuestra(Muestra muestra) {
 		if (this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra) && this.desafioDeUsuario.esTaDentroDeLaFechaDelDesafio(muestra)) {
-			this.desafioDeUsuario.reducirMuestrasPorRecolectar();
+			this.reducirMuestrasPorRecolectar();
 			this.desafioDeUsuario.calucularPorcentajeDeCompletitud();
 		}
 		if (!desafioDeUsuario.restriccionEstaAbierta(muestra)) {

@@ -66,7 +66,7 @@ class DesafioDeUsuarioTest {
 	@Test
 	void seVerificaQueUnDesafioDeUsuarioPuedeReducirSuCantidadDeMuestrasPorRecolectar() {
 		/* Cuando se crea un desafioDeUsuario, comienza con 2 muestras por recolectar */
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar(); 
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); 
 		
 		assertEquals(9, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
 	}
@@ -76,17 +76,17 @@ class DesafioDeUsuarioTest {
 		/*Un desafio esta completo cuando su cantidad de muestras por recolectar llegue a cero
 		 * La cantidad de muestras a recolectar actual es 2 */
 		
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar(); // <-- queda una muestra por recolectar
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar(); // <-- ya no queda muestras por recolectar, su cantidad es cero (Cambio su estado a finalizado)
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar(); // <-- la cantidad de muestras por recolectar debe seguir en cero
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- queda una muestra por recolectar
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- ya no queda muestras por recolectar, su cantidad es cero (Cambio su estado a finalizado)
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- la cantidad de muestras por recolectar debe seguir en cero
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
 		
 		assertEquals(0, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
 	}

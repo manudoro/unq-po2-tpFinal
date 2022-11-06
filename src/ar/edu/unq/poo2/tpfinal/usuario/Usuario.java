@@ -17,11 +17,13 @@ public class Usuario {
 	private List<Muestra> muestrasRecolectadas;
 	private List<DesafioDeUsuario> desafios;
 	private List<Proyecto> proyectos;
+	private List<DesafioDeUsuario> desafiosCompletos;
 	
 	public Usuario() {
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
 		this.desafios = new ArrayList<DesafioDeUsuario>();
 		this.proyectos = new ArrayList<Proyecto>();
+		this.desafiosCompletos = new ArrayList<DesafioDeUsuario>();
 	}
 
 	public List<Muestra> getMuestrasRecolectadas() {
@@ -72,6 +74,7 @@ public class Usuario {
 		ArrayList<Desafio> desafiosSinHacer = new ArrayList<Desafio>();
 		return desafiosSinHacer;
 	}
+
 	
 	
 }

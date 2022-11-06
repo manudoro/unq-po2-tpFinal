@@ -4,6 +4,7 @@ package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.usuario.Gusto;
+import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 public class DesafioDeUsuario{
 
@@ -13,7 +14,8 @@ public class DesafioDeUsuario{
 	private IEstadoDeDesafio estadoDeDesafio ;
 	private Gusto gustoDeUsuario;
 	private int cantidadDeMuestrasPorRecolectar;
-	public float porcentajeDeCompletitud;
+	private float porcentajeDeCompletitud;
+	private Usuario usuario; 
 	
 	public DesafioDeUsuario(Desafio desafio) {
 		setEstadoDeDesafio(new EstadoAceptado());
@@ -34,13 +36,6 @@ public class DesafioDeUsuario{
 
 	public IEstadoDeDesafio getEstadoDeDesafio() {
 		return estadoDeDesafio;
-	}
-
-
-	public void reducirMuestrasPorRecolectar() {
-		this.cantidadDeMuestrasPorRecolectar = estadoDeDesafio.reducirMuestrasPorRecolectar();
-		
-		
 	}
 
 	public void setEstadoDeDesafio(IEstadoDeDesafio estadoDeDesafio) {
@@ -76,6 +71,12 @@ public class DesafioDeUsuario{
 		
 		return this.desafio.getRestriccionTemporal().validar(muestra.getFechaDeRecoleccion());
 	}
-	
+
+
+	public void setMuestrasPorRecolectar(int cantidadDeMuestras) {
+		this.cantidadDeMuestrasPorRecolectar = cantidadDeMuestras; 
+		
+	}
+
 	
 };
