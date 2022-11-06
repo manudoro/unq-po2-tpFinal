@@ -1,5 +1,6 @@
 package ar.edu.unq.poo2.tpfinal.usuario;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
@@ -23,28 +24,26 @@ class UsuarioTest {
 
 	Proyecto proyecto;
 	Usuario usuario1, usuario2;
-	Muestra muestra;
+	Muestra muestra , muestra1;
 	DesafioDeUsuario desafioUsuario;
 	Desafio desafio;
+	DesafioDeUsuario desafioDeUsuario;
+	FinDeSemana finDeSemana;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 	usuario1 = new Usuario();
 	proyecto = new Proyecto("Programmin", "Cs.Tecnologhy");
-	muestra = mock(Muestra.class);
-	desafioUsuario = mock(DesafioDeUsuario.class);
-	
+	LocalDate fecha = LocalDate.of(2022, 11, 12);
+	LocalDate fecha1 = LocalDate.of(2022, 11, 19);
+	Coordenada punto2 = new Coordenada(15, 15);
+	muestra = new Muestra(punto2,fecha);
+	muestra1 = new Muestra(punto2,fecha1);
 	Dificultad facil = Dificultad.FACIL;
-	LocalDate fecha = LocalDate.of(2020, 5, 19);
-	LocalTime tiempoDesde = LocalTime.of(7, 30);
-	LocalTime tiempoHasta = LocalTime.of(19, 30);
-	Coordenada punto = new Coordenada(5, 4);
-	Area area = new Area(punto, 5);
-	FinDeSemana restriccionTemporal = new FinDeSemana();
-	
-	
-	this.desafio = new Desafio(area, 2, facil, 5,restriccionTemporal);
-	
+	Area area = new Area(punto2, 5);
+	finDeSemana = new FinDeSemana();
+	this.desafio = new Desafio(area, 1, facil, 5,finDeSemana);
+	this.desafioDeUsuario = new DesafioDeUsuario(desafio , usuario1);
 	}
 
 	@Test
@@ -87,11 +86,13 @@ class UsuarioTest {
 		assertFalse(this.usuario1.getDesafiosDeUsuario().isEmpty());
 	}
 	
-	@Test
-	void testCuandoUnUsuarioRecolectaUnaMuestraYTieneDesafiosQueNecesitanEsaMuestra_SeActualizanEsosDesafios() {
-		
+	
+	@Test 
+	
+	void testVerificarCuandoUnUsuarioTerminaUnDesafioQueEsteSeSumaAsuListaDeDesafiosCompletos() {
+		this.desafioDeUsuario.recibirMuestra(muestra);
+		assertEquals(1 , this.usuario1.getDesafiosCompletos().size());
+	
 	}
-	
-	
 	
 }

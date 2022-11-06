@@ -25,6 +25,7 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 		
 		if (cantidadDeMuestras == 0) {
 			this.desafioDeUsuario.setEstadoDeDesafio(estadoFinalizado);
+			this.desafioDeUsuario.getUsuario().agregarDesafiosCompletos(this.desafioDeUsuario);
 		}
 		this.desafioDeUsuario.setMuestrasPorRecolectar(cantidadDeMuestras);
 	

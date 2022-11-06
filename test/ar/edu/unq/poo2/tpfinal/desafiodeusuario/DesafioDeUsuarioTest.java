@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.poo2.tpfinal.desafio.*;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.*;
 import ar.edu.unq.poo2.tpfinal.muestra.*;
+import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 
 class DesafioDeUsuarioTest {
@@ -23,7 +24,7 @@ class DesafioDeUsuarioTest {
 	private FinDeSemana finDeSemana;
 	private EntreFechas entreFecha;
 	private IEstadoDeDesafio estadoFinalizado,estadoAceptado;
-	
+	private Usuario usuario;
 	
 	@BeforeEach
 	void setUp() {
@@ -46,9 +47,10 @@ class DesafioDeUsuarioTest {
 		finDeSemana = new FinDeSemana();
 		entreFecha = new EntreFechas(fecha, fecha1);
 		desafio = new Desafio(area, 10, facil, 10, finDeSemana);
-		desafio2 = new Desafio(area, 10, facil, 10, entreFecha);
+		desafio2 = new Desafio(area, 2, facil, 10, entreFecha);
 		estadoFinalizado = new EstadoFinalizado();
 		estadoAceptado = new EstadoAceptado();
+		usuario = new Usuario();
 	
 		
 		// <-- Instancia
@@ -59,8 +61,8 @@ class DesafioDeUsuarioTest {
 		 * Un desafio de usuario conoce el desafio que lo instancio para trabajar
 		 * con sus atributos */
 		
-		this.desafioDeUsuario = new DesafioDeUsuario(desafio);
-		 desafioDeUsuario2 = new DesafioDeUsuario(desafio2);
+		this.desafioDeUsuario = new DesafioDeUsuario(desafio , usuario);
+		 this.desafioDeUsuario2 = new DesafioDeUsuario(desafio2 ,usuario);
 	}
 	
 	@Test
@@ -76,19 +78,12 @@ class DesafioDeUsuarioTest {
 		/*Un desafio esta completo cuando su cantidad de muestras por recolectar llegue a cero
 		 * La cantidad de muestras a recolectar actual es 2 */
 		
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- queda una muestra por recolectar
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- ya no queda muestras por recolectar, su cantidad es cero (Cambio su estado a finalizado)
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- la cantidad de muestras por recolectar debe seguir en cero
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar();
+		this.desafioDeUsuario2.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- queda una muestra por recolectar
+		this.desafioDeUsuario2.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- ya no queda muestras por recolectar, su cantidad es cero (Cambio su estado a finalizado)
+		this.desafioDeUsuario2.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- la cantidad de muestras por recolectar debe seguir en cero
 		
-		assertEquals(0, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
+		
+		assertEquals(0, this.desafioDeUsuario2.getCantidadDeMuestrasPorRecolectar());
 	}
 	
 	@Test
@@ -134,7 +129,6 @@ class DesafioDeUsuarioTest {
 	
 	void chequeoPorcentajeDeComplejitudCuandoRecojoMuestra() {
 		this.desafioDeUsuario.recibirMuestra(muestra2);
-		
 		assertEquals(10.0 ,this.desafioDeUsuario.getPorcentajeDeCompletitud());
 	}
 	
@@ -158,9 +152,6 @@ class DesafioDeUsuarioTest {
 		assertFalse(this.desafioDeUsuario2.restriccionEstaAbierta(muestra1));
 		//assertEquals( estadoFinalizado.getClass() , this.desafioDeUsuario.getEstadoDeDesafio().getClass());
 	}
-	
-	
-	
 	
 	
 }

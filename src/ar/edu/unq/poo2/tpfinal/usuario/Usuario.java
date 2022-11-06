@@ -36,10 +36,11 @@ public class Usuario {
 		// Desafios en los que participa un usuario.
 		return desafios;
 	}
+	
+	public List<DesafioDeUsuario> getDesafiosCompletos() {
+		return desafiosCompletos;
+	}
 
-	
-	
-	
 	public void participarEnProyecto(Proyecto proyecto) {
 		// Este metodo permite, a un usuario, participar en un proyecto
 		proyecto.suscribirUsuario(this);
@@ -73,6 +74,10 @@ public class Usuario {
 	public ArrayList<Desafio> desafiosSinHacer() { //Corregir
 		ArrayList<Desafio> desafiosSinHacer = new ArrayList<Desafio>();
 		return desafiosSinHacer;
+	}
+	
+	public void agregarDesafiosCompletos(DesafioDeUsuario desafioDeUsuario){
+		this.desafiosCompletos.add(desafioDeUsuario);
 	}
 
 	

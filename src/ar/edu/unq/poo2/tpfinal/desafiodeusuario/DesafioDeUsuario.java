@@ -17,11 +17,12 @@ public class DesafioDeUsuario{
 	private float porcentajeDeCompletitud;
 	private Usuario usuario; 
 	
-	public DesafioDeUsuario(Desafio desafio) {
+	public DesafioDeUsuario(Desafio desafio , Usuario usuario) {
 		setEstadoDeDesafio(new EstadoAceptado());
 		this.desafio = desafio ;
 		this.cantidadDeMuestrasPorRecolectar = desafio.getCantidadDeMuestrasARecolectar();
 		this.porcentajeDeCompletitud = 0;
+		this.usuario = usuario;
 	}
 	
 	
@@ -31,6 +32,11 @@ public class DesafioDeUsuario{
 	
 	public float getPorcentajeDeCompletitud() {
 		return porcentajeDeCompletitud;
+	}
+
+	
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
 
@@ -59,7 +65,6 @@ public class DesafioDeUsuario{
 		this.porcentajeDeCompletitud = 
 				(desafio.getCantidadDeMuestrasARecolectar()-this.cantidadDeMuestrasPorRecolectar) * 100 / desafio.getCantidadDeMuestrasARecolectar() ;
 				
-		
 	}
 
 	protected boolean estaEnElAreaDelDesafio(Muestra muestra) {
@@ -77,6 +82,11 @@ public class DesafioDeUsuario{
 		this.cantidadDeMuestrasPorRecolectar = cantidadDeMuestras; 
 		
 	}
+	
+	public void agregarDesafioCompletoAListaDedesafiosCompletos(DesafioDeUsuario desafioDeUsuario) {
+		this.usuario.agregarDesafiosCompletos(desafioDeUsuario);
+	}
+
 
 	
 };
