@@ -92,12 +92,12 @@ class DesafioDeUsuarioTest {
 	
 	@Test
 	void seVerificaQueUnaMuestraNoSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
-		assertFalse(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra1));
+		assertFalse(this.desafio.estaEnElArea(muestra1));
 	}
 	
 	@Test
 	void seVerificaQueUnaMuestraSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
-		assertTrue(this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra2));
+		assertTrue(this.desafio.estaEnElArea(muestra2));
 	}
 	
 	@Test 
@@ -119,13 +119,13 @@ class DesafioDeUsuarioTest {
 	@Test
 	
 	void seVerificaSiUnaMuestra_EstaDentroDeLaFechaDeLaRestriccionTemporalDelDesafio() {
-		assertTrue(this.desafioDeUsuario.esTaDentroDeLaFechaDelDesafio(muestra));
+		assertTrue(this.desafio.correspondeARestriccion(muestra));
 	}
 	
 	@Test
 	
 	void seVerificaSiUnaMuestra_NoEstaDentroDeLaFechaDeLaRestriccionTemporalDelDesafio() {
-		assertFalse(this.desafioDeUsuario.esTaDentroDeLaFechaDelDesafio(muestra1));
+		assertFalse(this.desafio.correspondeARestriccion(muestra1));
 	}
 	
 	
@@ -140,13 +140,13 @@ class DesafioDeUsuarioTest {
 	
 	
 	void verificarQueUnaMuestra_NoEsteDentroDeLaFechaDeLaRestriccionTemporalEntreSemana() {
-		assertFalse(this.desafioDeUsuario2.esTaDentroDeLaFechaDelDesafio(muestra1));
+		assertFalse(this.desafio2.correspondeARestriccion(muestra1));
 	}
 	
 	@Test
 	
 	void verificarQueUnaMuestraEEsteDentroDeLaFechaDeLaRestriccionTemporalEntreSemana() {
-		assertTrue(this.desafioDeUsuario2.esTaDentroDeLaFechaDelDesafio(muestra));
+		assertTrue(this.desafio2.correspondeARestriccion(muestra));
 	}
 	
 

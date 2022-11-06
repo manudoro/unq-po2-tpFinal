@@ -81,7 +81,9 @@ public class Proyecto {
 	
 	public void recibirMuestra(Muestra sample) {
 		// este metodo permite que el proyeco reciba una muestra.
-		this.getMuestras().add(sample);
+		if(this.getDesafios().stream().anyMatch(d -> d.correspondeA(sample))){	
+			this.getMuestras().add(sample);
+		}
 	}
 	
 	public boolean contieneCategorias(List<String> categories) {

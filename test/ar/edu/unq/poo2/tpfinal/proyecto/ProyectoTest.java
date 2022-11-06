@@ -1,27 +1,26 @@
 package ar.edu.unq.poo2.tpfinal.proyecto;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
-
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
+import ar.edu.unq.poo2.tpfinal.desafio.DiasDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
+import ar.edu.unq.poo2.tpfinal.desafio.IRestriccionTemporal;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
-import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class ProyectoTest {
@@ -29,9 +28,10 @@ class ProyectoTest {
 	private Proyecto proyecto;
 	private Usuario usuario1 , usuario2;
 	private Muestra muestra;
-	private Desafio desafio2;
 	private String categoria;
-	private Desafio desafio1;
+	private Desafio desafio1, desafio2, desafio3;
+	private Coordenada punto;
+	private IRestriccionTemporal finDeSemana, diaDeSemana;
 
 	
 	@BeforeEach
@@ -39,15 +39,20 @@ class ProyectoTest {
 		// Se crean instancias de Desafio.
 		Coordenada punto = new Coordenada(5, 4);
 		Area area = new Area(punto, 5);
-		FinDeSemana finDeSemana = new FinDeSemana();
+		IRestriccionTemporal finDeSemana = new FinDeSemana();
+		IRestriccionTemporal diaDeSemana = new DiasDeSemana();
 		Dificultad facil = Dificultad.FACIL;
 		
 		desafio1 = new Desafio(area, 1, facil, 1, finDeSemana);
 		desafio2 = new Desafio(area, 2, facil, 2, finDeSemana);
+		desafio3 = new Desafio(area, 2, facil, 2, diaDeSemana);
 		
 		proyecto = new Proyecto("AquatiWord", "Cs.Natural");
 		usuario1 = mock(Usuario.class);
 		categoria = "Botanica";
+		
+		LocalDate fecha = LocalDate.of(2022, 11, 12);
+		muestra = new Muestra(punto, fecha);
 		
 	}
 
@@ -110,5 +115,21 @@ class ProyectoTest {
 		assertTrue(desafiosSinHacer.contains(desafio2));
 	}
 	
+	@Test
+	void unDesafioRecibeUnaMuestraSiEsValidaParaAlgunoDeSusDesafios() {
+		proyecto.recibirDesafio(desafio1);
+		proyecto.recibirDesafio(desafio2);
+		proyecto.recibirMuestra(muestra);
+		assertTrue(proyecto.getMuestras().contains(muestra));
 
+	}
+	
+	@Test
+	void unDesafioNoRecibeUnaMuestraSiNoEsValidaParaAlgunoDeSusDesafios() {
+		proyecto.recibirDesafio(desafio3);
+		proyecto.recibirMuestra(muestra);
+		assertFalse(proyecto.getMuestras().contains(muestra));
+
+	}
+	
 }

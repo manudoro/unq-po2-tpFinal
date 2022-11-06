@@ -108,4 +108,18 @@ class UsuarioTest {
 		
 	}
 	
+	@Test
+	void seVerificaQueUnUsuarioNoParticipaEnDesafiosSiNoEstanEnSusProyectos(){
+		assertFalse(usuario1.desafiosSinHacer().contains(desafio));
+		
+	}
+	
+
+	@Test
+	void seVerificaQueUnUsuarioParticipaEnDesafiosSiEstanEnSusProyectos(){
+		this.usuario1.participarEnProyecto(proyecto);
+		this.proyecto.recibirDesafio(desafio);
+		assertTrue(usuario1.desafiosSinHacer().contains(desafio));
+		
+	}
 }

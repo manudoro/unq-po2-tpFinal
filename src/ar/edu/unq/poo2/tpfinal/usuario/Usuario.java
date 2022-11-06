@@ -58,8 +58,9 @@ public class Usuario {
 	}
 
 	public void agregarDesafio(Desafio desafio) {
+		if(this.proyectos.stream().anyMatch(p -> p.getDesafios().contains(desafio))) {	
 		desafio.asignarDesafioDeUsuario(this);
-		
+		}
 	}
 
 	public void agregarDesafioDeUsuario(DesafioDeUsuario desafioUsuario) {
@@ -82,6 +83,23 @@ public class Usuario {
 	public void agregarDesafiosCompletos(DesafioDeUsuario desafioDeUsuario){
 		this.desafiosCompletos.add(desafioDeUsuario);
 	}
+	
+	public Double getPorcentajeGeneralDeCompletitud() {
+		Double sumaTotal = this.getDesafiosDeUsuario().stream().mapToDouble(d-> d.getPorcentajeDeCompletitud()).sum();
+		return sumaTotal / (this.getDesafiosDeUsuario().size());
+		
+	}
+	
+	public void obtenerMuestra(Muestra muestra) {
+		this.desafios.stream().forEach(d -> d.recibirMuestra(muestra));
+		
+	}
+
+	public void enviarMuestraAProyectos(Muestra muestra) {
+		this.getProyectos().stream().forEach(p -> p.recibirMuestra(muestra));
+		
+	}
+	
 	
 }
 

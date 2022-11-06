@@ -59,5 +59,15 @@ public class Desafio {
 	public boolean estaEnLosDesafiosDeUsuario(ArrayList<DesafioDeUsuario> desafiosDeUsuario) {
 		return desafiosDeUsuario.stream().anyMatch((DesafioDeUsuario desafioDeUsuario) -> desafioDeUsuario.contieneAlDesafio(this));
 	}
+
+	public boolean correspondeA(Muestra sample) {
+		
+		return estaEnElArea(sample) && correspondeARestriccion(sample);
+	}
+
+	public boolean correspondeARestriccion(Muestra muestra) {
+		return this.getRestriccionTemporal().validar(muestra.getFechaDeRecoleccion());
+
+	}
 	
 }

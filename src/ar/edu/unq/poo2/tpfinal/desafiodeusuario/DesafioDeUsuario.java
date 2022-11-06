@@ -1,8 +1,11 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
 
+import java.util.List;
+
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
+import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 import ar.edu.unq.poo2.tpfinal.usuario.Gusto;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
@@ -31,6 +34,7 @@ public class DesafioDeUsuario{
 	}
 	
 	public float getPorcentajeDeCompletitud() {
+		calucularPorcentajeDeCompletitud();
 		return porcentajeDeCompletitud;
 	}
 
@@ -67,15 +71,11 @@ public class DesafioDeUsuario{
 				
 	}
 
-	protected boolean estaEnElAreaDelDesafio(Muestra muestra) {
+	protected boolean esValidaParaDesafio(Muestra muestra) {
 		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
-		return this.desafio.estaEnElArea(muestra);
+		return this.desafio.correspondeA(muestra);
 	}
 
-	public boolean esTaDentroDeLaFechaDelDesafio(Muestra muestra) {
-		
-		return this.desafio.getRestriccionTemporal().validar(muestra.getFechaDeRecoleccion());
-	}
 
 
 	public void setMuestrasPorRecolectar(int cantidadDeMuestras) {
@@ -92,6 +92,12 @@ public class DesafioDeUsuario{
 	public boolean contieneAlDesafio(Desafio desafio) {
 		
 		return this.desafio == desafio;
+	}
+
+
+	public void validarMuestra(Muestra muestra) {
+		this.usuario.enviarMuestraAProyectos(muestra);
+		
 	}
 
 	
