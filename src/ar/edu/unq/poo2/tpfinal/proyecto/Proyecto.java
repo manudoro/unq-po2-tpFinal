@@ -107,6 +107,8 @@ public class Proyecto {
 	public ArrayList<Desafio> desafiosSinParticipacion(ArrayList<DesafioDeUsuario> desafiosDeUsuario) {
 		
 		ArrayList<Desafio> desafiosSinParticipacion = new ArrayList<Desafio>();
+		
+		
 		for(Desafio desafio : desafios) {
 			agregarSiNoEsta(desafiosDeUsuario, desafiosSinParticipacion, desafio); //
 		}

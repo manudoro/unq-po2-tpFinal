@@ -6,9 +6,11 @@ import java.util.function.BooleanSupplier;
 
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
+import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 public class Desafio {
+	
 	private Area area;
 	private int cantidadDeMuestrasARecolectar;
 	private Dificultad dificultad;
@@ -60,6 +62,7 @@ public class Desafio {
 		return desafiosDeUsuario.stream().anyMatch((DesafioDeUsuario desafioDeUsuario) -> desafioDeUsuario.contieneAlDesafio(this));
 	}
 
+<<<<<<< HEAD
 	public boolean correspondeA(Muestra sample) {
 		
 		return estaEnElArea(sample) && correspondeARestriccion(sample);
@@ -70,4 +73,12 @@ public class Desafio {
 
 	}
 	
+=======
+	public Integer valorDeCoincidenciaConPreferencia(Preferencia preferencia) {
+		int valorDeDificultad = dificultad.getValorDeDificultad();
+		int valorDePreferencia = preferencia.calcularCoincidencia(valorDeDificultad, recompensa, cantidadDeMuestrasARecolectar);
+		
+		return valorDePreferencia;
+	}
+>>>>>>> 1a67fe4ff8df1fca5f22ecfd81f44409a308d397
 }

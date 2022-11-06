@@ -69,7 +69,7 @@ public class DesafioDeUsuario{
 		this.porcentajeDeCompletitud = 
 				(desafio.getCantidadDeMuestrasARecolectar()-this.cantidadDeMuestrasPorRecolectar) * 100 / desafio.getCantidadDeMuestrasARecolectar() ;
 				
-	}
+	} 	
 
 	protected boolean esValidaParaDesafio(Muestra muestra) {
 		/* Chekea que la muestra este dentro del area del desafio del DesafioDeUsuario */
@@ -88,7 +88,6 @@ public class DesafioDeUsuario{
 	}
 
 
-
 	public boolean contieneAlDesafio(Desafio desafio) {
 		
 		return this.desafio == desafio;
@@ -102,7 +101,6 @@ public class DesafioDeUsuario{
 
 
 	public Desafio getDesafio() {
-		// TODO Auto-generated method stub
 		return desafio;
 	}
 

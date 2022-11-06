@@ -8,10 +8,49 @@ public class Preferencia {
 	private int cantidadDeMuestras;
 	
 	
-	public Preferencia(Dificultad difficulty, int rewards, int amount) {
-		this.dificultad = difficulty;
-		this.recompenzaPreferida = rewards;
-		this.cantidadDeMuestras = amount;
+	public Preferencia(Dificultad dificultad, int recompenza, int cantidadDeMuestras) {
+		this.dificultad = dificultad;
+		this.recompenzaPreferida = recompenza;
+		this.cantidadDeMuestras = cantidadDeMuestras;
+	}
+
+
+	
+	public Dificultad getDificultad() {
+		return dificultad;
+	}
+
+
+
+	public int getRecompenzaPreferida() {
+		return recompenzaPreferida;
+	}
+
+
+
+	public int getCantidadDeMuestras() {
+		return cantidadDeMuestras;
+	}
+
+
+
+	public void configurar(Dificultad dificultad, int recompenza, int cantidadDeMuestras) {
+		this.dificultad = dificultad;
+		this.recompenzaPreferida = recompenza;
+		this.cantidadDeMuestras = cantidadDeMuestras;
+	}
+
+
+
+	public int calcularCoincidencia(int valorDeDificultad, int recompensa, int cantidadDeMuestrasARecolectar) {
+		
+		int absValorDeDificultad = Math.abs(this.getDificultad().getValorDeDificultad() - valorDeDificultad);
+		int absRecompensa = Math.abs(this.getRecompenzaPreferida() - recompensa);
+		int absCantidadDeMuestrasARecolectar = Math.abs(this.getCantidadDeMuestras() - cantidadDeMuestrasARecolectar);
+		
+		int resultado = absValorDeDificultad + absRecompensa + absCantidadDeMuestrasARecolectar;
+		
+		return resultado;
 	}
 	
 	
