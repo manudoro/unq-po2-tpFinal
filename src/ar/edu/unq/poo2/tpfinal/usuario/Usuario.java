@@ -57,7 +57,7 @@ public class Usuario {
 		return this.proyectos;
 	}
 
-	public void agregarDesafio(Desafio desafio) {
+	public void aceptarDesafio(Desafio desafio) {
 		if(this.proyectos.stream().anyMatch(p -> p.getDesafios().contains(desafio))) {	
 		desafio.asignarDesafioDeUsuario(this);
 		}

@@ -132,8 +132,8 @@ class UsuarioTest {
 		this.usuario1.participarEnProyecto(proyecto);
 		this.proyecto.recibirDesafio(desafio);
 		this.proyecto.recibirDesafio(desafio2);
-		this.usuario1.agregarDesafio(desafio);
-		this.usuario1.agregarDesafio(desafio2);
+		this.usuario1.aceptarDesafio(desafio);
+		this.usuario1.aceptarDesafio(desafio2);
 		this.usuario1.obtenerMuestra(muestra1);
 		assertEquals(50.0, usuario1.getPorcentajeGeneralDeCompletitud());
 		
