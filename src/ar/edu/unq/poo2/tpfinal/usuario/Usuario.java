@@ -100,6 +100,15 @@ public class Usuario {
 		
 	}
 	
+	public float getPorcentajeDeCompletitud(Desafio desafio){
+		for (DesafioDeUsuario d : desafios) {
+			if (d.getDesafio() == desafio) {
+				return d.getPorcentajeDeCompletitud();
+			}
+		}
+		return 0;
+	}
+	
 	
 }
 

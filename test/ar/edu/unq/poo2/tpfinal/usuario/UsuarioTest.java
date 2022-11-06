@@ -127,6 +127,15 @@ class UsuarioTest {
 		
 	}
 	
+	@Test 
+	void seObtieneElPorcentajeDeCompletitudDeUnDesafio() {
+		this.usuario1.participarEnProyecto(proyecto);
+		this.proyecto.recibirDesafio(desafio);
+		this.usuario1.aceptarDesafio(desafio);
+		this.usuario1.obtenerMuestra(muestra1);
+		assertEquals(100, usuario1.getPorcentajeDeCompletitud(desafio));
+
+	}
 	@Test
 	void seObtieneElPromedioGeneralDePorcentajeDeDesafios() {
 		this.usuario1.participarEnProyecto(proyecto);
