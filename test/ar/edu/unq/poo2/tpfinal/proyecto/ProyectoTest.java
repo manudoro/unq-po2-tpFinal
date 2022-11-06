@@ -5,11 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
-<<<<<<< HEAD
-import java.time.LocalDate;
-=======
 
->>>>>>> 1a67fe4ff8df1fca5f22ecfd81f44409a308d397
+import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,22 +22,15 @@ import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.IRestriccionTemporal;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
-<<<<<<< HEAD
+
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
-=======
->>>>>>> 1a67fe4ff8df1fca5f22ecfd81f44409a308d397
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class ProyectoTest {
 
 	private Proyecto proyecto;
-<<<<<<< HEAD
 	private Usuario usuario1 , usuario2;
 	private Muestra muestra;
-=======
-	private Usuario usuario1;
-	private Desafio desafio2;
->>>>>>> 1a67fe4ff8df1fca5f22ecfd81f44409a308d397
 	private String categoria;
 	private Desafio desafio1, desafio2, desafio3;
 	private Coordenada punto;

@@ -113,7 +113,6 @@ class UsuarioTest {
 	}
 	
 	@Test
-<<<<<<< HEAD
 	void seVerificaQueUnUsuarioNoParticipaEnDesafiosSiNoEstanEnSusProyectos(){
 		assertFalse(usuario1.desafiosSinHacer().contains(desafio));
 		
@@ -146,14 +145,14 @@ class UsuarioTest {
 		this.usuario1.aceptarDesafio(desafio2);
 		this.usuario1.obtenerMuestra(muestra1);
 		assertEquals(50.0, usuario1.getPorcentajeGeneralDeCompletitud());
+	}
 		
-=======
+	@Test
 	void seVerificaQueUnUsuarioPuedeModificarSuPreferencia() {
 		usuario1.configurarPreferencia(Dificultad.FACIL, 30, 20);
 		
 		assertEquals(Dificultad.FACIL, usuario1.getPreferencia().getDificultad());
 		assertEquals(30, usuario1.getPreferencia().getRecompenzaPreferida());
 		assertEquals(20, usuario1.getPreferencia().getCantidadDeMuestras());
->>>>>>> 1a67fe4ff8df1fca5f22ecfd81f44409a308d397
 	}
 }
