@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 class NegacionDeFiltrosTest {
-	public FiltroCompuesto disyuncion, conjuncion;
+	public Filtrable disyuncion, conjuncion;
 	public Filtrable negacionConjuncion, negacionDisyuncion, negacionExcluye, negacionEstrella, negacionIncluye, estrella, includesBot, excludesBot, includesAstBot, excludesZoo, nameBosque, excludesAst;
 	public Proyecto faunaMarina , stars ,animalesPeligrosos,floraAutoctona;
 	public String zoologia,botanica, astronomia;

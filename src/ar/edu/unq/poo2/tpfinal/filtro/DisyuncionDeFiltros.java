@@ -7,7 +7,8 @@ import java.util.Set;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class DisyuncionDeFiltros extends FiltroCompuesto{
+public class DisyuncionDeFiltros implements Filtrable{
+	Filtrable filtro1;
 	Filtrable filtro2;
 
 	public DisyuncionDeFiltros(Filtrable filtro1, Filtrable filtro2) {
@@ -15,7 +16,7 @@ public class DisyuncionDeFiltros extends FiltroCompuesto{
 		this.filtro2 = filtro2;
 	}
 	
-	protected List<Proyecto> recolectar(List<Proyecto> proyectos){
+	public List<Proyecto> buscar(List<Proyecto> proyectos){
 		Set<Proyecto> result = new HashSet<Proyecto>();
 		result.addAll(filtro1.buscar(proyectos));
 		result.addAll(filtro2.buscar(proyectos));

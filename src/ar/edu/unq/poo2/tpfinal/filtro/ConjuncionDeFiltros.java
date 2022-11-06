@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
-public class ConjuncionDeFiltros extends FiltroCompuesto {
+public class ConjuncionDeFiltros implements Filtrable {
+	Filtrable filtro1;
 	Filtrable filtro2;
 
 	
@@ -13,7 +14,7 @@ public class ConjuncionDeFiltros extends FiltroCompuesto {
 		this.filtro2 = filtro2;
 	}
 
-	protected List<Proyecto> recolectar(List<Proyecto> proyectos) {
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		List<Proyecto> resultado = new ArrayList<Proyecto>(filtro1.buscar(proyectos));
 		resultado.retainAll(filtro2.buscar(proyectos));
 		return resultado;
