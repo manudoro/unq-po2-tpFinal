@@ -58,7 +58,7 @@ public class Desafio {
 		return this.area.estaDentro(muestra);
 	}
 
-	public boolean estaEnLosDesafiosDeUsuario(ArrayList<DesafioDeUsuario> desafiosDeUsuario) {
+	public boolean estaEnLosDesafiosDeUsuario(List<DesafioDeUsuario> desafiosDeUsuario) {
 		return desafiosDeUsuario.stream().anyMatch((DesafioDeUsuario desafioDeUsuario) -> desafioDeUsuario.contieneAlDesafio(this));
 	}
 
