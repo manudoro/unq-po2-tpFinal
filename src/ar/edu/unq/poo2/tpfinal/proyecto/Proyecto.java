@@ -104,9 +104,9 @@ public class Proyecto {
 	}
 
 
-	public ArrayList<Desafio> desafiosSinParticipacion(ArrayList<DesafioDeUsuario> desafiosDeUsuario) {
+	public List<Desafio> desafiosSinParticipacion(List<DesafioDeUsuario> desafiosDeUsuario) {
 		
-		ArrayList<Desafio> desafiosSinParticipacion = new ArrayList<Desafio>();
+		List<Desafio> desafiosSinParticipacion = new ArrayList<Desafio>();
 		
 		
 		for(Desafio desafio : desafios) {
@@ -117,8 +117,8 @@ public class Proyecto {
 	}
 
 
-	private void agregarSiNoEsta(ArrayList<DesafioDeUsuario> desafiosDeUsuario,
-								ArrayList<Desafio> desafiosSinParticipacion, Desafio desafio) {
+	private void agregarSiNoEsta(List<DesafioDeUsuario> desafiosDeUsuario,
+								List<Desafio> desafiosSinParticipacion, Desafio desafio) {
 		// Si el desafio dado no se encuentra en los desafiosDeUsuario, entonces
 		// se acumula en la lista dada.
 		if(!desafio.estaEnLosDesafiosDeUsuario(desafiosDeUsuario)) {

@@ -8,10 +8,6 @@ public class Coordenada {
 	private Distancia latitud;
 	private Distancia longitud;
 		
-	public Coordenada() { // CONSTRUCTOR REPETIDO
-		this.latitud = new Distancia(0);
-		this.longitud = new Distancia(0);
-	}
 	public Coordenada(int x, int y) { // CONSTRUCTOR REPETIDO. ¿SOBRECARGA DE CONSTRUCTORES?
 		super();
 		this.latitud = new Distancia(x);
