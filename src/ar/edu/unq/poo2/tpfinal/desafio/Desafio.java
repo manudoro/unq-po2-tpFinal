@@ -1,8 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.desafio;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+
 
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
@@ -62,6 +61,7 @@ public class Desafio {
 		return desafiosDeUsuario.stream().anyMatch((DesafioDeUsuario desafioDeUsuario) -> desafioDeUsuario.contieneAlDesafio(this));
 	}
 
+
 	public boolean correspondeA(Muestra sample) {
 		
 		return estaEnElArea(sample) && correspondeARestriccion(sample);
@@ -71,7 +71,7 @@ public class Desafio {
 		return this.getRestriccionTemporal().validar(muestra.getFechaDeRecoleccion());
 
 	}
-	
+
 
 	public Integer valorDeCoincidenciaConPreferencia(Preferencia preferencia) {
 		int valorDeDificultad = dificultad.getValorDeDificultad();
