@@ -11,8 +11,8 @@ public enum Gusto {
 
 	private int valorDeCalificacion;
 	
-	Gusto(int i) {
-		this.valorDeCalificacion = i;
+	Gusto(int valorDeCalificacion) {
+		this.valorDeCalificacion = valorDeCalificacion;
 	}	
 	
 	public int getValorDeCalificacion() {

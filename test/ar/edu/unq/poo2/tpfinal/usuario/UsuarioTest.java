@@ -23,13 +23,16 @@ import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 class UsuarioTest {
 
-	Proyecto proyecto;
-	Usuario usuario1, usuario2;
-	Muestra muestra , muestra1, muestra2;
-	DesafioDeUsuario desafioUsuario;
-	Desafio desafio, desafio2;
-	DesafioDeUsuario desafioDeUsuario;
-	FinDeSemana finDeSemana;
+
+	private Proyecto proyecto;
+	private Usuario usuario1, usuario2;
+	private Muestra muestra , muestra1;
+	private DesafioDeUsuario desafioUsuario;
+	private Desafio desafio;
+	private DesafioDeUsuario desafioDeUsuario;
+	private FinDeSemana finDeSemana;
+	private Desafio desafio2;
+
 	DiasDeSemana diasDeSemana;
 	
 	@BeforeEach
@@ -48,6 +51,7 @@ class UsuarioTest {
 	diasDeSemana = new DiasDeSemana();
 	this.desafio = new Desafio(area, 1, facil, 5,finDeSemana);
 	this.desafio2 = new Desafio(area, 1, facil, 5,diasDeSemana);
+
 	this.desafioDeUsuario = new DesafioDeUsuario(desafio , usuario1);
 	}
 
@@ -159,5 +163,21 @@ class UsuarioTest {
 		assertEquals(30, usuario1.getPreferencia().getRecompenzaPreferida());
 		assertEquals(20, usuario1.getPreferencia().getCantidadDeMuestras());
 
+
+	}
+	
+	@Test
+	void cuandoUnUsuarioQuiereElMejorDesafio_DevuelveElQueMasLeGusto(){
+		proyecto.recibirDesafio(desafio);
+		proyecto.recibirDesafio(desafio2);
+		usuario1.participarEnProyecto(proyecto);
+		
+		usuario1.aceptarDesafio(desafio);
+		usuario1.aceptarDesafio(desafio2);
+		
+		Desafio desafio = usuario1.mejorDesafio();
+		
+		assertEquals(this.desafio, desafio);
+		
 	}
 }

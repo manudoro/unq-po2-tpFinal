@@ -26,8 +26,22 @@ public class DesafioDeUsuario{
 		this.cantidadDeMuestrasPorRecolectar = desafio.getCantidadDeMuestrasARecolectar();
 		this.porcentajeDeCompletitud = 0;
 		this.usuario = usuario;
+		this.gustoDeUsuario = Gusto.HORRIBLE; // Se considera horrible como caso neutro
 	}
 	
+	
+	
+	public Desafio getDesafio1() {
+		return desafio;
+	}
+
+	public Gusto getGustoDeUsuario() {
+		return gustoDeUsuario;
+	}
+	
+	public int getValorGustoDeUsuario() {
+		return gustoDeUsuario.getValorDeCalificacion();
+	}
 	
 	public int getCantidadDeMuestrasPorRecolectar() {
 		return cantidadDeMuestrasPorRecolectar;
