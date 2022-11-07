@@ -130,6 +130,12 @@ public class Usuario {
 		}
 		return 0;
 	}
+
+
+
+	public void calificarDesafio(DesafioDeUsuario desafioDeUsuario, Gusto gusto) {
+		desafioDeUsuario.setGustoDeUsuario(gusto);
+	}
 	
 	
 }

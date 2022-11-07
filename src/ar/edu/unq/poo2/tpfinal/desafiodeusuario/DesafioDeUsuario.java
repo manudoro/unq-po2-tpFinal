@@ -30,7 +30,10 @@ public class DesafioDeUsuario{
 	}
 	
 	
-	
+	public void setGustoDeUsuario(Gusto gustoDeUsuario) {
+		this.gustoDeUsuario = gustoDeUsuario;
+	}
+
 	public Desafio getDesafio1() {
 		return desafio;
 	}

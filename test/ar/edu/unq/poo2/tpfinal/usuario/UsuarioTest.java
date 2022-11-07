@@ -180,4 +180,15 @@ class UsuarioTest {
 		assertEquals(this.desafio, desafio);
 		
 	}
+	
+	@Test
+	void seVerificaQueUnUsuarioPuedeCalificarUnDesafio() {
+		
+		this.desafioDeUsuario = new DesafioDeUsuario(desafio , usuario1);
+		
+		
+		usuario1.calificarDesafio(desafioDeUsuario, Gusto.EXELENTE);
+		assertEquals(Gusto.EXELENTE, desafioDeUsuario.getGustoDeUsuario());
+	}
+	
 }
