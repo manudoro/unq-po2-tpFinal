@@ -50,10 +50,6 @@ class UsuarioTest {
 	finDeSemana = new FinDeSemana();
 	diasDeSemana = new DiasDeSemana();
 	this.desafio = new Desafio(area, 1, facil, 5,finDeSemana);
-<<<<<<< HEAD
-
-=======
->>>>>>> f9bb5d5142b96414cf93f790bc7ad748fc03e96f
 	this.desafio2 = new Desafio(area, 1, facil, 5,diasDeSemana);
 
 	this.desafioDeUsuario = new DesafioDeUsuario(desafio , usuario1);
