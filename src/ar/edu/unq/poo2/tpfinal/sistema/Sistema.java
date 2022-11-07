@@ -3,7 +3,6 @@ package ar.edu.unq.poo2.tpfinal.sistema;
 import java.util.*;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
-import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 public class Sistema {

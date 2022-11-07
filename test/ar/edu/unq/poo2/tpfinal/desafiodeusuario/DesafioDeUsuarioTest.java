@@ -2,16 +2,13 @@ package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.*;
-import ar.edu.unq.poo2.tpfinal.desafiodeusuario.*;
 import ar.edu.unq.poo2.tpfinal.muestra.*;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
@@ -26,7 +23,6 @@ class DesafioDeUsuarioTest {
 
 	private Usuario usuario;
 
-	private IEstadoDeDesafio estadoFinalizado,estadoAceptado,estadoSinAceptar;
 	
 
 	
@@ -52,8 +48,6 @@ class DesafioDeUsuarioTest {
 		entreFecha = new EntreFechas(fecha, fecha1);
 		desafio = new Desafio(area, 10, facil, 10, finDeSemana);
 		desafio2 = new Desafio(area, 2, facil, 10, entreFecha);
-		estadoFinalizado = new EstadoFinalizado();
-		estadoAceptado = new EstadoAceptado();
 		usuario = new Usuario();
 	
 		
@@ -110,7 +104,6 @@ class DesafioDeUsuarioTest {
 	
 	@Test 
 	void cuandoUnDesafioDeUsuarioRecibeUnaMuestraYEstaDentroDeSuArea_SeRestaAlasMuestrasPorRecolectar() {
-		int cantidadDeMuestras = this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar();
 		this.desafioDeUsuario.recibirMuestra(muestra2);
 	
 		assertEquals(9, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar() );

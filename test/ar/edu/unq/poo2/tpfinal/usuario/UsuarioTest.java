@@ -25,7 +25,7 @@ class UsuarioTest {
 
 
 	private Proyecto proyecto;
-	private Usuario usuario1, usuario2;
+	private Usuario usuario1;
 	private Muestra muestra , muestra1;
 	private DesafioDeUsuario desafioUsuario;
 	private Desafio desafio;
@@ -41,7 +41,6 @@ class UsuarioTest {
 	proyecto = new Proyecto("Programmin", "Cs.Tecnologhy");
 	LocalDate fecha = LocalDate.of(2022, 11, 12);
 	LocalDate fecha1 = LocalDate.of(2022, 11, 19);
-	LocalDate fecha2 = LocalDate.of(2022, 11, 8);
 	Coordenada punto2 = new Coordenada(15, 15);
 	muestra = new Muestra(punto2,fecha);
 	muestra1 = new Muestra(punto2,fecha1);

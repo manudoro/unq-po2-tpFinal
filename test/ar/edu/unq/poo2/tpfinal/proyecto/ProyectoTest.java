@@ -32,12 +32,10 @@ class ProyectoTest {
 
 	private Proyecto proyecto;
 
-	private Usuario usuario1 , usuario2;
+	private Usuario usuario1;
 	private Muestra muestra;
 	private String categoria;
 	private Desafio desafio1, desafio2, desafio3;
-	private Coordenada punto;
-	private IRestriccionTemporal finDeSemana, diaDeSemana;
 
 	
 	@BeforeEach

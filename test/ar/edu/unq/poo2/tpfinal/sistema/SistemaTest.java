@@ -1,9 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.sistema;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.*;
@@ -14,7 +12,6 @@ import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
-import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class SistemaTest {
@@ -22,7 +19,6 @@ class SistemaTest {
 	private Sistema sistema;
 	private Usuario usuario;
 	private Proyecto proyecto;
-	private Desafio desafio;
 	private Desafio desafio2;
 	private Desafio desafio1;
 	private Proyecto proyecto2;
