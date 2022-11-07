@@ -31,6 +31,7 @@ class DesafioTest {
 	@BeforeEach
 	void setUp() {
 		Dificultad facil = Dificultad.FACIL;
+		Dificultad dificil = Dificultad.DIFICIL;
 		LocalDate fecha = LocalDate.of(2020, 5, 19);
 		this.punto = new Coordenada(3, 2);
 		this.punto2 = new Coordenada(5,9);
@@ -40,7 +41,7 @@ class DesafioTest {
 		
 		this.usuario2 = mock(Usuario.class);
 		this.usuario1 = new Usuario();
-		this.desafio2 = mock(Desafio.class);
+		this.desafio2 = new Desafio(area, 10, dificil, 21, restriccionTemporal);
 		this.desafio = new Desafio(area, 2, facil, 5, restriccionTemporal);
 	}
 	
@@ -106,6 +107,19 @@ class DesafioTest {
 		int valorDeCoincidencia = this.desafio.valorDeCoincidenciaConPreferencia(preferencia);
 		
 		assertEquals(24, valorDeCoincidencia);
+	}
+	
+	@Test
+	void seVerificaQueUnDesafioPuedeCalcularLaDistanciaConOtroDesafio() {
+		double resultado = desafio.calcularDistanciaConDesafio(desafio2);
+		
+		int absValorDeDificultad = Math.abs(desafio.getDificultad().getValorDeDificultad() - desafio2.getDificultad().getValorDeDificultad());
+		int absRecompensa = Math.abs(desafio.getRecompensa() - desafio2.getRecompensa());
+		int absCantidadDeMuestrasARecolectar = Math.abs(desafio.getCantidadDeMuestrasARecolectar() - desafio2.getCantidadDeMuestrasARecolectar());
+
+		double resultadoEsperado = (absValorDeDificultad + absRecompensa + absCantidadDeMuestrasARecolectar) / 3;
+		
+		assertEquals(resultadoEsperado, resultado);
 	}
 	
 	

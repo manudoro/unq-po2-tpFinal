@@ -42,9 +42,9 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 
 	@Override
 	public void recibirMuestra(Muestra muestra) {
-		if (this.desafioDeUsuario.estaEnElAreaDelDesafio(muestra) && this.desafioDeUsuario.esTaDentroDeLaFechaDelDesafio(muestra)) {
+		if (this.desafioDeUsuario.esValidaParaDesafio(muestra)) {
 			this.reducirMuestrasPorRecolectar();
-			this.desafioDeUsuario.calucularPorcentajeDeCompletitud();
+			this.desafioDeUsuario.validarMuestra(muestra);
 		}
 		if (!desafioDeUsuario.restriccionEstaAbierta(muestra)) {
 			this.desafioDeUsuario.setEstadoDeDesafio(estadoFinalizado);

@@ -80,7 +80,7 @@ class SistemaTest {
 		
 		// Para que el sistema le recomiende desafios, el usuario debe participar en el proyecto
 		usuario.participarEnProyecto(proyecto);
-		usuario.agregarDesafio(desafio1);
+		usuario.aceptarDesafio(desafio1);
 		
 		List<Desafio> desafiosRecomendados = sistema.recomendarDesafios(usuario, preferencia);
 		
@@ -183,6 +183,7 @@ class SistemaTest {
 		Desafio desafio6 = new Desafio(area, 72, muy_dificil, 180, finDeSemana); // <-- 204
 		Desafio desafio7 = new Desafio(area, 31, muy_dificil, 80, finDeSemana); // <-- 63
 		Desafio desafio8 = new Desafio(area, 32, medio, 20, finDeSemana); //<-- 2
+		Desafio desafio9 = new Desafio(area, 30, medio, 30, finDeSemana); //<-- Desafio para el usuario	
 		
 		proyecto.recibirDesafio(desafio1);
 		proyecto.recibirDesafio(desafio2);
@@ -192,8 +193,10 @@ class SistemaTest {
 		proyecto.recibirDesafio(desafio6);
 		proyecto.recibirDesafio(desafio7);
 		proyecto.recibirDesafio(desafio8);
+		proyecto.recibirDesafio(desafio9);
 		
 		usuario.participarEnProyecto(proyecto);
+		usuario.aceptarDesafio(desafio9);
 		
 		usuario.configurarPreferencia(medio, 30, 20);
 		

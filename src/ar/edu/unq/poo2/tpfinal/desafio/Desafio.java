@@ -2,7 +2,6 @@ package ar.edu.unq.poo2.tpfinal.desafio;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
@@ -58,14 +57,35 @@ public class Desafio {
 		return this.area.estaDentro(muestra);
 	}
 
-	public boolean estaEnLosDesafiosDeUsuario(ArrayList<DesafioDeUsuario> desafiosDeUsuario) {
+	public boolean estaEnLosDesafiosDeUsuario(List<DesafioDeUsuario> desafiosDeUsuario) {
 		return desafiosDeUsuario.stream().anyMatch((DesafioDeUsuario desafioDeUsuario) -> desafioDeUsuario.contieneAlDesafio(this));
 	}
+
+
+	public boolean correspondeA(Muestra sample) {
+		
+		return estaEnElArea(sample) && correspondeARestriccion(sample);
+	}
+
+	public boolean correspondeARestriccion(Muestra muestra) {
+		return this.getRestriccionTemporal().validar(muestra.getFechaDeRecoleccion());
+
+	}
+
 
 	public Integer valorDeCoincidenciaConPreferencia(Preferencia preferencia) {
 		int valorDeDificultad = dificultad.getValorDeDificultad();
 		int valorDePreferencia = preferencia.calcularCoincidencia(valorDeDificultad, recompensa, cantidadDeMuestrasARecolectar);
 		
 		return valorDePreferencia;
+	}
+
+	public Double calcularDistanciaConDesafio(Desafio desafio) {
+		int absValorDeDificultad = Math.abs(dificultad.getValorDeDificultad() - desafio.getDificultad().getValorDeDificultad());
+		int absRecompensa = Math.abs(recompensa - desafio.getRecompensa());
+		int absCantidadDeMuestrasARecolectar = Math.abs(cantidadDeMuestrasARecolectar - desafio.getCantidadDeMuestrasARecolectar());
+
+		double resultado = (absValorDeDificultad + absRecompensa + absCantidadDeMuestrasARecolectar) / 3;
+		return resultado;
 	}
 }

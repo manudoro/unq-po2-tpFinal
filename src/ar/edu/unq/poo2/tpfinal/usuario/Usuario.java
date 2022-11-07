@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.usuario;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
@@ -66,9 +67,10 @@ public class Usuario {
 		return this.proyectos;
 	}
 
-	public void agregarDesafio(Desafio desafio) {
+	public void aceptarDesafio(Desafio desafio) {
+		if(this.proyectos.stream().anyMatch(p -> p.getDesafios().contains(desafio))) {	
 		desafio.asignarDesafioDeUsuario(this);
-		
+		}
 	}
 
 	public void agregarDesafioDeUsuario(DesafioDeUsuario desafioUsuario) {
@@ -95,6 +97,40 @@ public class Usuario {
 	public void configurarPreferencia(Dificultad dificultad, int recompenza, int cantidadDeMuestras) {
 		this.preferencia.configurar(dificultad, recompenza, cantidadDeMuestras);
 	}
+
+
+	public Desafio mejorDesafio() {
+		Desafio desafio = (desafios.stream().max(Comparator.comparing(DesafioDeUsuario::getValorGustoDeUsuario)).get()).getDesafio();
+		return desafio;
+	}
+	
+	
+	
+	public Double getPorcentajeGeneralDeCompletitud() {
+		Double sumaTotal = this.getDesafiosDeUsuario().stream().mapToDouble(d-> d.getPorcentajeDeCompletitud()).sum();
+		return sumaTotal / (this.getDesafiosDeUsuario().size());
+		
+	}
+	
+	public void obtenerMuestra(Muestra muestra) {
+		this.desafios.stream().forEach(d -> d.recibirMuestra(muestra));
+		
+	}
+
+	public void enviarMuestraAProyectos(Muestra muestra) {
+		this.getProyectos().stream().forEach(p -> p.recibirMuestra(muestra));
+		
+	}
+	
+	public float getPorcentajeDeCompletitud(Desafio desafio){
+		for (DesafioDeUsuario d : desafios) {
+			if (d.getDesafio() == desafio) {
+				return d.getPorcentajeDeCompletitud();
+			}
+		}
+		return 0;
+	}
+	
 	
 }
 

@@ -14,7 +14,7 @@ public class Sistema {
 		
 		ArrayList<Desafio> desafiosARecomendar = usuario.desafiosSinHacer();
 		
-		List<Desafio> desafiosOrdenados = formaDeRecomendacion.ordenar(desafiosARecomendar,  usuario.getPreferencia());
+		List<Desafio> desafiosOrdenados = formaDeRecomendacion.ordenar(desafiosARecomendar,  usuario);
 				
 		return desafiosOrdenados;
 			
