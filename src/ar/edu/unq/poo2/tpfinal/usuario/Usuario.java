@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.usuario;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
@@ -96,6 +97,14 @@ public class Usuario {
 	public void configurarPreferencia(Dificultad dificultad, int recompenza, int cantidadDeMuestras) {
 		this.preferencia.configurar(dificultad, recompenza, cantidadDeMuestras);
 	}
+
+
+	public Desafio mejorDesafio() {
+		Desafio desafio = (desafios.stream().max(Comparator.comparing(DesafioDeUsuario::getValorGustoDeUsuario)).get()).getDesafio();
+		return desafio;
+	}
+	
+	
 	
 	public Double getPorcentajeGeneralDeCompletitud() {
 		Double sumaTotal = this.getDesafiosDeUsuario().stream().mapToDouble(d-> d.getPorcentajeDeCompletitud()).sum();

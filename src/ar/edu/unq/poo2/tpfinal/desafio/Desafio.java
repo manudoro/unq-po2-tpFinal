@@ -79,4 +79,13 @@ public class Desafio {
 		
 		return valorDePreferencia;
 	}
+
+	public Double calcularDistanciaConDesafio(Desafio desafio) {
+		int absValorDeDificultad = Math.abs(dificultad.getValorDeDificultad() - desafio.getDificultad().getValorDeDificultad());
+		int absRecompensa = Math.abs(recompensa - desafio.getRecompensa());
+		int absCantidadDeMuestrasARecolectar = Math.abs(cantidadDeMuestrasARecolectar - desafio.getCantidadDeMuestrasARecolectar());
+
+		double resultado = (absValorDeDificultad + absRecompensa + absCantidadDeMuestrasARecolectar) / 3;
+		return resultado;
+	}
 }
