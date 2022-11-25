@@ -26,11 +26,6 @@ public class Coordenada {
 		Distancia longitud = coordenada.getLongitud();
 		
 		return this.latitud.esParteDelArea(latitud, radio) && this.longitud.esParteDelArea(longitud, radio);
-	}
-	
-	
-		
-		
-		
+	}		
 }
 
