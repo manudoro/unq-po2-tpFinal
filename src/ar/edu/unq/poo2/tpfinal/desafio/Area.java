@@ -9,7 +9,6 @@ public class Area {
 	private int radio;
 	
 	public Area(Coordenada centro, int radio) {
-	
 		this.centro = centro;
 		this.radio = radio;
 	}
