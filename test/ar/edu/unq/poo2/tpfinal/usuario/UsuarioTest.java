@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
-import ar.edu.unq.poo2.tpfinal.desafio.DiasDeSemana;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionDiasDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
-import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
@@ -30,10 +30,10 @@ class UsuarioTest {
 	private DesafioDeUsuario desafioUsuario;
 	private Desafio desafio;
 	private DesafioDeUsuario desafioDeUsuario;
-	private FinDeSemana finDeSemana;
+	private RestriccionFinDeSemana finDeSemana;
 	private Desafio desafio2;
 
-	DiasDeSemana diasDeSemana;
+	RestriccionDiasDeSemana diasDeSemana;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -46,8 +46,8 @@ class UsuarioTest {
 	muestra1 = new Muestra(punto2,fecha1);
 	Dificultad facil = Dificultad.FACIL;
 	Area area = new Area(punto2, 5);
-	finDeSemana = new FinDeSemana();
-	diasDeSemana = new DiasDeSemana();
+	finDeSemana = new RestriccionFinDeSemana();
+	diasDeSemana = new RestriccionDiasDeSemana();
 	this.desafio = new Desafio(area, 1, facil, 5,finDeSemana);
 	this.desafio2 = new Desafio(area, 1, facil, 5,diasDeSemana);
 

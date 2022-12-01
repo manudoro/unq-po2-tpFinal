@@ -17,9 +17,9 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
-import ar.edu.unq.poo2.tpfinal.desafio.DiasDeSemana;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionDiasDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
-import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.IRestriccionTemporal;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
@@ -43,8 +43,8 @@ class ProyectoTest {
 		// Se crean instancias de Desafio.
 		Coordenada punto = new Coordenada(5, 4);
 		Area area = new Area(punto, 5);
-		IRestriccionTemporal finDeSemana = new FinDeSemana();
-		IRestriccionTemporal diaDeSemana = new DiasDeSemana();
+		IRestriccionTemporal finDeSemana = new RestriccionFinDeSemana();
+		IRestriccionTemporal diaDeSemana = new RestriccionDiasDeSemana();
 		Dificultad facil = Dificultad.FACIL;
 		
 		desafio1 = new Desafio(area, 1, facil, 1, finDeSemana);

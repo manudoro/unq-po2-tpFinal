@@ -9,7 +9,7 @@ import org.junit.jupiter.api.*;
 import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
-import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
@@ -30,7 +30,7 @@ class SistemaTest {
 		
 		Coordenada punto = new Coordenada(5, 4);
 		Area area = new Area(punto, 5);
-		FinDeSemana finDeSemana = new FinDeSemana();
+		RestriccionFinDeSemana finDeSemana = new RestriccionFinDeSemana();
 		Dificultad facil = Dificultad.FACIL;
 		
 		desafio1 = new Desafio(area, 1, facil, 1, finDeSemana);
@@ -123,7 +123,7 @@ class SistemaTest {
 		
 		Coordenada punto = new Coordenada(5, 4);
 		Area area = new Area(punto, 5);
-		FinDeSemana finDeSemana = new FinDeSemana();
+		RestriccionFinDeSemana finDeSemana = new RestriccionFinDeSemana();
 		Dificultad facil = Dificultad.FACIL;
 		Dificultad medio = Dificultad.MEDIO;
 		Dificultad muy_dificil = Dificultad.MUY_DIFICIL;
@@ -166,7 +166,7 @@ class SistemaTest {
 		
 		Coordenada punto = new Coordenada(5, 4);
 		Area area = new Area(punto, 5);
-		FinDeSemana finDeSemana = new FinDeSemana();
+		RestriccionFinDeSemana finDeSemana = new RestriccionFinDeSemana();
 		Dificultad facil = Dificultad.FACIL;
 		Dificultad medio = Dificultad.MEDIO;
 		Dificultad muy_dificil = Dificultad.MUY_DIFICIL;
