@@ -9,12 +9,6 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.poo2.tpfinal.desafio.DiasDeSemana;
-import ar.edu.unq.poo2.tpfinal.desafio.EntreFechas;
-import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
-import ar.edu.unq.poo2.tpfinal.desafio.IRestriccionTemporal;
-import ar.edu.unq.poo2.tpfinal.desafio.RestriccionMixta;
-
 class TestRestriccionTemporal {
 
 	private IRestriccionTemporal restriccionFinDeSemana, restriccionDiaDeSemana , restriccionEntreSemana;
