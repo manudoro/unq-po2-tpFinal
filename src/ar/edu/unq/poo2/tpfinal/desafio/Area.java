@@ -3,7 +3,7 @@ package ar.edu.unq.poo2.tpfinal.desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 
-public class Area {
+public  class  Area {
 	
 	private Coordenada centro;
 	private int radio;

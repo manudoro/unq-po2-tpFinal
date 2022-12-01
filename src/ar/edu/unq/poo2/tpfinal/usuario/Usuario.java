@@ -42,6 +42,7 @@ public class Usuario {
 	}
 
 
+
 	public List<DesafioDeUsuario> getDesafiosDeUsuario() {
 		// Desafios en los que participa un usuario.
 		return desafios;

@@ -55,7 +55,8 @@ public class DesafioDeUsuario{
 		return porcentajeDeCompletitud;
 	}
 
-	
+
+
 	public Usuario getUsuario() {
 		return usuario;
 	}

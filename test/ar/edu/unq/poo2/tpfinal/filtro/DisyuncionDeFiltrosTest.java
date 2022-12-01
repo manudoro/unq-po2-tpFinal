@@ -21,7 +21,7 @@ class DisyuncionDeFiltrosTest {
 	public List<Proyecto> projects;
 	
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp()  {
 		projects = new ArrayList<Proyecto>();
 		
 		animalesPeligrosos = new Proyecto("Peligros del bosque", "Proyecto sobre animales");

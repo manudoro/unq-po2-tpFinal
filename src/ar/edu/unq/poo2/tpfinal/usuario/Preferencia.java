@@ -1,4 +1,4 @@
-package ar.edu.unq.poo2.tpfinal.usuario;
+   package ar.edu.unq.poo2.tpfinal.usuario;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 
