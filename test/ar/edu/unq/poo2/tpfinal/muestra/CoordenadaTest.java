@@ -8,18 +8,32 @@ import org.junit.jupiter.api.Test;
 class CoordenadaTest {
 
 	Coordenada coordenada , coordenada2;
-	Distancia distanciaLongitud , distanciaLatitud;
 	
 	
 	@BeforeEach
-	void setUp() throws Exception {
-	
-		distanciaLongitud = new Distancia(9);
-		distanciaLatitud = new Distancia(8);
-		coordenada = new Coordenada(distanciaLongitud.getValor() , distanciaLatitud.getValor());
+	void setUp() {
+		coordenada = new Coordenada(9, 8);
 		coordenada2 = new Coordenada(2,5);
 	}
 
+	@Test
+	void testSeVerificaQueUnaDistanciaAngularNoEstaDentroDeUnCirculo() {
+		int distanciaAngularDelCentroDelCirculo = 8;
+		int distanciaAngularAVerificar = 2;
+		int radioDelCirculo = 3;
+		
+		assertFalse(coordenada.esParteDelArea(distanciaAngularDelCentroDelCirculo, distanciaAngularAVerificar, radioDelCirculo));
+	}
+	
+	@Test
+	void testSeVerificaQueUnaDistanciaAngularEstaDentroDeUnCirculo() {
+		int distanciaAngularDelCentroDelCirculo = 8;
+		int distanciaAngularAVerificar = 2;
+		int radioDelCirculo = 7;
+		
+		assertTrue(coordenada.esParteDelArea(distanciaAngularDelCentroDelCirculo, distanciaAngularAVerificar, radioDelCirculo));
+	}
+	
 	@Test
 	void testCuandoChequeamosSiUnaCoordenada_NoEstaDentroDeUnRadio() {
 		

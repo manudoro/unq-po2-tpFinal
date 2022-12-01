@@ -8,9 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class MuestraTest {
-	private Muestra muestra1,muestra2;
-	private Coordenada cordenada1, cordenada2;
-	private LocalDate fecha1,fecha2;
+	private Muestra muestra1;
+	private Coordenada cordenada1;
+	private LocalDate fecha1;
 	
 	@BeforeEach
 	void setUp() {

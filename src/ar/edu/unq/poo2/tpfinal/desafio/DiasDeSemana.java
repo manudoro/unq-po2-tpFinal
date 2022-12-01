@@ -1,9 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.desafio;
 
-import java.sql.Date;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class DiasDeSemana implements IRestriccionTemporal {
 
