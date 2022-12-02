@@ -19,7 +19,7 @@ public class Proyecto {
 	private String nombre;
 	private String descripcion;
 	private List<Usuario> usuariosSuscritos;
-	private Set<String> categorias;
+	private Set<Categoria> categorias;
 	private List<Muestra> muestras;
 	private List<Desafio> desafios;
 	
@@ -31,7 +31,7 @@ public class Proyecto {
 		this.nombre = name;
 		this.descripcion = description;
 		this.usuariosSuscritos = new ArrayList<Usuario>();
-		this.categorias = new HashSet<String>();
+		this.categorias = new HashSet<Categoria>();
 		this.muestras = new ArrayList<Muestra>();
 		this.desafios = new ArrayList<Desafio>();
 		
@@ -42,7 +42,7 @@ public class Proyecto {
 		return usuariosSuscritos;
 	}
 
-	public List<String> getCategorias() {
+	public List<Categoria> getCategorias() {
 		return new ArrayList(categorias);
 	}
 	
@@ -57,7 +57,7 @@ public class Proyecto {
 		return this.nombre;
 	}
 
-	public void vincularACategoria(String category) {
+	public void vincularACategoria(Categoria category) {
 		// este metodo permite, a un proyecto, vincularlo con una categoria nueva
 		this.categorias.add(category);
 	}
@@ -86,18 +86,12 @@ public class Proyecto {
 		}
 	}
 	
-	public boolean contieneCategorias(List<String> categories) {
+	public boolean contieneCategorias(List<Categoria> categorias2) {
 		// este metodo indica si todas categorias dadas se incluyen en las del proyecto.
-		return this.getCategorias().stream().anyMatch(c -> categories.contains(c));
+		List<String> nombres = this.getCategorias().stream().map(c->c.getNombre()).toList();
+		return nombres.stream().anyMatch(c -> categorias2.stream().map(cat->cat.getNombre()).toList().contains(c));
 	}
 	
-	public boolean excluyeCategorias(List<String> categories) {
-		// este metodo indica si todas categorias dadas se excluyen de las del proyecto.
-
-		return !this.getCategorias().stream().anyMatch(c -> categories.contains(c));
-
-	}
-
 
 	public boolean contieneTextoEnNombre(String searchText) {
 		return this.getNombre().toUpperCase().contains(searchText.toUpperCase());

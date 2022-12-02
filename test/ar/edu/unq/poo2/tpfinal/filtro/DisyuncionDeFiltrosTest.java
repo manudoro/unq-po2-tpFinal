@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.poo2.tpfinal.proyecto.Categoria;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 class DisyuncionDeFiltrosTest {
@@ -16,8 +17,8 @@ class DisyuncionDeFiltrosTest {
 	public DisyuncionDeFiltros estrellaBot, estrellaNoBot, botNoBot, noZooAstBot, bosqueNoZAB;
 	public Filtrable estrella, includesBot, excludesBot, includesAstBot, excludesZoo, nameBosque;
 	public Proyecto faunaMarina , stars ,animalesPeligrosos,floraAutoctona;
-	public String zoologia,botanica, astronomia;
-	public List<String> bot, astBot, zoo;
+	public Categoria zoologia,botanica, astronomia;
+	public List<Categoria> bot, astBot, zoo;
 	public List<Proyecto> projects;
 	
 	@BeforeEach
@@ -29,18 +30,18 @@ class DisyuncionDeFiltrosTest {
 		floraAutoctona = new Proyecto("Flora autoctona", "Proyecto sobre flores nativas");
 		stars = new Proyecto("Estrellas", "Proyecto sobre estrellas grandes");
 		
-		zoologia ="Zoología";
-		botanica = "Botánica";
-		astronomia = "Astronomia";
+		zoologia =new Categoria("Zoología");
+		botanica = new Categoria("Botánica");
+		astronomia = new Categoria("Astronomia");
 		
-		bot = new ArrayList<String>();
+		bot = new ArrayList<Categoria>();
 		bot.add(botanica);
 		
-		astBot = new ArrayList<String>();
+		astBot = new ArrayList<Categoria>();
 		astBot.add(botanica);
 		astBot.add(astronomia);
 		
-		zoo = new ArrayList<String>();
+		zoo = new ArrayList<Categoria>();
 		zoo.add(zoologia);
 		
 		projects.add(animalesPeligrosos);
