@@ -1,12 +1,13 @@
 package ar.edu.unq.poo2.tpfinal.usuario;
 
 public enum Valoracion {
-	EXELENTE(5),
-	MUY_BUENO(4),
-	BUENO(3),
-	FEO(2),
-	MUY_FEO(1),
-	HORRIBLE(0);
+	EXELENTE(6),
+	MUY_BUENO(5),
+	BUENO(4),
+	FEO(3),
+	MUY_FEO(2),
+	HORRIBLE(1),
+	NEUTRO(0);
 
 
 	private int valorDeCalificacion;
