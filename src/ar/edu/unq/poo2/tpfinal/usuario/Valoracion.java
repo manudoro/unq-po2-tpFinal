@@ -1,6 +1,6 @@
 package ar.edu.unq.poo2.tpfinal.usuario;
 
-public enum Gusto {
+public enum Valoracion {
 	EXELENTE(5),
 	MUY_BUENO(4),
 	BUENO(3),
@@ -11,7 +11,7 @@ public enum Gusto {
 
 	private int valorDeCalificacion;
 	
-	Gusto(int valorDeCalificacion) {
+	Valoracion(int valorDeCalificacion) {
 		this.valorDeCalificacion = valorDeCalificacion;
 	}	
 	

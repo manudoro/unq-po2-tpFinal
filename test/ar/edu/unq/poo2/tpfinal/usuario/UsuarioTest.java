@@ -186,8 +186,8 @@ class UsuarioTest {
 		this.desafioDeUsuario = new DesafioDeUsuario(desafio , usuario1);
 		
 		
-		usuario1.calificarDesafio(desafioDeUsuario, Gusto.EXELENTE);
-		assertEquals(Gusto.EXELENTE, desafioDeUsuario.getGustoDeUsuario());
+		usuario1.calificarDesafio(desafioDeUsuario, Valoracion.EXELENTE);
+		assertEquals(Valoracion.EXELENTE, desafioDeUsuario.getGustoDeUsuario());
 	}
 	
 }
