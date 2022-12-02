@@ -24,7 +24,7 @@ public class DesafioDeUsuario{
 		this.cantidadDeMuestrasPorRecolectar = desafio.getCantidadDeMuestrasARecolectar();
 		this.porcentajeDeCompletitud = 0;
 		this.usuario = usuario;
-		this.gustoDeUsuario = Valoracion.HORRIBLE; // Se considera horrible como caso neutro
+		this.gustoDeUsuario = Valoracion.NEUTRO; 
 	}
 	
 	
