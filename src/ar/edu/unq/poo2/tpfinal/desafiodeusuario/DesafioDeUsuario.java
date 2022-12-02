@@ -4,7 +4,7 @@ package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
-import ar.edu.unq.poo2.tpfinal.usuario.Gusto;
+import ar.edu.unq.poo2.tpfinal.usuario.Valoracion;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 public class DesafioDeUsuario{
@@ -13,7 +13,7 @@ public class DesafioDeUsuario{
 	
 	private Desafio desafio;
 	private IEstadoDeDesafio estadoDeDesafio ;
-	private Gusto gustoDeUsuario;
+	private Valoracion gustoDeUsuario;
 	private int cantidadDeMuestrasPorRecolectar;
 	private float porcentajeDeCompletitud;
 	private Usuario usuario; 
@@ -24,11 +24,11 @@ public class DesafioDeUsuario{
 		this.cantidadDeMuestrasPorRecolectar = desafio.getCantidadDeMuestrasARecolectar();
 		this.porcentajeDeCompletitud = 0;
 		this.usuario = usuario;
-		this.gustoDeUsuario = Gusto.HORRIBLE; // Se considera horrible como caso neutro
+		this.gustoDeUsuario = Valoracion.NEUTRO; 
 	}
 	
 	
-	public void setGustoDeUsuario(Gusto gustoDeUsuario) {
+	public void setGustoDeUsuario(Valoracion gustoDeUsuario) {
 		this.gustoDeUsuario = gustoDeUsuario;
 	}
 
@@ -36,7 +36,7 @@ public class DesafioDeUsuario{
 		return desafio;
 	}
 
-	public Gusto getGustoDeUsuario() {
+	public Valoracion getGustoDeUsuario() {
 		return gustoDeUsuario;
 	}
 	

@@ -10,13 +10,14 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.poo2.tpfinal.proyecto.Categoria;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 class FiltroDeInclusionTest {
 	public FiltroSimple fauna;
 	public Proyecto animalesPeligrosos, floraAutoctona, faunaMarina;
-	public String zoologia, botanica;
-	public List<String> categories;
+	public Categoria zoologia, botanica;
+	public List<Categoria> categories;
 	public List<Proyecto> proyects; 
 	
 	@BeforeEach
@@ -27,9 +28,9 @@ class FiltroDeInclusionTest {
 		faunaMarina = new Proyecto("Hojas secas", "Proyecto sobre hojas secas");
 		floraAutoctona = new Proyecto("Flora autoctona", "Proyecto sobre flores nativas");
 		
-		zoologia = "Zoología";
-		botanica = "Botánica";
-		categories = new ArrayList<String>();
+		zoologia = new Categoria("Zoología");
+		botanica = new Categoria("Botánica");
+		categories = new ArrayList<Categoria>();
 		categories.add(zoologia);
 		
 		proyects.add(animalesPeligrosos);

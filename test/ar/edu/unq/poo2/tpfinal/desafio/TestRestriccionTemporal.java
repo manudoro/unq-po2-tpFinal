@@ -18,8 +18,8 @@ class TestRestriccionTemporal {
 	@BeforeEach
 	void setUp()  {
 
-	restriccionFinDeSemana = new FinDeSemana();
-	restriccionDiaDeSemana = new DiasDeSemana();
+	restriccionFinDeSemana = new RestriccionFinDeSemana();
+	restriccionDiaDeSemana = new RestriccionDiasDeSemana();
 	restriccionMixta = new RestriccionMixta();
 	
 	fecha0 = LocalDate.of(2000, 12, 12);
@@ -29,7 +29,7 @@ class TestRestriccionTemporal {
 	fecha4 = LocalDate.of(2021,2,18);
 	fechaAValidarFinDeSemana = LocalDate.of(2022,11,5);
 	fechaAValidarDiaDeSemana = LocalDate.of(2022,11,3);
-	restriccionEntreSemana = new EntreFechas(fecha1 ,fecha2);
+	restriccionEntreSemana = new RestriccionEntreFechas(fecha1 ,fecha2);
 	}
 
 	@Test

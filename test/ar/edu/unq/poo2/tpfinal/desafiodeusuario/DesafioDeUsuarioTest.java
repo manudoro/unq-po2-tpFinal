@@ -18,8 +18,8 @@ class DesafioDeUsuarioTest {
 	private DesafioDeUsuario desafioDeUsuario, desafioDeUsuario2;
 	private Desafio desafio , desafio2;
 	private Muestra muestra, muestra1 , muestra2; 
-	private FinDeSemana finDeSemana;
-	private EntreFechas entreFecha;
+	private RestriccionFinDeSemana finDeSemana;
+	private RestriccionEntreFechas entreFecha;
 
 	private Usuario usuario;
 
@@ -44,8 +44,8 @@ class DesafioDeUsuarioTest {
 		muestra = new Muestra(punto2,fecha);
 		muestra1 = new Muestra(punto2,fecha2);
 		muestra2 = new Muestra(punto3,fecha1);
-		finDeSemana = new FinDeSemana();
-		entreFecha = new EntreFechas(fecha, fecha1);
+		finDeSemana = new RestriccionFinDeSemana();
+		entreFecha = new RestriccionEntreFechas(fecha, fecha1);
 		desafio = new Desafio(area, 10, facil, 10, finDeSemana);
 		desafio2 = new Desafio(area, 2, facil, 10, entreFecha);
 		usuario = new Usuario();

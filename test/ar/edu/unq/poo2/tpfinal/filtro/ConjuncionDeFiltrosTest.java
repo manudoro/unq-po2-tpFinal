@@ -1,6 +1,7 @@
 package ar.edu.unq.poo2.tpfinal.filtro;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +9,15 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.poo2.tpfinal.proyecto.Categoria;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 class ConjuncionDeFiltrosTest {
 	public ConjuncionDeFiltros bosqueBot, bosqueNoAst, botNoAst, astBotEstrella, noZooABE;
 	public Filtrable estrella, includesBot, excludesBot, includesAstBot, excludesZoo, nameBosque, excludesAst;
 	public Proyecto faunaMarina , stars ,animalesPeligrosos,floraAutoctona;
-	public String zoologia,botanica, astronomia;
-	public List<String> bot, astBot, zoo, ast;
+	public Categoria zoologia,botanica, astronomia;
+	public List<Categoria> bot, astBot, zoo, ast;
 	public List<Proyecto> projects;
 	
 	@BeforeEach
@@ -27,21 +29,21 @@ class ConjuncionDeFiltrosTest {
 		floraAutoctona = new Proyecto("Flora autoctona en bosques", "Proyecto sobre flores nativas");
 		stars = new Proyecto("Estrellas", "Proyecto sobre estrellas grandes");
 		
-		zoologia ="Zoología";
-		botanica = "Botánica";
-		astronomia = "Astronomia";
+		zoologia = new Categoria("Zoología");
+		botanica = new Categoria("Botánica");
+		astronomia = new Categoria("Astronomia");
 		
-		bot = new ArrayList<String>();
+		bot = new ArrayList<Categoria>();
 		bot.add(botanica);
 		
-		astBot = new ArrayList<String>();
+		astBot = new ArrayList<Categoria>();
 		astBot.add(botanica);
 		astBot.add(astronomia);
 		
-		zoo = new ArrayList<String>();
+		zoo = new ArrayList<Categoria>();
 		zoo.add(zoologia);
 		
-		ast = new ArrayList<String>();
+		ast = new ArrayList<Categoria>();
 		ast.add(astronomia);
 		
 		projects.add(animalesPeligrosos);

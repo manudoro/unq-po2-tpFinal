@@ -5,10 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
-
 import java.time.LocalDate;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,15 +14,13 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
-import ar.edu.unq.poo2.tpfinal.desafio.DiasDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
-import ar.edu.unq.poo2.tpfinal.desafio.FinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.IRestriccionTemporal;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionDiasDeSemana;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
-
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
-
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class ProyectoTest {
@@ -34,7 +29,7 @@ class ProyectoTest {
 
 	private Usuario usuario1;
 	private Muestra muestra;
-	private String categoria;
+	private Categoria categoria;
 	private Desafio desafio1, desafio2, desafio3;
 
 	
@@ -43,8 +38,8 @@ class ProyectoTest {
 		// Se crean instancias de Desafio.
 		Coordenada punto = new Coordenada(5, 4);
 		Area area = new Area(punto, 5);
-		IRestriccionTemporal finDeSemana = new FinDeSemana();
-		IRestriccionTemporal diaDeSemana = new DiasDeSemana();
+		IRestriccionTemporal finDeSemana = new RestriccionFinDeSemana();
+		IRestriccionTemporal diaDeSemana = new RestriccionDiasDeSemana();
 		Dificultad facil = Dificultad.FACIL;
 		
 		desafio1 = new Desafio(area, 1, facil, 1, finDeSemana);
@@ -53,7 +48,7 @@ class ProyectoTest {
 		
 		proyecto = new Proyecto("AquatiWord", "Cs.Natural");
 		usuario1 = mock(Usuario.class);
-		categoria = "Botanica";
+		categoria = new Categoria("Botanica");
 		
 		LocalDate fecha = LocalDate.of(2022, 11, 12);
 		muestra = new Muestra(punto, fecha);

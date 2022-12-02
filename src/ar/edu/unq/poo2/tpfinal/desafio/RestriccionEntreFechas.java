@@ -2,14 +2,14 @@ package ar.edu.unq.poo2.tpfinal.desafio;
 
 import java.time.LocalDate;
 
-public class EntreFechas implements IRestriccionTemporal{
+public class RestriccionEntreFechas implements IRestriccionTemporal{
 	
 	private LocalDate fechaInicio ;
 	private LocalDate fechaFin;	
 	
 	
 	
-	public EntreFechas(LocalDate fecha, LocalDate fecha2) {
+	public RestriccionEntreFechas(LocalDate fecha, LocalDate fecha2) {
 		this.fechaInicio = fecha;
 		this.fechaFin = fecha2;
 	

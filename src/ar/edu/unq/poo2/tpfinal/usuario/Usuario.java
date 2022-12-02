@@ -134,7 +134,7 @@ public class Usuario {
 
 
 
-	public void calificarDesafio(DesafioDeUsuario desafioDeUsuario, Gusto gusto) {
+	public void calificarDesafio(DesafioDeUsuario desafioDeUsuario, Valoracion gusto) {
 		desafioDeUsuario.setGustoDeUsuario(gusto);
 	}
 	
