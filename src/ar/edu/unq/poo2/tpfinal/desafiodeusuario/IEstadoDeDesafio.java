@@ -4,7 +4,6 @@ import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 
 public interface IEstadoDeDesafio {
 
-	public void reducirMuestrasPorRecolectar();
 	public void setDesafioDeUsuario(DesafioDeUsuario desafioDeUsuario);
 	public void recibirMuestra(Muestra muestra);
 }

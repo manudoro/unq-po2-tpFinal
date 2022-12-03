@@ -63,26 +63,6 @@ class DesafioDeUsuarioTest {
 		 this.desafioDeUsuario2 = new DesafioDeUsuario(desafio2 ,usuario);
 	}
 	
-	@Test
-	void seVerificaQueUnDesafioDeUsuarioPuedeReducirSuCantidadDeMuestrasPorRecolectar() {
-		/* Cuando se crea un desafioDeUsuario, comienza con 2 muestras por recolectar */
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); 
-		
-		assertEquals(9, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
-	}
-	
-	@Test
-	void cuandoElDesafioDeUsuarioEsteCompleto_NoSeVaAPoderModificarMasEsteDesafio() {
-		/*Un desafio esta completo cuando su cantidad de muestras por recolectar llegue a cero
-		 * La cantidad de muestras a recolectar actual es 2 */
-		
-		this.desafioDeUsuario2.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- queda una muestra por recolectar
-		this.desafioDeUsuario2.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- ya no queda muestras por recolectar, su cantidad es cero (Cambio su estado a finalizado)
-		this.desafioDeUsuario2.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- la cantidad de muestras por recolectar debe seguir en cero
-		
-		
-		assertEquals(0, this.desafioDeUsuario2.getCantidadDeMuestrasPorRecolectar());
-	}
 	
 	@Test
 	void seVerificaQueUnaMuestraNoSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {

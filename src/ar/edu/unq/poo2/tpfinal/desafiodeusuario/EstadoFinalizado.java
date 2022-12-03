@@ -6,9 +6,6 @@ public class EstadoFinalizado implements IEstadoDeDesafio {
 
 	private DesafioDeUsuario desafioDeUsuario;
 
-	@Override
-	public void reducirMuestrasPorRecolectar() {
-	}
 
 	@Override
 	public void setDesafioDeUsuario(DesafioDeUsuario desafioDeUsuario) {
