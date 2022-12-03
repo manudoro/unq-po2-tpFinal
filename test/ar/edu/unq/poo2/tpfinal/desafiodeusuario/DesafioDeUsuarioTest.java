@@ -147,7 +147,6 @@ class DesafioDeUsuarioTest {
 	
 	void cuandoUnaMuestraNoEstaDentroDeLaFechaYElEstadoSeCambiaAFinalizado() {
 		assertFalse(this.desafioDeUsuario2.restriccionEstaAbierta(muestra1));
-		//assertEquals( estadoFinalizado.getClass() , this.desafioDeUsuario.getEstadoDeDesafio().getClass());
 	}
 	
 }
