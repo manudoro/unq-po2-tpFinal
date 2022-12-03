@@ -57,14 +57,14 @@ class UsuarioTest {
 	@Test
 	void cuandoSeCreaUnUsuario_EsteNoParticipaEnNingunProyecto() {
 	
-		assertTrue(usuario1.getProyectos().isEmpty());  //Hay que ver en cuantos proyectos esta el usuario. No cuantos  usuarios tiene el proyecto
+		assertTrue(usuario1.getProyectos().isEmpty()); 
 	}
 	
 	@Test
 	void testSeVerificaQueUnUsuarioPuedeParticiparEnUnProyecto() {
 	
 		usuario1.participarEnProyecto(proyecto);
-		assertFalse(usuario1.getProyectos().isEmpty());  //Hay que ver en cuantos proyectos esta el usuario. No cuantos  usuarios tiene el proyecto
+		assertFalse(usuario1.getProyectos().isEmpty()); 
 	}
 
 	@Test
@@ -72,7 +72,7 @@ class UsuarioTest {
 		
 		usuario1.participarEnProyecto(proyecto);
 		usuario1.dejarDeParticiparEnProyecto(proyecto);
-		assertTrue(usuario1.getProyectos().isEmpty()); // Idem anterior
+		assertTrue(usuario1.getProyectos().isEmpty());
 	}
 
 	
@@ -83,7 +83,6 @@ class UsuarioTest {
 	
 	@Test
 	void testSeVerificaQueUnUsuarioRecibeUnDesafio() {
-	//	usuario1.agregarDesafio(desafio);
 		usuario1.agregarDesafioDeUsuario(desafioUsuario);
 		assertFalse(this.usuario1.getDesafiosDeUsuario().isEmpty());
 	}
