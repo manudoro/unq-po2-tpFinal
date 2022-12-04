@@ -10,11 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
+import ar.edu.unq.poo2.tpfinal.sistema.Sistema;
 
 class FiltroTextoEnNombreTest {
 	public FiltroTextoEnNombre flor;
 	public Proyecto floresNativas, floraAutoctona, hojasSecas;
 	public List<Proyecto> projects; 
+	public Sistema sistema;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -26,13 +28,14 @@ class FiltroTextoEnNombreTest {
 		projects.add(hojasSecas);
 		projects.add(floraAutoctona);
 		flor = new FiltroTextoEnNombre("Flor");
+		sistema = new Sistema(projects);
 		
 	}
 
 	@Test
 	// Cuando se busca por un determinado texto, se obtienen los proyectos que lo incluyen en su titulo
 	void testNameFilterIncludesProjects() {
-		List<Proyecto> filterProyects = flor.buscar(projects);
+		List<Proyecto> filterProyects = sistema.buscarProyectos(flor);
 		assertTrue(filterProyects.size() == 2);
 		assertTrue(filterProyects.contains(floresNativas));
 		assertTrue(filterProyects.contains(floraAutoctona));
@@ -41,7 +44,7 @@ class FiltroTextoEnNombreTest {
 	@Test
 	// Cuando se busca por un determinado texto, no se obtienen los proyectos que no lo incluyen en su titulo
 	void testNameFilterExcludesProjects() {
-		List<Proyecto> filterProyects = flor.buscar(projects);
+		List<Proyecto> filterProyects = sistema.buscarProyectos(flor);
 		assertFalse(filterProyects.contains(hojasSecas));
 	}
 }

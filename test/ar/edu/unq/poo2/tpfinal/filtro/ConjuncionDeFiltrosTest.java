@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Categoria;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
+import ar.edu.unq.poo2.tpfinal.sistema.Sistema;
 
 class ConjuncionDeFiltrosTest {
 	public ConjuncionDeFiltros bosqueBot, bosqueNoAst, botNoAst, astBotEstrella, noZooABE;
@@ -19,6 +20,7 @@ class ConjuncionDeFiltrosTest {
 	public Categoria zoologia,botanica, astronomia;
 	public List<Categoria> bot, astBot, zoo, ast;
 	public List<Proyecto> projects;
+	public Sistema sistema;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -70,13 +72,14 @@ class ConjuncionDeFiltrosTest {
 		astBotEstrella = new ConjuncionDeFiltros(nameBosque, excludesAst);
 		noZooABE = new ConjuncionDeFiltros(excludesZoo, astBotEstrella);
 		
+		sistema = new Sistema(projects);
 	}
 
 	@Test
 	// Cuando se pide una disyuncion con un filtro de nombre y uno de inclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testConjuncionDeFiltroDeTextoEInclusion() {
-		List<Proyecto> results = bosqueBot.buscar(projects);
+		List<Proyecto> results = sistema.buscarProyectos(bosqueBot);
 		assertEquals(1, results.size());
 		assertTrue(results.contains(floraAutoctona));
 	}
@@ -85,7 +88,7 @@ class ConjuncionDeFiltrosTest {
 	// Cuando se pide una disyuncion con un filtro de nombre y uno de exclusion de categorias, se obtienen todos
 	// los que cumplen con ambos criterios 
 	void testConjuncionDeFiltroDeTextoYExclusion() {
-		List<Proyecto> results = bosqueNoAst.buscar(projects);
+		List<Proyecto> results = sistema.buscarProyectos(bosqueNoAst);
 		assertEquals(2, results.size());
 		assertTrue(results.contains(floraAutoctona));
 		assertTrue(results.contains(animalesPeligrosos));
@@ -96,7 +99,7 @@ class ConjuncionDeFiltrosTest {
 	// los que cumplen con ambos criterios 
 	void testConjuncionDeInclusionYExclusion() {
 
-		List<Proyecto> results = botNoAst.buscar(projects);
+		List<Proyecto> results = sistema.buscarProyectos(botNoAst);
 		assertEquals(1, results.size());
 		assertTrue(results.contains(floraAutoctona));
 
@@ -106,7 +109,7 @@ class ConjuncionDeFiltrosTest {
 	void testConjuncionDeInclusionExclusionYTextoEnNombre() {
 		// Cuando se pide una disyuncion con un filtro de nombre, uno de exclusion y uno de inclusion
 		// de categorias se obtienen todos los que cumplen con los 3 criterios 
-		List<Proyecto> results = noZooABE.buscar(projects);
+		List<Proyecto> results = sistema.buscarProyectos(noZooABE);
 		assertEquals(1, results.size());
 		assertTrue(results.contains(floraAutoctona));
 ;

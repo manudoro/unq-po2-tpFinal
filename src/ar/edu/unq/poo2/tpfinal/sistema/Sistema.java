@@ -3,6 +3,7 @@ package ar.edu.unq.poo2.tpfinal.sistema;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.poo2.tpfinal.filtro.Filtrable;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 public class Sistema {
@@ -16,6 +17,9 @@ public class Sistema {
 		this.proyectos = new ArrayList<Proyecto>();
 	}
 	
+	public Sistema(List<Proyecto> proyectos) {
+		this.proyectos = proyectos;
+	}
 	
 	public void agregarProyecto(Proyecto proyecto) {
 		proyectos.add(proyecto);
@@ -25,7 +29,9 @@ public class Sistema {
 		proyectos.remove(proyecto);
 	}
 	
-	
+	public List<Proyecto> buscarProyectos(Filtrable filtro){
+		return filtro.buscar(this.proyectos);
+	}
 	
 	
 	

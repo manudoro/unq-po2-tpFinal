@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Categoria;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
+import ar.edu.unq.poo2.tpfinal.sistema.Sistema;
 
 class FiltroDeInclusionTest {
 	public FiltroSimple fauna;
@@ -19,6 +20,7 @@ class FiltroDeInclusionTest {
 	public Categoria zoologia, botanica;
 	public List<Categoria> categories;
 	public List<Proyecto> proyects; 
+	public Sistema sistema;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -43,12 +45,14 @@ class FiltroDeInclusionTest {
 		
 		fauna = new FiltroDeInclusionCategorias(categories);
 		
+		sistema = new Sistema(proyects);
+		
 	}
 
 	@Test
 	// Cuando se incluye una categoria, se obtienen los proyectos que la tienen
 	void testIncludesFilterIncludesProyects() {
-		List<Proyecto> filterProyects = fauna.buscar(proyects);
+		List<Proyecto> filterProyects = sistema.buscarProyectos(fauna);
 		assertEquals(2, filterProyects.size());
 		assertTrue(filterProyects.contains(animalesPeligrosos));
 		assertTrue(filterProyects.contains(faunaMarina));
@@ -57,7 +61,7 @@ class FiltroDeInclusionTest {
 	@Test
 	// Cuando se incluye una categoria, no se obtienen los proyectos que no la tienen
 	void testIncludesFilterExcludesProyects() {
-		List<Proyecto> filterProyects = fauna.buscar(proyects);
+		List<Proyecto> filterProyects = sistema.buscarProyectos(fauna);
 		assertFalse(filterProyects.contains(floraAutoctona));
 	}
 	
