@@ -1,4 +1,4 @@
-package ar.edu.unq.poo2.tpfinal.sistema;
+package ar.edu.unq.poo2.tpfinal.recomendacion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -13,14 +13,17 @@ import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
+import ar.edu.unq.poo2.tpfinal.filtro.Sistema;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
+import ar.edu.unq.poo2.tpfinal.recomendacion.FormaDeRecomendacionFavorito;
+import ar.edu.unq.poo2.tpfinal.recomendacion.FormaDeRecomendacionPreferencia;
+import ar.edu.unq.poo2.tpfinal.recomendacion.IFormaDeRecomendacion;
 import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
-class SistemaTest {
+class RecomendacionTest {
 
-	private Sistema sistema;
 	private Usuario usuario;
 	private Proyecto proyecto;
 	private Desafio desafio2;
@@ -40,7 +43,6 @@ class SistemaTest {
 		desafio1 = new Desafio(area, 1, facil, 1, finDeSemana);
 		desafio2 = new Desafio(area, 2, facil, 2, finDeSemana);
 		
-		this.sistema = new Sistema();
 		this.usuario = new Usuario(new Preferencia());
 		this.proyecto = new Proyecto("TP_Final", "Contenido para sacarse un 10 :D");
 		this.proyecto2 = new Proyecto("TP_Final", "Contenido para sacarse un 9 :D");

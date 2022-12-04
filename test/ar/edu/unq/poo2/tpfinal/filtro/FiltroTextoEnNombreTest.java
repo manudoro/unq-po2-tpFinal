@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
-import ar.edu.unq.poo2.tpfinal.sistema.Sistema;
 
 class FiltroTextoEnNombreTest {
 	public FiltroTextoEnNombre flor;
