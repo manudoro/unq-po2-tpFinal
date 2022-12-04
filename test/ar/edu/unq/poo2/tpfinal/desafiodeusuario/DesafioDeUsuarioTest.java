@@ -63,7 +63,6 @@ class DesafioDeUsuarioTest {
 		 this.desafioDeUsuario2 = new DesafioDeUsuario(desafio2 ,usuario);
 	}
 	
-	
 	@Test
 	void seVerificaQueUnaMuestraNoSeEncuentraDentroDelAreaDeUnDesafioDeUsuario() {
 		assertFalse(this.desafio.estaEnElArea(muestra1));
@@ -101,7 +100,6 @@ class DesafioDeUsuarioTest {
 		assertFalse(this.desafio.correspondeARestriccion(muestra1));
 	}
 	
-	
 	@Test
 	
 	void chequeoPorcentajeDeComplejitudCuandoRecojoMuestra() {
@@ -110,21 +108,16 @@ class DesafioDeUsuarioTest {
 	}
 	
 	@Test
-	
-	
 	void verificarQueUnaMuestra_NoEsteDentroDeLaFechaDeLaRestriccionTemporalEntreSemana() {
 		assertFalse(this.desafio2.correspondeARestriccion(muestra1));
 	}
 	
 	@Test
-	
 	void verificarQueUnaMuestraEEsteDentroDeLaFechaDeLaRestriccionTemporalEntreSemana() {
 		assertTrue(this.desafio2.correspondeARestriccion(muestra));
 	}
 	
-
 	@Test
-	
 	void cuandoUnaMuestraNoEstaDentroDeLaFechaYElEstadoSeCambiaAFinalizado() {
 		assertFalse(this.desafioDeUsuario2.restriccionEstaAbierta(muestra1));
 	}

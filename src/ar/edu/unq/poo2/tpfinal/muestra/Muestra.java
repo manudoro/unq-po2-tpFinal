@@ -10,7 +10,6 @@ public class Muestra {
 	private LocalDate fechaDeRecoleccion;
 	
 	public Muestra(Coordenada cordinate, LocalDate date) {
-
 		this.coordenada = cordinate;
 		this.fechaDeRecoleccion = date;
 	}
