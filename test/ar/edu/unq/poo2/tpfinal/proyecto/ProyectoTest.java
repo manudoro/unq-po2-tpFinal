@@ -3,7 +3,7 @@ package ar.edu.unq.poo2.tpfinal.proyecto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,108 +27,91 @@ class ProyectoTest {
 
 	private Proyecto proyecto;
 
-	private Usuario usuario1;
+	private Usuario usuario;
 	private Muestra muestra;
 	private Categoria categoria;
-	private Desafio desafio1, desafio2, desafio3;
-
+	private Desafio desafio;
+	private DesafioDeUsuario desafioDeUsuario;
 	
 	@BeforeEach
 	void setUp(){
-		// Se crean instancias de Desafio.
-		Coordenada punto = new Coordenada(5, 4);
-		Area area = new Area(punto, 5);
-		IRestriccionTemporal finDeSemana = new RestriccionFinDeSemana();
-		IRestriccionTemporal diaDeSemana = new RestriccionDiasDeSemana();
-		Dificultad facil = Dificultad.FACIL;
-		
-		desafio1 = new Desafio(area, 1, facil, 1, finDeSemana);
-		desafio2 = new Desafio(area, 2, facil, 2, finDeSemana);
-		desafio3 = new Desafio(area, 2, facil, 2, diaDeSemana);
-		
 		proyecto = new Proyecto("AquatiWord", "Cs.Natural");
-		usuario1 = mock(Usuario.class);
-		categoria = new Categoria("Botanica");
-		
-		LocalDate fecha = LocalDate.of(2022, 11, 12);
-		muestra = new Muestra(punto, fecha);
-		
+		usuario = mock(Usuario.class);
+		categoria = mock(Categoria.class);
+		desafio = mock(Desafio.class);
+		desafioDeUsuario = mock(DesafioDeUsuario.class);
 	}
 
 	@Test
 	void testSeVerificaQueSePuedeSuscribirUnUsuarioAUnProyecto()	 {
-		proyecto.suscribirUsuario(usuario1);
-		assertEquals(proyecto.getUsuarios().size() , 1);	
+		proyecto.suscribirUsuario(usuario);
+		assertTrue(proyecto.tieneUsuarios());
 	}
 
 	@Test 
 	void testSeVerificaQueUnProyectoPuedeDesuscribirUsuarios(){
-		proyecto.suscribirUsuario(usuario1);
-		proyecto.desuscribirUsuario(usuario1);
-		assertEquals(proyecto.getUsuarios().size(), 0);
+		proyecto.suscribirUsuario(usuario);
+		proyecto.desuscribirUsuario(usuario);
+		assertFalse(proyecto.tieneUsuarios());
 	}
 	
 	@Test
 	
 	void testSeVerificaQueSePuedeVincularUnaCategoriaAUnProyecto() {
 		proyecto.vincularACategoria(categoria);
-		assertEquals(proyecto.getCategorias().size() , 1);	
+		assertTrue(proyecto.tieneCategorias());	
 		
 	}
 	
 	@Test
 	void cuandoUnProyectoQueNoPoseeDesafiosRecibeDesafiosDeUsuario_NoDevuelveNada() {
-		Desafio desafio = mock(Desafio.class);
-		ArrayList<DesafioDeUsuario> desafiosDeUsuario = new ArrayList<DesafioDeUsuario>();
-		desafiosDeUsuario.add(new DesafioDeUsuario(desafio , usuario1));
-		
-		List<Desafio> desafiosSinHacer = proyecto.desafiosSinParticipacion(desafiosDeUsuario);
-		
+		List<Desafio> desafiosSinHacer;
+		List<DesafioDeUsuario> desafiosDeUsuario;
+		desafiosDeUsuario = new ArrayList<DesafioDeUsuario>();
+		desafiosDeUsuario.add(desafioDeUsuario);
+		desafiosSinHacer = proyecto.desafiosSinParticipacion(desafiosDeUsuario);
 		assertTrue(desafiosSinHacer.isEmpty());
 	}
 	
-	@Test
+	
+ 	@Test
 	void cuandoUnProyectoQuePoseeDesafiosRecibeDesafiosDeUsuario_YElDesafioEstaEnLosDelUsuario_NoDevuelveNada() {
-		ArrayList<DesafioDeUsuario> desafiosDeUsuario = new ArrayList<DesafioDeUsuario>();
-		
-		desafiosDeUsuario.add(new DesafioDeUsuario(desafio1 , usuario1));
-		proyecto.recibirDesafio(desafio1);
-		
-		List<Desafio> desafiosSinHacer = proyecto.desafiosSinParticipacion(desafiosDeUsuario);
-		
+		List<Desafio> desafiosSinHacer;
+		List<DesafioDeUsuario> desafiosDeUsuario;
+		desafiosDeUsuario = new ArrayList<DesafioDeUsuario>();
+		desafiosDeUsuario.add(desafioDeUsuario);
+		proyecto.recibirDesafio(desafio);
+		when(desafio.estaEnLosDesafiosDeUsuario(desafiosDeUsuario)).thenReturn(true); //
+		desafiosSinHacer = proyecto.desafiosSinParticipacion(desafiosDeUsuario);
 		assertTrue(desafiosSinHacer.isEmpty());
 	}
 	
 	@Test
 	void cuandoUnProyectoQuePoseeDesafiosRecibeDesafiosDeUsuario_YElDesafioEstaNoEnLosDelUsuario_DevuelveEseDesafio() {
-
-		ArrayList<DesafioDeUsuario> desafiosDeUsuario = new ArrayList<DesafioDeUsuario>();
-		
-		desafiosDeUsuario.add(new DesafioDeUsuario(desafio1 , usuario1));
-		proyecto.recibirDesafio(desafio1);
-		proyecto.recibirDesafio(desafio2);
-		
-		List<Desafio> desafiosSinHacer = proyecto.desafiosSinParticipacion(desafiosDeUsuario);
-		
-		assertEquals(1, desafiosSinHacer.size());
-		assertTrue(desafiosSinHacer.contains(desafio2));
+		List<Desafio> desafiosSinHacer;
+		List<DesafioDeUsuario> desafiosDeUsuario;
+		desafiosDeUsuario = new ArrayList<DesafioDeUsuario>();
+		desafiosDeUsuario.add(desafioDeUsuario);
+		proyecto.recibirDesafio(desafio);
+		when(desafio.estaEnLosDesafiosDeUsuario(desafiosDeUsuario)).thenReturn(false);
+		desafiosSinHacer = proyecto.desafiosSinParticipacion(desafiosDeUsuario);
+		assertFalse(desafiosSinHacer.isEmpty());
 	}
 	
 	@Test
-	void unDesafioRecibeUnaMuestraSiEsValidaParaAlgunoDeSusDesafios() {
-		proyecto.recibirDesafio(desafio1);
-		proyecto.recibirDesafio(desafio2);
+	void cuandoUnProyectoRecibeUnaMuestraYAlgunDesafioDeLaMuestraLaRequiere_ésteLaAlmacena() {
+		proyecto.recibirDesafio(desafio);
+		when(proyecto.esNecesaria(muestra)).thenReturn(true);
 		proyecto.recibirMuestra(muestra);
-		assertTrue(proyecto.getMuestras().contains(muestra));
-
+		assertTrue(proyecto.tieneLaMuestra(muestra));
 	}
 	
 	@Test
-	void unDesafioNoRecibeUnaMuestraSiNoEsValidaParaAlgunoDeSusDesafios() {
-		proyecto.recibirDesafio(desafio3);
+	void cuandoUnProyectoRecibeUnaMuestraYAlgunDesafioDeLaMuestraNoLaRequiere_ésteNoLaAlmacena() {
+		proyecto.recibirDesafio(desafio);
+		when(proyecto.esNecesaria(muestra)).thenReturn(false);
 		proyecto.recibirMuestra(muestra);
-		assertFalse(proyecto.getMuestras().contains(muestra));
-
+		assertFalse(proyecto.tieneLaMuestra(muestra));
 	}
 	
 }
