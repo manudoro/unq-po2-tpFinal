@@ -47,12 +47,12 @@ public class DesafioDeUsuario{
 	public int getCantidadDeMuestrasPorRecolectar() {
 		return cantidadDeMuestrasPorRecolectar;
 	}
-	
+	/*
 	public float getPorcentajeDeCompletitud() {
 		calucularPorcentajeDeCompletitud();
 		return porcentajeDeCompletitud;
 	}
-
+*/
 	
 	public Usuario getUsuario() {
 		return usuario;
@@ -80,9 +80,8 @@ public class DesafioDeUsuario{
 	}
 
 
-	public void calucularPorcentajeDeCompletitud() {
-		this.porcentajeDeCompletitud = 
-				(desafio.getCantidadDeMuestrasARecolectar()-this.cantidadDeMuestrasPorRecolectar) * 100 / desafio.getCantidadDeMuestrasARecolectar() ;
+	public float getPorcentajeDeCompletitud() {
+		return this.getEstadoDeDesafio().calcularPorcentajeDeCompletitud(getDesafio());
 				
 	} 	
 

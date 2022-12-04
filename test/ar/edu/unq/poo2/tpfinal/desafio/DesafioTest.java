@@ -36,7 +36,7 @@ class DesafioTest {
 		this.muestra = new Muestra(punto2, fecha);
 		this.muestra2 = new Muestra(punto, fecha);
 		
-		this.usuario1 = new Usuario();
+		this.usuario1 = new Usuario(new Preferencia());
 		this.desafio2 = new Desafio(area, 10, dificil, 21, restriccionTemporal);
 		this.desafio = new Desafio(area, 2, facil, 5, restriccionTemporal);
 	}

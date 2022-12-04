@@ -1,15 +1,22 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.poo2.tpfinal.desafio.*;
-import ar.edu.unq.poo2.tpfinal.muestra.*;
+import ar.edu.unq.poo2.tpfinal.desafio.Area;
+import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
+import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionEntreFechas;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
+import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
+import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
+import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 
@@ -48,7 +55,7 @@ class DesafioDeUsuarioTest {
 		entreFecha = new RestriccionEntreFechas(fecha, fecha1);
 		desafio = new Desafio(area, 10, facil, 10, finDeSemana);
 		desafio2 = new Desafio(area, 2, facil, 10, entreFecha);
-		usuario = new Usuario();
+		usuario = new Usuario(new Preferencia());
 	
 		
 		// <-- Instancia

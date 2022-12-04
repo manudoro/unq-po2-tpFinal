@@ -1,10 +1,13 @@
 package ar.edu.unq.poo2.tpfinal.sistema;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
@@ -12,6 +15,7 @@ import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
+import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 class SistemaTest {
@@ -37,7 +41,7 @@ class SistemaTest {
 		desafio2 = new Desafio(area, 2, facil, 2, finDeSemana);
 		
 		this.sistema = new Sistema();
-		this.usuario = new Usuario();
+		this.usuario = new Usuario(new Preferencia());
 		this.proyecto = new Proyecto("TP_Final", "Contenido para sacarse un 10 :D");
 		this.proyecto2 = new Proyecto("TP_Final", "Contenido para sacarse un 9 :D");
 		
@@ -47,7 +51,7 @@ class SistemaTest {
 	
 	@Test
 	void seVerificaQueUnSistemaNoRecomiendaNingunDesafioSiElUsuarioNoEstaEnNDesafiooyecto() {
-		List<Desafio> desafiosRecomendados = sistema.recomendarDesafios(usuario, preferencia);
+		List<Desafio> desafiosRecomendados = usuario.recomendarDesafios(preferencia);
 		
 		assertTrue(desafiosRecomendados.isEmpty());
 	}
@@ -61,7 +65,7 @@ class SistemaTest {
 		// Para que el sistema le recomiende desafios, el usuario debe participar en el proyecto
 		usuario.participarEnProyecto(proyecto);
 		
-		List<Desafio> desafiosRecomendados = sistema.recomendarDesafios(usuario, preferencia);
+		List<Desafio> desafiosRecomendados = usuario.recomendarDesafios(preferencia);
 		
 		assertEquals(2, desafiosRecomendados.size());
 		assertTrue(desafiosRecomendados.contains(desafio1));
@@ -78,7 +82,7 @@ class SistemaTest {
 		usuario.participarEnProyecto(proyecto);
 		usuario.aceptarDesafio(desafio1);
 		
-		List<Desafio> desafiosRecomendados = sistema.recomendarDesafios(usuario, preferencia);
+		List<Desafio> desafiosRecomendados = usuario.recomendarDesafios(preferencia);
 		
 		assertEquals(1, desafiosRecomendados.size());
 		assertTrue(desafiosRecomendados.contains(desafio2));
@@ -95,7 +99,7 @@ class SistemaTest {
 		usuario.participarEnProyecto(proyecto);
 		usuario.participarEnProyecto(proyecto2);
 		
-		List<Desafio> desafiosRecomendados = sistema.recomendarDesafios(usuario, preferencia);
+		List<Desafio> desafiosRecomendados = usuario.recomendarDesafios(preferencia);
 		
 		assertEquals(2, desafiosRecomendados.size());
 		assertTrue(desafiosRecomendados.contains(desafio2));
@@ -111,7 +115,7 @@ class SistemaTest {
 		// Para que el sistema le recomiende desafios, el usuario debe participar en el proyecto
 		usuario.participarEnProyecto(proyecto);
 
-		List<Desafio> desafiosRecomendados = sistema.recomendarDesafios(usuario, preferencia);
+		List<Desafio> desafiosRecomendados = usuario.recomendarDesafios(preferencia);
 		
 		assertEquals(1, desafiosRecomendados.size());
 		assertFalse(desafiosRecomendados.contains(desafio2));
@@ -150,7 +154,7 @@ class SistemaTest {
 		
 		usuario.configurarPreferencia(medio, 30, 20);
 		
-		List<Desafio> desafiosRecomendados = sistema.recomendarDesafios(usuario, preferencia);
+		List<Desafio> desafiosRecomendados = usuario.recomendarDesafios(preferencia);
 		
 		assertEquals(5, desafiosRecomendados.size());
 		assertTrue(desafiosRecomendados.contains(desafio8));
@@ -196,7 +200,7 @@ class SistemaTest {
 		
 		usuario.configurarPreferencia(medio, 30, 20);
 		
-		List<Desafio> desafiosRecomendados = sistema.recomendarDesafios(usuario, favorito);
+		List<Desafio> desafiosRecomendados = usuario.recomendarDesafios(favorito);
 		
 		assertEquals(5, desafiosRecomendados.size());
 		assertTrue(desafiosRecomendados.contains(desafio8));

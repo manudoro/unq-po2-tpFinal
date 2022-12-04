@@ -6,15 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.mock;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Area;
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
-import ar.edu.unq.poo2.tpfinal.desafio.RestriccionDiasDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionDiasDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
@@ -37,7 +37,7 @@ class UsuarioTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-	usuario1 = new Usuario();
+	usuario1 = new Usuario(new Preferencia());
 	proyecto = new Proyecto("Programmin", "Cs.Tecnologhy");
 	LocalDate fecha = LocalDate.of(2022, 11, 12);
 	LocalDate fecha1 = LocalDate.of(2022, 11, 19);
@@ -108,7 +108,7 @@ class UsuarioTest {
 		
 		proyecto.recibirDesafio(desafio);
 		usuario1.participarEnProyecto(proyecto);
-		ArrayList<Desafio> desafiosSinHacer = usuario1.desafiosSinHacer();
+		List<Desafio> desafiosSinHacer = usuario1.desafiosSinHacer();
 		
 		assertTrue(desafiosSinHacer.contains(desafio));
 		
