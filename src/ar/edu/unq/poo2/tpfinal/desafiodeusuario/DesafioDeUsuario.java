@@ -75,7 +75,6 @@ public class DesafioDeUsuario{
 
 
 	 boolean restriccionEstaAbierta(Muestra muestra) {
-		
 		return this.desafio.getRestriccionTemporal().estaAbierta(muestra.getFechaDeRecoleccion()) ;
 	}
 
