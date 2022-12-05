@@ -3,6 +3,8 @@ package ar.edu.unq.poo2.tpfinal.filtro;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,24 +28,21 @@ class FiltroDeExclusionTest {
 	void setUp() throws Exception {
 		projects = new ArrayList<Proyecto>();
 		
-		animalesPeligrosos = new Proyecto("Flores nativas", "Proyecto sobre flores nativas");
-		faunaMarina = new Proyecto("Hojas secas", "Proyecto sobre hojas secas");
-		floraAutoctona = new Proyecto("Flora autoctona", "Proyecto sobre flores nativas");
-		stars = new Proyecto("Estrellas", "Proyecto sobre estrellas grandes");
+		animalesPeligrosos = mock(Proyecto.class);
+		faunaMarina = mock(Proyecto.class);
+		floraAutoctona = mock(Proyecto.class);
+		stars = mock(Proyecto.class);
 		
-		zoologia = new Categoria("Zoología");
-		botanica = new Categoria("Botánica");
-		astronomia = new Categoria("Astronomia");
-		categories = new ArrayList<Categoria>();
-		categories.add(zoologia);
+
+		when(animalesPeligrosos.contieneCategorias(categories)).thenReturn(true);
+		when(faunaMarina.contieneCategorias(categories)).thenReturn(true);
+		when(floraAutoctona.contieneCategorias(categories)).thenReturn(false);
+
 		projects.add(animalesPeligrosos);
 		projects.add(faunaMarina);
 		projects.add(floraAutoctona);
 		
-		animalesPeligrosos.vincularACategoria(zoologia);
-		faunaMarina.vincularACategoria(zoologia);
-		floraAutoctona.vincularACategoria(botanica);
-		stars.vincularACategoria(astronomia);
+
 		
 		fauna = new FiltroDeExclusionCategorias(categories);
 		
@@ -53,7 +52,7 @@ class FiltroDeExclusionTest {
 	@Test
 	// Cuando se excluye una categoria, se obtienen los proyectos que no la tienen
 	void testExcludesFilterIncludesProjects() {
-		List<Proyecto> filterProjects = sistema.buscarProyectos(fauna);
+		List<Proyecto> filterProjects = fauna.buscar(projects);
 		assertEquals(1, filterProjects.size());
 		assertFalse(filterProjects.contains(animalesPeligrosos));
 		assertFalse(filterProjects.contains(faunaMarina));
@@ -62,7 +61,7 @@ class FiltroDeExclusionTest {
 
 	@Test
 	void testExcludesFilterExcludesProjects() {
-		List<Proyecto> filterProjects = sistema.buscarProyectos(fauna);
+		List<Proyecto> filterProjects = fauna.buscar(projects);
 		assertTrue(filterProjects.contains(floraAutoctona));
 	}
 	

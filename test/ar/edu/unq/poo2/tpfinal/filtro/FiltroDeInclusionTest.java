@@ -3,6 +3,8 @@ package ar.edu.unq.poo2.tpfinal.filtro;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,22 +27,21 @@ class FiltroDeInclusionTest {
 	void setUp() throws Exception {
 		proyects = new ArrayList<Proyecto>();
 		
-		animalesPeligrosos = new Proyecto("Flores nativas", "Proyecto sobre flores nativas");
-		faunaMarina = new Proyecto("Hojas secas", "Proyecto sobre hojas secas");
-		floraAutoctona = new Proyecto("Flora autoctona", "Proyecto sobre flores nativas");
+		animalesPeligrosos = mock(Proyecto.class);
+		faunaMarina = mock(Proyecto.class);
+		floraAutoctona = mock(Proyecto.class);
 		
-		zoologia = new Categoria("Zoología");
-		botanica = new Categoria("Botánica");
+		
 		categories = new ArrayList<Categoria>();
-		categories.add(zoologia);
+
 		
 		proyects.add(animalesPeligrosos);
 		proyects.add(faunaMarina);
 		proyects.add(floraAutoctona);
 		
-		animalesPeligrosos.vincularACategoria(zoologia);
-		faunaMarina.vincularACategoria(zoologia);
-		floraAutoctona.vincularACategoria(botanica);
+		when(animalesPeligrosos.contieneCategorias(categories)).thenReturn(true);
+		when(faunaMarina.contieneCategorias(categories)).thenReturn(true);
+		when(floraAutoctona.contieneCategorias(categories)).thenReturn(false);
 		
 		fauna = new FiltroDeInclusionCategorias(categories);
 		
@@ -51,7 +52,7 @@ class FiltroDeInclusionTest {
 	@Test
 	// Cuando se incluye una categoria, se obtienen los proyectos que la tienen
 	void testIncludesFilterIncludesProyects() {
-		List<Proyecto> filterProyects = sistema.buscarProyectos(fauna);
+		List<Proyecto> filterProyects = fauna.buscar(proyects);
 		assertEquals(2, filterProyects.size());
 		assertTrue(filterProyects.contains(animalesPeligrosos));
 		assertTrue(filterProyects.contains(faunaMarina));
@@ -60,7 +61,7 @@ class FiltroDeInclusionTest {
 	@Test
 	// Cuando se incluye una categoria, no se obtienen los proyectos que no la tienen
 	void testIncludesFilterExcludesProyects() {
-		List<Proyecto> filterProyects = sistema.buscarProyectos(fauna);
+		List<Proyecto> filterProyects = fauna.buscar(proyects);
 		assertFalse(filterProyects.contains(floraAutoctona));
 	}
 	
