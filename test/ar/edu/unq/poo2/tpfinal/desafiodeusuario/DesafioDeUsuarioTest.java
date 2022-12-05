@@ -124,9 +124,5 @@ class DesafioDeUsuarioTest {
 		assertTrue(this.desafio2.correspondeARestriccion(muestra));
 	}
 	
-	@Test
-	void cuandoUnaMuestraNoEstaDentroDeLaFechaYElEstadoSeCambiaAFinalizado() {
-		assertFalse(this.desafioDeUsuario2.restriccionEstaAbierta(muestra1));
-	}
 	
 }

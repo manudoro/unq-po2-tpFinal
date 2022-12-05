@@ -3,7 +3,7 @@ package ar.edu.unq.poo2.tpfinal.usuario;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,12 +17,18 @@ import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafio.RestriccionDiasDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
+import ar.edu.unq.poo2.tpfinal.desafiodeusuario.EstadoAceptado;
+import ar.edu.unq.poo2.tpfinal.desafiodeusuario.IEstadoDeDesafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 class UsuarioTest {
 
+	
+	/*
+	 * SUT: Usuario.
+	 * */
 
 	private Proyecto proyecto;
 	private Usuario usuario1;
@@ -36,7 +42,10 @@ class UsuarioTest {
 	RestriccionDiasDeSemana diasDeSemana;
 	
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp(){
+		
+		
+		
 	usuario1 = new Usuario(new Preferencia());
 	proyecto = new Proyecto("Programmin", "Cs.Tecnologhy");
 	LocalDate fecha = LocalDate.of(2022, 11, 12);
@@ -56,15 +65,14 @@ class UsuarioTest {
 
 	@Test
 	void cuandoSeCreaUnUsuario_EsteNoParticipaEnNingunProyecto() {
-	
-		assertTrue(usuario1.getProyectos().isEmpty()); 
+		assertFalse(usuario1.tieneProyectos()); 
 	}
 	
 	@Test
 	void testSeVerificaQueUnUsuarioPuedeParticiparEnUnProyecto() {
 	
 		usuario1.participarEnProyecto(proyecto);
-		assertFalse(usuario1.getProyectos().isEmpty()); 
+		assertTrue(usuario1.tieneProyectos()); 
 	}
 
 	@Test
@@ -72,34 +80,32 @@ class UsuarioTest {
 		
 		usuario1.participarEnProyecto(proyecto);
 		usuario1.dejarDeParticiparEnProyecto(proyecto);
-		assertTrue(usuario1.getProyectos().isEmpty());
+		assertFalse(usuario1.tieneProyectos());
 	}
 
 	
 	@Test
 	void testSeVerificaQueUnUsuarioNoPoseeDesafrios() {
-		assertTrue(this.usuario1.getDesafiosDeUsuario().isEmpty());
+		assertFalse(usuario1.tieneDesafiosDeUsuario());
 	}
 	
 	@Test
 	void testSeVerificaQueUnUsuarioRecibeUnDesafio() {
 		usuario1.agregarDesafioDeUsuario(desafioUsuario);
-		assertFalse(this.usuario1.getDesafiosDeUsuario().isEmpty());
+		assertTrue(usuario1.tieneDesafiosDeUsuario());
 	}
 	
 	@Test
 	void testSeVerificaQueUnUsuarioPuedeRecibirUnDesafioDeUsuario() {
 		usuario1.agregarDesafioDeUsuario(desafioUsuario);
-		assertFalse(this.usuario1.getDesafiosDeUsuario().isEmpty());
+		assertTrue(usuario1.tieneDesafiosDeUsuario());
 	}
 	
 	
 	@Test 
-	
 	void testVerificarCuandoUnUsuarioTerminaUnDesafioQueEsteSeSumaAsuListaDeDesafiosCompletos() {
 		this.desafioDeUsuario.recibirMuestra(muestra);
-		assertEquals(1 , this.usuario1.getDesafiosCompletos().size());
-	
+		assertTrue(usuario1.tieneDesafiosCompletos());
 	}
 	
 	@Test
@@ -115,10 +121,8 @@ class UsuarioTest {
 	}
 	
 	@Test
-
 	void seVerificaQueUnUsuarioNoParticipaEnDesafiosSiNoEstanEnSusProyectos(){
 		assertFalse(usuario1.desafiosSinHacer().contains(desafio));
-		
 	}
 	
 
@@ -176,7 +180,6 @@ class UsuarioTest {
 		Desafio desafio = usuario1.mejorDesafio();
 		
 		assertEquals(this.desafio, desafio);
-		
 	}
 	
 	@Test

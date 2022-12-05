@@ -19,17 +19,14 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 
 	
 	private void reducirMuestrasPorRecolectar() {
-		
-		int cantidadDeMuestras = this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar();
-		cantidadDeMuestras = cantidadDeMuestras - 1;
-		
-		if (cantidadDeMuestras == 0) {
+		desafioDeUsuario.reducirCantidadDeMuestras();
+		if (!desafioDeUsuario.hayMuestrasPorRecolectar()) {
 			this.desafioDeUsuario.setEstadoDeDesafio(estadoFinalizado);
 			this.desafioDeUsuario.getUsuario().agregarDesafiosCompletos(this.desafioDeUsuario);
 		}
-		this.desafioDeUsuario.setMuestrasPorRecolectar(cantidadDeMuestras);
 	
 	}
+
 	@Override
 	public float calcularPorcentajeDeCompletitud(Desafio desafio) {
 		return (desafio.getCantidadDeMuestrasARecolectar()-desafioDeUsuario.getCantidadDeMuestrasPorRecolectar()) * 100 / desafio.getCantidadDeMuestrasARecolectar() ;
@@ -50,7 +47,5 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 			this.desafioDeUsuario.validarMuestra(muestra);
 		}
 
-		
-		
 	}
 }

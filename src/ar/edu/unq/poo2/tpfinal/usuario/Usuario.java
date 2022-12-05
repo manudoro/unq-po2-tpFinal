@@ -3,13 +3,14 @@ package ar.edu.unq.poo2.tpfinal.usuario;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.BooleanSupplier;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
-import ar.edu.unq.poo2.tpfinal.sistema.IFormaDeRecomendacion;
+import ar.edu.unq.poo2.tpfinal.recomendacion.IFormaDeRecomendacion;
 
 	
 
@@ -69,9 +70,16 @@ public class Usuario {
 	}
 
 	public void aceptarDesafio(Desafio desafio) {
-		if(this.proyectos.stream().anyMatch(p -> p.getDesafios().contains(desafio))) {	
+		if(sePoseeElDesafio(desafio)) {	
 		desafio.asignarDesafioDeUsuario(this);
 		}
+	}
+
+
+
+	private boolean sePoseeElDesafio(Desafio desafio) {
+		// Indica si el proyecto posee el desafio dado
+		return this.proyectos.stream().anyMatch(p -> p.getDesafios().contains(desafio));
 	}
 
 	public void agregarDesafioDeUsuario(DesafioDeUsuario desafioUsuario) {
@@ -146,6 +154,24 @@ public class Usuario {
 				
 		return desafiosOrdenados;
 			
+	}
+
+
+
+	public boolean tieneProyectos() {
+		return !getProyectos().isEmpty();
+	}
+
+
+
+	public boolean tieneDesafiosDeUsuario() {
+		return !getDesafiosDeUsuario().isEmpty();
+	}
+
+
+
+	public boolean tieneDesafiosCompletos() {
+		return !getDesafiosCompletos().isEmpty();
 	}
 	
 }

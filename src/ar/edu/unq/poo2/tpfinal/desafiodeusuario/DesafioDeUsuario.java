@@ -47,17 +47,14 @@ public class DesafioDeUsuario{
 	public int getCantidadDeMuestrasPorRecolectar() {
 		return cantidadDeMuestrasPorRecolectar;
 	}
-	/*
-	public float getPorcentajeDeCompletitud() {
-		calucularPorcentajeDeCompletitud();
-		return porcentajeDeCompletitud;
-	}
-*/
 	
+	public boolean hayMuestrasPorRecolectar() {
+		return cantidadDeMuestrasPorRecolectar > 0;
+	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
-
 
 	public IEstadoDeDesafio getEstadoDeDesafio() {
 		return estadoDeDesafio;
@@ -71,11 +68,6 @@ public class DesafioDeUsuario{
 
 	public void recibirMuestra(Muestra muestra) {
 		this.estadoDeDesafio.recibirMuestra(muestra);
-	}
-
-
-	 boolean restriccionEstaAbierta(Muestra muestra) {
-		return this.desafio.getRestriccionTemporal().estaAbierta(muestra.getFechaDeRecoleccion()) ;
 	}
 
 
@@ -115,6 +107,11 @@ public class DesafioDeUsuario{
 
 	public Desafio getDesafio() {
 		return desafio;
+	}
+
+
+	public void reducirCantidadDeMuestras() {
+		cantidadDeMuestrasPorRecolectar -= 1;
 	}
 
 	
