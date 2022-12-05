@@ -69,13 +69,18 @@ public class Usuario {
 		return this.proyectos;
 	}
 
-	public void aceptarDesafio(Desafio desafio) {
+	public void aceptarDesafio(Desafio desafio) throws Exception {
 		if(sePoseeElDesafio(desafio)) {	
 		desafio.asignarDesafioDeUsuario(this);
 		}
+		else {
+			throw new Exception(this.excepcionDesafioNoEncontrado());
+		}
 	}
 
-
+	private String excepcionDesafioNoEncontrado() {
+		return "El desafío indicado no se encuentra entre los proyectos participados";
+	}
 
 	private boolean sePoseeElDesafio(Desafio desafio) {
 		// Indica si el proyecto posee el desafio dado
@@ -131,15 +136,18 @@ public class Usuario {
 		
 	}
 	
-	public float getPorcentajeDeCompletitud(Desafio desafio){
+	public float getPorcentajeDeCompletitud(Desafio desafio) throws Exception{
 		for (DesafioDeUsuario d : desafios) {
 			if (d.getDesafio() == desafio) {
 				return d.getPorcentajeDeCompletitud();
 			}
 		}
-		return 0;
+		throw new Exception(this.excepcionNoExisteDesafio());
 	}
-
+	
+	private String excepcionNoExisteDesafio() {
+		return "El usuario no cuenta con el desafio dado";
+	}
 
 
 	public void calificarDesafio(DesafioDeUsuario desafioDeUsuario, Valoracion gusto) {

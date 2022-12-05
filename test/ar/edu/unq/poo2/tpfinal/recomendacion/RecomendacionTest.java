@@ -75,7 +75,7 @@ class RecomendacionTest {
 	}
 	
 	@Test
-	void cuandoUnUsuarioParticipaEnUnProyecto_YParticipaEnAlMenos1_elSistemaLeRecomiendaLosDesafiosDeEseProyecto_ExcluyendoElQueParticipa() {
+	void cuandoUnUsuarioParticipaEnUnProyecto_YParticipaEnAlMenos1_elSistemaLeRecomiendaLosDesafiosDeEseProyecto_ExcluyendoElQueParticipa() throws Exception {
 		// El proyecto recibe desafios
 		proyecto.recibirDesafio(desafio1); 
 		proyecto.recibirDesafio(desafio2); 
@@ -168,7 +168,7 @@ class RecomendacionTest {
 	}
 	
 	@Test
-	void seVerificaQueUnSistemaRecomiendaDesafiosParaUnUsuario_SegunElFavoritismo(){
+	void seVerificaQueUnSistemaRecomiendaDesafiosParaUnUsuario_SegunElFavoritismo() throws Exception{
 		
 		Coordenada punto = new Coordenada(5, 4);
 		Area area = new Area(punto, 5);
@@ -213,4 +213,3 @@ class RecomendacionTest {
 		
 	}
 }
-

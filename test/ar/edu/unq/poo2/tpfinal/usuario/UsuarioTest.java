@@ -135,7 +135,7 @@ class UsuarioTest {
 	}
 	
 	@Test 
-	void seObtieneElPorcentajeDeCompletitudDeUnDesafio() {
+	void seObtieneElPorcentajeDeCompletitudDeUnDesafio() throws Exception {
 		this.usuario1.participarEnProyecto(proyecto);
 		this.proyecto.recibirDesafio(desafio);
 		this.usuario1.aceptarDesafio(desafio);
@@ -146,7 +146,7 @@ class UsuarioTest {
 
 
 	@Test
-	void seObtieneElPromedioGeneralDePorcentajeDeDesafios() {
+	void seObtieneElPromedioGeneralDePorcentajeDeDesafios() throws Exception {
 		this.usuario1.participarEnProyecto(proyecto);
 		this.proyecto.recibirDesafio(desafio);
 		this.proyecto.recibirDesafio(desafio2);
@@ -169,7 +169,7 @@ class UsuarioTest {
 	}
 	
 	@Test
-	void cuandoUnUsuarioQuiereElMejorDesafio_DevuelveElQueMasLeGusto(){
+	void cuandoUnUsuarioQuiereElMejorDesafio_DevuelveElQueMasLeGusto() throws Exception{
 		proyecto.recibirDesafio(desafio);
 		proyecto.recibirDesafio(desafio2);
 		usuario1.participarEnProyecto(proyecto);
