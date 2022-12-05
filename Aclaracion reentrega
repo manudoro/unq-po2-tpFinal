@@ -1,0 +1,6 @@
+Aclaración:
+
+Si bien se nos indicó que el patrón State debía contar además con un estado no iniciado, entendemos que la corrección no aplica a nuestra implementación, ya que de acuerdo a la misma, una instancia de DesafioDeUsuario se crea en el momento en que el Usuario acepta el Desafío correspondiente, por lo que un estado puede estar o bien iniciado cuando se acepta o bien finalizado cuando se concluye, pero no de otra manera.
+
+Como deuda técnica, no concluimos con la refactorización de todos los test, por lo que solo algunas clases cuentan con Test Doubles. 
+
