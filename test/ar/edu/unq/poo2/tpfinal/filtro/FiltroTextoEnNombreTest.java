@@ -1,7 +1,10 @@
 package ar.edu.unq.poo2.tpfinal.filtro;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,33 +18,38 @@ class FiltroTextoEnNombreTest {
 	public FiltroTextoEnNombre flor;
 	public Proyecto floresNativas, floraAutoctona, hojasSecas;
 	public List<Proyecto> projects; 
+	public String florSt;
+
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		projects = new ArrayList<Proyecto>();
-		floresNativas = new Proyecto("Flores nativas", "Proyecto sobre flores nativas");
-		hojasSecas = new Proyecto("Hojas secas", "Proyecto sobre hojas secas");
-		floraAutoctona = new Proyecto("Flora autoctona", "Proyecto sobre flores nativas");
+		florSt = "Flor";
+		floresNativas = mock(Proyecto.class); 
+		hojasSecas = mock(Proyecto.class);
+		floraAutoctona = mock(Proyecto.class);
+		when(floresNativas.contieneTextoEnNombre(florSt)).thenReturn(true);
+		when(hojasSecas.contieneTextoEnNombre(florSt)).thenReturn(false);
+		when(floraAutoctona.contieneTextoEnNombre(florSt)).thenReturn(true);
 		projects.add(floresNativas);
 		projects.add(hojasSecas);
 		projects.add(floraAutoctona);
-		flor = new FiltroTextoEnNombre("Flor");
+		flor = new FiltroTextoEnNombre(florSt);
+
 		
 	}
 
 	@Test
 	// Cuando se busca por un determinado texto, se obtienen los proyectos que lo incluyen en su titulo
 	void testNameFilterIncludesProjects() {
-		List<Proyecto> filterProyects = flor.buscar(projects);
-		assertTrue(filterProyects.size() == 2);
-		assertTrue(filterProyects.contains(floresNativas));
-		assertTrue(filterProyects.contains(floraAutoctona));
+		assertEquals(2, flor.buscar(projects).size());
+		assertTrue(flor.buscar(projects).contains(floresNativas));
+		assertTrue(flor.buscar(projects).contains(floraAutoctona));
 	}
 	
 	@Test
 	// Cuando se busca por un determinado texto, no se obtienen los proyectos que no lo incluyen en su titulo
 	void testNameFilterExcludesProjects() {
-		List<Proyecto> filterProyects = flor.buscar(projects);
-		assertFalse(filterProyects.contains(hojasSecas));
+		assertFalse(flor.buscar(projects).contains(hojasSecas));
 	}
 }

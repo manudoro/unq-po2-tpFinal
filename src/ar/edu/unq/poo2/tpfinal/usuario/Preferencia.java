@@ -6,6 +6,13 @@ public class Preferencia {
 	private Dificultad dificultad ;
 	private int recompenzaPreferida ;
 	private int cantidadDeMuestras;
+
+	public Preferencia() {
+		//Preferencia default.
+		this.dificultad = Dificultad.FACIL;
+		this.recompenzaPreferida = 0;
+		this.cantidadDeMuestras = 0;
+		}
 	
 	
 	public Preferencia(Dificultad dificultad, int recompenza, int cantidadDeMuestras) {

@@ -10,7 +10,7 @@ public class FiltroTextoEnNombre extends FiltroSimple implements Filtrable {
 		this.searchText = text;
 	}
 
-
+	
 	@Override
 	protected boolean validarProyecto(Proyecto p) {
 		return p.contieneTextoEnNombre(searchText);

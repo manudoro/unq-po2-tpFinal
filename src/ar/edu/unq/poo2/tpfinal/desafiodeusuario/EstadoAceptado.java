@@ -1,5 +1,6 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
+import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 
 public class EstadoAceptado implements IEstadoDeDesafio {
@@ -16,21 +17,21 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 
 
 
-	@Override
-	public void reducirMuestrasPorRecolectar() {
-		
-		int cantidadDeMuestras = this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar();
-		cantidadDeMuestras = cantidadDeMuestras - 1;
-		
-		if (cantidadDeMuestras == 0) {
+	
+	private void reducirMuestrasPorRecolectar() {
+		desafioDeUsuario.reducirCantidadDeMuestras();
+		if (!desafioDeUsuario.hayMuestrasPorRecolectar()) {
 			this.desafioDeUsuario.setEstadoDeDesafio(estadoFinalizado);
 			this.desafioDeUsuario.getUsuario().agregarDesafiosCompletos(this.desafioDeUsuario);
 		}
-		this.desafioDeUsuario.setMuestrasPorRecolectar(cantidadDeMuestras);
 	
 	}
-	
-	
+
+	@Override
+	public float calcularPorcentajeDeCompletitud(Desafio desafio) {
+		return (desafio.getCantidadDeMuestrasARecolectar()-desafioDeUsuario.getCantidadDeMuestrasPorRecolectar()) * 100 / desafio.getCantidadDeMuestrasARecolectar() ;
+
+	}
 	
 	@Override
 	public void setDesafioDeUsuario(DesafioDeUsuario desafioDeUsuario) {
@@ -45,11 +46,6 @@ public class EstadoAceptado implements IEstadoDeDesafio {
 			this.reducirMuestrasPorRecolectar();
 			this.desafioDeUsuario.validarMuestra(muestra);
 		}
-		if (!desafioDeUsuario.restriccionEstaAbierta(muestra)) {
-			this.desafioDeUsuario.setEstadoDeDesafio(estadoFinalizado);
-		}
-		
-		
-		
+
 	}
 }

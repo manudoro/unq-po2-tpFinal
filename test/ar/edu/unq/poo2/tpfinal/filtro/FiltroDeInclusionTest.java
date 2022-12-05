@@ -3,6 +3,8 @@ package ar.edu.unq.poo2.tpfinal.filtro;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,29 +21,31 @@ class FiltroDeInclusionTest {
 	public Categoria zoologia, botanica;
 	public List<Categoria> categories;
 	public List<Proyecto> proyects; 
+	public Sistema sistema;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		proyects = new ArrayList<Proyecto>();
 		
-		animalesPeligrosos = new Proyecto("Flores nativas", "Proyecto sobre flores nativas");
-		faunaMarina = new Proyecto("Hojas secas", "Proyecto sobre hojas secas");
-		floraAutoctona = new Proyecto("Flora autoctona", "Proyecto sobre flores nativas");
+		animalesPeligrosos = mock(Proyecto.class);
+		faunaMarina = mock(Proyecto.class);
+		floraAutoctona = mock(Proyecto.class);
 		
-		zoologia = new Categoria("Zoología");
-		botanica = new Categoria("Botánica");
+		
 		categories = new ArrayList<Categoria>();
-		categories.add(zoologia);
+
 		
 		proyects.add(animalesPeligrosos);
 		proyects.add(faunaMarina);
 		proyects.add(floraAutoctona);
 		
-		animalesPeligrosos.vincularACategoria(zoologia);
-		faunaMarina.vincularACategoria(zoologia);
-		floraAutoctona.vincularACategoria(botanica);
+		when(animalesPeligrosos.contieneCategorias(categories)).thenReturn(true);
+		when(faunaMarina.contieneCategorias(categories)).thenReturn(true);
+		when(floraAutoctona.contieneCategorias(categories)).thenReturn(false);
 		
 		fauna = new FiltroDeInclusionCategorias(categories);
+		
+		sistema = new Sistema(proyects);
 		
 	}
 

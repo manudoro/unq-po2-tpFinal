@@ -9,6 +9,8 @@ import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
+import ar.edu.unq.poo2.tpfinal.recomendacion.IFormaDeRecomendacion;
+
 
 	
 
@@ -17,17 +19,17 @@ public class Usuario {
 	/* Se  modela un usuario */
 	
 	private List<Muestra> muestrasRecolectadas;
-	private ArrayList<DesafioDeUsuario> desafios;
+	private List<DesafioDeUsuario> desafios;
 	private List<Proyecto> proyectos;
 	private List<DesafioDeUsuario> desafiosCompletos;
 	private Preferencia preferencia;
 	
-	public Usuario() {
+	public Usuario(Preferencia preferencia) {
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
 		this.desafios = new ArrayList<DesafioDeUsuario>();
 		this.proyectos = new ArrayList<Proyecto>();
 		this.desafiosCompletos = new ArrayList<DesafioDeUsuario>();
-		this.preferencia = new Preferencia(Dificultad.FACIL, 0, 0);
+		this.preferencia = preferencia;
 	}
 	
 	
@@ -68,10 +70,22 @@ public class Usuario {
 		return this.proyectos;
 	}
 
-	public void aceptarDesafio(Desafio desafio) {
-		if(this.proyectos.stream().anyMatch(p -> p.getDesafios().contains(desafio))) {	
+	public void aceptarDesafio(Desafio desafio) throws Exception {
+		if(sePoseeElDesafio(desafio)) {	
 		desafio.asignarDesafioDeUsuario(this);
 		}
+		else {
+			throw new Exception(this.excepcionDesafioNoEncontrado());
+		}
+	}
+
+	private String excepcionDesafioNoEncontrado() {
+		return "El desafío indicado no se encuentra entre los proyectos participados";
+	}
+
+	private boolean sePoseeElDesafio(Desafio desafio) {
+		// Indica si el proyecto posee el desafio dado
+		return this.proyectos.stream().anyMatch(p -> p.getDesafios().contains(desafio));
 	}
 
 	public void agregarDesafioDeUsuario(DesafioDeUsuario desafioUsuario) {
@@ -83,8 +97,8 @@ public class Usuario {
 		return this.proyectos.isEmpty();
 	}
 
-	public ArrayList<Desafio> desafiosSinHacer() { //Corregir
-		ArrayList<Desafio> desafiosSinHacer = new ArrayList<Desafio>();
+	public List<Desafio> desafiosSinHacer() { //Corregir
+		List<Desafio> desafiosSinHacer = new ArrayList<Desafio>();
 		proyectos.stream().forEach(proyecto -> desafiosSinHacer.addAll(proyecto.desafiosSinParticipacion(desafios)));
 		
 		return desafiosSinHacer;
@@ -123,21 +137,51 @@ public class Usuario {
 		
 	}
 	
-	public float getPorcentajeDeCompletitud(Desafio desafio){
+	public float getPorcentajeDeCompletitud(Desafio desafio) throws Exception{
 		for (DesafioDeUsuario d : desafios) {
 			if (d.getDesafio() == desafio) {
 				return d.getPorcentajeDeCompletitud();
 			}
 		}
-		return 0;
+		throw new Exception(this.excepcionNoExisteDesafio());
 	}
-
+	
+	private String excepcionNoExisteDesafio() {
+		return "El usuario no cuenta con el desafio dado";
+	}
 
 
 	public void calificarDesafio(DesafioDeUsuario desafioDeUsuario, Valoracion gusto) {
 		desafioDeUsuario.setGustoDeUsuario(gusto);
 	}
 	
+	public List<Desafio> recomendarDesafios(IFormaDeRecomendacion formaDeRecomendacion) {
+		
+		List<Desafio> desafiosARecomendar = this.desafiosSinHacer();
+		
+		List<Desafio> desafiosOrdenados = formaDeRecomendacion.ordenar(desafiosARecomendar,  this);
+				
+		return desafiosOrdenados;
+			
+	}
+
+
+
+	public boolean tieneProyectos() {
+		return !getProyectos().isEmpty();
+	}
+
+
+
+	public boolean tieneDesafiosDeUsuario() {
+		return !getDesafiosDeUsuario().isEmpty();
+	}
+
+
+
+	public boolean tieneDesafiosCompletos() {
+		return !getDesafiosCompletos().isEmpty();
+	}
 	
 }
 

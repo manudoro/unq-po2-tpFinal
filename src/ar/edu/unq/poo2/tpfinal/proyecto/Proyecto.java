@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.BooleanSupplier;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
@@ -79,11 +80,19 @@ public class Proyecto {
 		this.getDesafios().add(challange);
 	}
 	
-	public void recibirMuestra(Muestra sample) {
+	public void recibirMuestra(Muestra unaMuestra) {
 		// este metodo permite que el proyeco reciba una muestra.
-		if(this.getDesafios().stream().anyMatch(d -> d.correspondeA(sample))){	
-			this.getMuestras().add(sample);
+		if(esNecesaria(unaMuestra)){	
+			this.getMuestras().add(unaMuestra);
 		}
+	}
+
+
+	public boolean esNecesaria(Muestra unaMuestra) {
+		/* indica si la muestra que se recibe por parametro es necesaria almacenar si 
+		 * lo necesitan los desafios que posee el proyecto
+		 */
+		return this.getDesafios().stream().anyMatch(d -> d.correspondeA(unaMuestra));
 	}
 	
 	public boolean contieneCategorias(List<Categoria> categorias2) {
@@ -99,14 +108,10 @@ public class Proyecto {
 
 
 	public List<Desafio> desafiosSinParticipacion(List<DesafioDeUsuario> desafiosDeUsuario) {
-		
 		List<Desafio> desafiosSinParticipacion = new ArrayList<Desafio>();
-		
-		
 		for(Desafio desafio : desafios) {
 			agregarSiNoEsta(desafiosDeUsuario, desafiosSinParticipacion, desafio); //
 		}
-		
 		return desafiosSinParticipacion;
 	}
 
@@ -116,14 +121,30 @@ public class Proyecto {
 		// Si el desafio dado no se encuentra en los desafiosDeUsuario, entonces
 		// se acumula en la lista dada.
 		if(!desafio.estaEnLosDesafiosDeUsuario(desafiosDeUsuario)) {
-			desafiosSinParticipacion.add(desafio);
+			agregarDesafio(desafiosSinParticipacion, desafio);
 		}
 	}
 
 
-	
-	
-	
+	private void agregarDesafio(List<Desafio> desafios, Desafio desafio) {
+		// se agrega el desafio dado a la lista de desafios dada por parametro
+		desafios.add(desafio);
+	}
+
+
+	public boolean tieneLaMuestra(Muestra muestra) {
+		return getMuestras().contains(muestra);
+	}
+
+
+	public boolean tieneUsuarios() {
+		return !getUsuarios().isEmpty();
+	}
+
+
+	public boolean tieneCategorias() {
+		return !getCategorias().isEmpty();
+	}
 	
 	
 }

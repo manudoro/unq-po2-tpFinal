@@ -1,15 +1,22 @@
 package ar.edu.unq.poo2.tpfinal.desafiodeusuario;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.poo2.tpfinal.desafio.*;
-import ar.edu.unq.poo2.tpfinal.muestra.*;
+import ar.edu.unq.poo2.tpfinal.desafio.Area;
+import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
+import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionEntreFechas;
+import ar.edu.unq.poo2.tpfinal.desafio.RestriccionFinDeSemana;
+import ar.edu.unq.poo2.tpfinal.muestra.Coordenada;
+import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
+import ar.edu.unq.poo2.tpfinal.usuario.Preferencia;
 import ar.edu.unq.poo2.tpfinal.usuario.Usuario;
 
 
@@ -48,7 +55,7 @@ class DesafioDeUsuarioTest {
 		entreFecha = new RestriccionEntreFechas(fecha, fecha1);
 		desafio = new Desafio(area, 10, facil, 10, finDeSemana);
 		desafio2 = new Desafio(area, 2, facil, 10, entreFecha);
-		usuario = new Usuario();
+		usuario = new Usuario(new Preferencia());
 	
 		
 		// <-- Instancia
@@ -61,27 +68,6 @@ class DesafioDeUsuarioTest {
 		
 		this.desafioDeUsuario = new DesafioDeUsuario(desafio , usuario);
 		 this.desafioDeUsuario2 = new DesafioDeUsuario(desafio2 ,usuario);
-	}
-	
-	@Test
-	void seVerificaQueUnDesafioDeUsuarioPuedeReducirSuCantidadDeMuestrasPorRecolectar() {
-		/* Cuando se crea un desafioDeUsuario, comienza con 2 muestras por recolectar */
-		this.desafioDeUsuario.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); 
-		
-		assertEquals(9, this.desafioDeUsuario.getCantidadDeMuestrasPorRecolectar());
-	}
-	
-	@Test
-	void cuandoElDesafioDeUsuarioEsteCompleto_NoSeVaAPoderModificarMasEsteDesafio() {
-		/*Un desafio esta completo cuando su cantidad de muestras por recolectar llegue a cero
-		 * La cantidad de muestras a recolectar actual es 2 */
-		
-		this.desafioDeUsuario2.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- queda una muestra por recolectar
-		this.desafioDeUsuario2.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- ya no queda muestras por recolectar, su cantidad es cero (Cambio su estado a finalizado)
-		this.desafioDeUsuario2.getEstadoDeDesafio().reducirMuestrasPorRecolectar(); // <-- la cantidad de muestras por recolectar debe seguir en cero
-		
-		
-		assertEquals(0, this.desafioDeUsuario2.getCantidadDeMuestrasPorRecolectar());
 	}
 	
 	@Test
@@ -121,7 +107,6 @@ class DesafioDeUsuarioTest {
 		assertFalse(this.desafio.correspondeARestriccion(muestra1));
 	}
 	
-	
 	@Test
 	
 	void chequeoPorcentajeDeComplejitudCuandoRecojoMuestra() {
@@ -130,23 +115,14 @@ class DesafioDeUsuarioTest {
 	}
 	
 	@Test
-	
-	
 	void verificarQueUnaMuestra_NoEsteDentroDeLaFechaDeLaRestriccionTemporalEntreSemana() {
 		assertFalse(this.desafio2.correspondeARestriccion(muestra1));
 	}
 	
 	@Test
-	
 	void verificarQueUnaMuestraEEsteDentroDeLaFechaDeLaRestriccionTemporalEntreSemana() {
 		assertTrue(this.desafio2.correspondeARestriccion(muestra));
 	}
-	
 
-	@Test
-	
-	void cuandoUnaMuestraNoEstaDentroDeLaFechaYElEstadoSeCambiaAFinalizado() {
-		assertFalse(this.desafioDeUsuario2.restriccionEstaAbierta(muestra1));
-	}
 	
 }
