@@ -3,7 +3,6 @@ package ar.edu.unq.poo2.tpfinal.usuario;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 import ar.edu.unq.poo2.tpfinal.desafio.Desafio;
 import ar.edu.unq.poo2.tpfinal.desafio.Dificultad;
@@ -11,6 +10,7 @@ import ar.edu.unq.poo2.tpfinal.desafiodeusuario.DesafioDeUsuario;
 import ar.edu.unq.poo2.tpfinal.muestra.Muestra;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 import ar.edu.unq.poo2.tpfinal.recomendacion.IFormaDeRecomendacion;
+
 
 	
 

@@ -1,9 +1,8 @@
-package ar.edu.unq.poo2.tpfinal.sistema;
+package ar.edu.unq.poo2.tpfinal.filtro;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unq.poo2.tpfinal.filtro.Filtrable;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
 
 public class Sistema {

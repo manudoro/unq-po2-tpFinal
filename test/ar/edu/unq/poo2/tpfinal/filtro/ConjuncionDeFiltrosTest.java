@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.poo2.tpfinal.proyecto.Categoria;
 import ar.edu.unq.poo2.tpfinal.proyecto.Proyecto;
-import ar.edu.unq.poo2.tpfinal.sistema.Sistema;
 
 class ConjuncionDeFiltrosTest {
 	public ConjuncionDeFiltros bosqueBot, bosqueNoAst, botNoAst, astBotEstrella, noZooABE;
